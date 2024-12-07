@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">SCORE IT</string>
+    <string name="nombre_campeonato">Nombre del Campeonato</string>
 </resources>
