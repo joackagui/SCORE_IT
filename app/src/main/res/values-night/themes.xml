@@ -4,4 +4,22 @@
         <!-- Customize your dark theme here. -->
         <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
     </style>
+
+    <style name="background">
+        <item name="android:background">@color/DarkestBlue</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:textColor">@color/White</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+    </style>
+
+    <style name="foregraound">
+        <item name="android:background">@color/Navy</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">@color/White</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+    </style>
 </resources>

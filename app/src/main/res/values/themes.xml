@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
     <style name="Base.Theme.SCOREIT" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
@@ -6,6 +6,24 @@
     </style>
 
     <style name="Theme.SCOREIT" parent="Base.Theme.SCOREIT" />
+
+    <style name="background">
+        <item name="android:background">@color/DarkestBlue</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:textColor">@color/White</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+    </style>
+
+    <style name="foreground">
+        <item name="android:background">@color/RoyalBlue</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">@color/White</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+    </style>
 
     <style name="TituloDeLaApp">
         <item name="android:textSize">20sp</item>
