@@ -6,7 +6,7 @@
     </style>
 
     <style name="background">
-        <item name="android:background">@color/Navy</item>
+        <item name="android:background">@color/DarkestBlue</item>
         <item name="android:textSize">15sp</item>
         <item name="android:textColor">@color/White</item>
         <item name="android:gravity">center</item>
@@ -15,7 +15,7 @@
     </style>
 
     <style name="foregraound">
-        <item name="android:background">@color/SeaGreen</item>
+        <item name="android:background">@color/Navy</item>
         <item name="android:textSize">20sp</item>
         <item name="android:textColor">@color/White</item>
         <item name="android:gravity">center</item>
