@@ -8,9 +8,35 @@
     <style name="Theme.SCOREIT" parent="Base.Theme.SCOREIT" />
 
     <style name="TituloDeLaApp">
+        <item name="android:fontFamily">@font/score_it</item>
+        <item name="android:textSize">30sp</item>
+        <item name="android:textColor">@color/White</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="BotonesScoreItStyle">
+        <item name="android:fontFamily">@font/score_it</item> <!-- Fuente personalizada -->
+        <item name="android:textColor">@color/White</item> <!-- Color del texto -->
+        <item name="android:textSize">20sp</item>  <!-- Negrita -->
+    </style>
+
+    <style name="TextoNormalScoreIt">
+        <item name="fontFamily">@font/score_it</item>
+        <item name="android:textColor">@color/White</item>
         <item name="android:textSize">20sp</item>
-        <item name="android:textColor">@color/LightYellow</item>
-        <item name="android:layout_margin">30dp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="EditTextHintStyle">
+        <item name="android:textColorHint">@color/BalncoConUnPocoDeTranferencia</item>
+        <item name="fontFamily">@font/score_it</item>
+    </style>
+
+    <style name="TextoIndicadorDePantalla">
+        <item name="android:fontFamily">@font/score_it</item>
+        <item name="android:textSize">25sp</item>
+        <item name="android:textColor">@color/White</item>
+        <item name="android:textStyle">bold</item>
     </style>
 
 

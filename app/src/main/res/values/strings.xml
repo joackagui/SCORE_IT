@@ -1,4 +1,18 @@
 <resources>
     <string name="app_name">SCORE IT</string>
     <string name="nombre_campeonato">Nombre del Campeonato</string>
+    <string name="menu_pricipal_text">Menú principal</string>
+    <string name="ver_campenatos_creados">Ver campenatos creados</string>
+    <string name="crear_un_nuevo_campeonato">Nuevo campeonato</string>
+    <string name="pasar_a_la_pantalla_de_usuario">Pasar a la pantalla de usuario\n</string>
+    <string name="Icono_la_app">Icono de la app\n</string>
+    <string name="anade_un_logo">Añade un logo</string>
+    <string name="anadir_el_logo_boton">+</string>
+    <string name="fecha_del_campeonato">Fecha del campeonato\n</string>
+    <array name="opciones_para_modo_de_juego">
+        <item>Round Robin</item>
+        <item>Llaves</item>
+        <item>Ambos</item>
+        <item>Ninguno</item>
+    </array>
 </resources>
