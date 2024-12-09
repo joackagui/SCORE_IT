@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:gravity="start"
-    android:textColor="@color/BalncoConUnPocoDeTranferencia"
+    android:textColor="@color/BlancoConUnPocoDeTranferencia"
     android:padding="8dp"
     style="@style/TextoNormalScoreIt"
     android:background="@color/Black"
