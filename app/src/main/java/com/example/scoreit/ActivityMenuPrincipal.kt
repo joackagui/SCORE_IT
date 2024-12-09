@@ -14,8 +14,8 @@ class ActivityMenuPrincipal : AppCompatActivity() {
         setContentView(view)
 
         binding.botonCrearNuevoCampeonato.setOnClickListener {
-            val activityCrearNuevoCmapeonato = Intent(this, ActivityCrearNuevoCmapeonato::class.java)
-            startActivity(activityCrearNuevoCmapeonato)
+            val activityCrearNuevoCampeonato = Intent(this, ActivityCrearNuevoCampeonato::class.java)
+            startActivity(activityCrearNuevoCampeonato)
         }
     }
 }

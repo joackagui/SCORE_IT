@@ -3,13 +3,13 @@ package com.example.scoreit
 import android.os.Bundle
 import android.widget.ArrayAdapter
 import androidx.appcompat.app.AppCompatActivity
-import com.example.scoreit.databinding.ActivityCrearNuevoCmapeonatoBinding
+import com.example.scoreit.databinding.ActivityCrearNuevoCampeonatoBinding
 
-class ActivityCrearNuevoCmapeonato : AppCompatActivity() {
-    private lateinit var binding: ActivityCrearNuevoCmapeonatoBinding
+class ActivityCrearNuevoCampeonato : AppCompatActivity() {
+    private lateinit var binding: ActivityCrearNuevoCampeonatoBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityCrearNuevoCmapeonatoBinding.inflate(layoutInflater)
+        binding = ActivityCrearNuevoCampeonatoBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
         val modoDeJuego = resources.getStringArray(R.array.opciones_para_modo_de_juego)
