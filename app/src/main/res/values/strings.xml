@@ -9,6 +9,13 @@
     <string name="anade_un_logo">Añade un logo</string>
     <string name="anadir_el_logo_boton">+</string>
     <string name="fecha_del_campeonato">Fecha del campeonato\n</string>
+
+    <string name="nombre_usuario">Nombre de Usuario</string>
+    <string name="correo_electronico">Correo Electrónico</string>
+    <string name="contraseña">Contraseña</string>
+    <string name="iniciar_sesión">Iniciar Sesión</string>
+
+
     <array name="opciones_para_modo_de_juego">
         <item>Round Robin</item>
         <item>Llaves</item>

@@ -15,15 +15,25 @@
 
     <style name="Foreground">
         <item name="background">@color/RojoEncabezadoScoreIt</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+    </style>
+
+    <style name="TextoGrande">
+        <item name="android:fontFamily">@font/score_it</item>
+        <item name="android:textSize">50sp</item>
+        <item name="android:textColor">@color/White</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:gravity">center</item>
     </style>
 
     <style name="TituloDeLaApp">
+        <item name="android:text">@string/app_name</item>
         <item name="android:fontFamily">@font/score_it</item>
         <item name="android:textSize">30sp</item>
         <item name="android:textColor">@color/White</item>
         <item name="android:textStyle">bold</item>
         <item name="android:gravity">center</item>
-        <item name="android:text">@string/app_name</item>
     </style>
 
     <style name="BotonesScoreItStyle">
