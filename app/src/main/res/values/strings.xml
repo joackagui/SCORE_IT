@@ -12,7 +12,8 @@
 
     <string name="nombre_usuario">Nombre de Usuario</string>
     <string name="correo_electronico">Correo Electrónico</string>
-    <string name="contraseña">Contraseña</string>
+    <string name="contraseña">Ingresar Contraseña</string>
+    <string name="repita_contraseña">Confirmar Contraseña</string>
     <string name="iniciar_sesión">Iniciar Sesión</string>
 
 
