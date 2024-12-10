@@ -7,6 +7,8 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <include layout="@layout/encabezado"/>
+
     <TextView
         android:id="@+id/textmain"
         android:layout_width="wrap_content"
@@ -27,6 +29,8 @@
         app:layout_constraintStart_toStartOf="parent"
         android:layout_marginStart="150dp"
         />
+
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

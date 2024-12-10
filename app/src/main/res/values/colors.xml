@@ -4,6 +4,7 @@
     <color name="lightGray">#AAAAAA</color>"
     <color name="Gray">#808080</color>
     <color name="DarkGray">#404040</color>
+    <color name="DarkestGray">#202020</color>
     <color name="Black">#000000</color>
     <color name="Transparent">#00000000</color>
 

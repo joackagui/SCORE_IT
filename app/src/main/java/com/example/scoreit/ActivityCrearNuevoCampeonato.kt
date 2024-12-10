@@ -12,6 +12,7 @@ class ActivityCrearNuevoCampeonato : AppCompatActivity() {
         binding = ActivityCrearNuevoCampeonatoBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
+
         val modoDeJuego = resources.getStringArray(R.array.opciones_para_modo_de_juego)
 
         val adapter = ArrayAdapter(this, R.layout.spinner_item_style, modoDeJuego)

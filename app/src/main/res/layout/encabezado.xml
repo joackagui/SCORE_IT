@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/encabezado_principal_rojo"
+    android:layout_width="match_parent"
+    android:layout_height="0dp"
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintBottom_toTopOf="@id/guideline_margen_top"
+    style="@style/Foreground">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintTop_toTopOf="parent"
+        style="@style/TituloDeLaApp"
+        />
+
+    <ImageView
+        android:id="@+id/copa_score_it"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        app:layout_constraintTop_toTopOf="@+id/encabezado_principal_rojo"
+        app:layout_constraintBottom_toBottomOf="@+id/encabezado_principal_rojo"
+        app:layout_constraintStart_toStartOf="@+id/encabezado_principal_rojo"
+        android:layout_marginStart="20dp"
+        android:src="@drawable/score_it_coup"
+        android:elevation="2dp"
+        android:contentDescription="@string/Icono_la_app"
+        />
+
+    <android.widget.Button
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        app:layout_constraintTop_toTopOf="@+id/encabezado_principal_rojo"
+        app:layout_constraintBottom_toBottomOf="@+id/encabezado_principal_rojo"
+        app:layout_constraintEnd_toEndOf="@+id/encabezado_principal_rojo"
+        android:layout_marginEnd="20dp"
+        android:background="@drawable/user_icon"
+        android:backgroundTint="@color/White"
+        android:elevation="2dp"
+        android:contentDescription="@string/pasar_a_la_pantalla_de_usuario"
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+
