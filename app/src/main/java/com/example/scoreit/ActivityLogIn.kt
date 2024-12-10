@@ -21,8 +21,10 @@ class ActivityLogIn : AppCompatActivity() {
         setContentView(view)
 
         binding.botonLogin.setOnClickListener {
-            val activityMenuPrincipal = Intent(this, ActivityMenuPrincipal::class.java)
-            startActivity(activityMenuPrincipal)
+            if (binding.Password.text.toString() == binding.PasswordSafety.text.toString()) {
+                val activityMenuPrincipal = Intent(this, ActivityMenuPrincipal::class.java)
+                startActivity(activityMenuPrincipal)
+            }
         }
     }
 }

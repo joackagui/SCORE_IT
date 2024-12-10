@@ -10,6 +10,7 @@
     <string name="anadir_el_logo_boton">+</string>
     <string name="fecha_del_campeonato">Fecha del campeonato\n</string>
 
+
     <string name="nombre_usuario">Nombre de Usuario</string>
     <string name="correo_electronico">Correo Electrónico</string>
     <string name="contraseña">Ingresar Contraseña</string>
