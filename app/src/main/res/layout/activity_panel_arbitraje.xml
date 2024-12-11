@@ -7,7 +7,109 @@
     tools:context=".ActivityPanelArbitraje"
     >
 
+    <androidx.cardview.widget.CardView
+        android:id="@+id/primer_equipo"
+        style="@style/card_botones"
+        app:layout_constraintBottom_toTopOf="@id/guideline_mitad_vertical"
+        app:layout_constraintStart_toStartOf="@id/guideline_margen_izquierda"
+        app:layout_constraintEnd_toStartOf="@id/guideline_margen_derecha"
+        android:layout_marginBottom="60dp"
+        app:cardCornerRadius="25dp">
 
+        <android.widget.Button
+            android:id="@+id/boton_primer_equipo"
+            style="@style/botones_para_puntos"
+            />
 
+        <TextView
+            android:id="@+id/puntaje_primer_equipo"
+            android:text="@string/marcador_inicial"
+            style="@style/texto_para_puntos"
+            />
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/segundo_equipo"
+        android:layout_width="0dp"
+        android:layout_height="170dp"
+        app:layout_constraintTop_toBottomOf="@id/guideline_mitad_vertical"
+        app:layout_constraintStart_toStartOf="@id/guideline_margen_izquierda"
+        app:layout_constraintEnd_toStartOf="@id/guideline_margen_derecha"
+        android:layout_marginTop="60dp"
+        app:cardCornerRadius="25dp">
+
+        <android.widget.Button
+            android:id="@+id/boton_segundo_equipo"
+            style="@style/botones_para_puntos_invertido"
+            />
+
+        <TextView
+            android:id="@+id/puntaje_segundo_equipo"
+            android:text="@string/marcador_inicial"
+            style="@style/texto_para_puntos_invertido"
+            />
+
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/primer_equipo"
+        app:layout_constraintStart_toStartOf="@id/primer_equipo"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="10dp"
+        android:text="Equipo 1"
+        style="@style/TextoIndicadorDePantalla"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@id/segundo_equipo"
+        app:layout_constraintEnd_toEndOf="@id/segundo_equipo"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="10dp"
+        android:text="Equipo 2"
+        style="@style/TextoIndicadorDePantalla"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:text="00:00"
+        style="@style/TextoIndicadorDePantalla"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_margen_izquierda"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.1"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_margen_derecha"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.9"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_mitad_vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintGuide_percent="0.5"
+        android:orientation="horizontal"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_margen_top"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintGuide_percent="0.1"
+        android:orientation="horizontal"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

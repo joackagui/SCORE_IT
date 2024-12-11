@@ -1,13 +1,77 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <TextView
-        android:id="@+id/text_view_ejemplo"
+    <View
+        app:layout_constraintTop_toTopOf="parent"
+        android:id="@+id/transparente_top"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        style="@style/TextoNormalScoreIt"
+        android:layout_height="15dp"
+        app:layout_constraintStart_toStartOf="parent"
+        android:background="@color/Transparent"
+        />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/campeonato_en_curso"
+        android:layout_width="0dp"
+        android:layout_height="125dp"
+        app:cardCornerRadius="25dp"
+        app:layout_constraintTop_toBottomOf="@id/transparente_top"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <android.widget.Button
+                android:id="@+id/boton_segundo_equipo"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/CommonRed"
+                style="@style/botones_para_puntos"
+                />
+
+            <TextView
+                android:id="@+id/nombre_del_campeonato"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="20dp"
+                android:text=""
+                android:maxLines="2"
+                android:elevation="2dp"
+                style="@style/TextoIndicadorDePantalla"
+                />
+
+            <TextView
+                android:id="@+id/fecha_del_campeonato"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:text=""
+                android:elevation="2dp"
+                android:layout_marginEnd="15dp"
+                style="@style/TextoNormalScoreIt"
+                />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="15dp"
+        app:layout_constraintTop_toBottomOf="@id/campeonato_en_curso"
+        app:layout_constraintStart_toStartOf="parent"
+        android:background="@color/Transparent"
         />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

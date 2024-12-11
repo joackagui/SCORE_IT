@@ -30,13 +30,26 @@
 
     </androidx.cardview.widget.CardView>
 
+    <TextView
+        android:id="@+id/campeonatos_creados"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/TextoNormalScoreIt"
+        android:text="Campeonatos creados"
+        app:layout_constraintTop_toBottomOf="@id/borde_boton"
+        app:layout_constraintStart_toStartOf="@id/guideline_margen_izquierda"
+        android:layout_margin="20dp"
+        android:maxLines="2"
+        />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerCampeonatosCreados"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/borde_boton"
+        app:layout_constraintTop_toBottomOf="@id/campeonatos_creados"
+        app:layout_constraintBottom_toBottomOf="parent"
         android:layout_marginTop="20dp"
         />
 

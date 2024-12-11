@@ -54,7 +54,7 @@
         android:layout_marginTop="30dp"
         android:hint="@string/nombre_campeonato"
         style="@style/EditTextHintStyle"
-        android:backgroundTint="@color/RojoEncabezadoScoreIt"
+        android:backgroundTint="@color/CommonRed"
         android:inputType="text"
         android:autofillHints="name"
 
@@ -70,7 +70,7 @@
         android:layout_marginTop="30dp"
         android:hint="@string/fecha_del_campeonato"
         style="@style/EditTextHintStyle"
-        android:backgroundTint="@color/RojoEncabezadoScoreIt"
+        android:backgroundTint="@color/CommonRed"
         android:inputType="date"
         android:autofillHints="name"
         />
@@ -84,7 +84,7 @@
         app:layout_constraintStart_toEndOf="@id/guideline_mitad_vertical"
         app:layout_constraintEnd_toStartOf="@id/guideline_vertical2"
         android:layout_marginTop="30dp"
-        android:backgroundTint="@color/RojoEncabezadoScoreIt"
+        android:backgroundTint="@color/CommonRed"
         />
 
     <androidx.constraintlayout.widget.Guideline

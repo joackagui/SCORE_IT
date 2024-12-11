@@ -1,6 +1,6 @@
 <shape xmlns:android="http://schemas.android.com/apk/res/android">
     <!-- Fondo del botón -->
-    <solid android:color="@color/RojoEncabezadoScoreIt" /> <!-- Rojo -->
+    <solid android:color="@color/CommonRed" /> <!-- Rojo -->
 
     <!-- Bordes redondeados -->
     <corners android:radius="8dp" />

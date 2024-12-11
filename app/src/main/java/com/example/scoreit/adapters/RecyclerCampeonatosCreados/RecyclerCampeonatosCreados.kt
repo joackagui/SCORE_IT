@@ -26,7 +26,8 @@ class RecyclerCampeonatosCreados:
 
         inner class CampeonatoViewHolder(private val binding: EnmarcadoCampeonatoBinding): RecyclerView.ViewHolder(binding.root) {
             fun binding(data: Campeonato) {
-                binding.textViewEjemplo.text = data.nombre
+                binding.nombreDelCampeonato.text = data.nombre
+                binding.fechaDelCampeonato.text =data.fecha
             }
         }
 

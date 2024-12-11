@@ -7,7 +7,10 @@
     <color name="DarkestGray">#202020</color>
     <color name="Black">#000000</color>
     <color name="Transparent">#00000000</color>
+    <color name="TransparentWhite">#BFFFFFFF</color>
 
+    <color name="CommonRed">#CC0000</color>
+    <color name="DarkestRed">#990000</color>
     <color name="DarkRed">#8B0000</color>
     <color name="Maroon">#800000</color>
     <color name="Brown">#A52A2A</color>
@@ -48,15 +51,5 @@
     <color name="DarkBlue">#00008B</color>
     <color name="Navy">#000080</color>
     <color name="DarkestBlue">#100F33</color>
-
-    <color name="Cachecolor">#8ad0e8</color>
-    <color name="Blueback">#99FFFF</color>
-    <color name="Darkturquoise">#00CED1</color>
-    <color name="Darkseagreen">#8FBC8F</color>
-    <color name="RojoEncabezadoScoreIt">#CC0000</color>
-    <color name="RojoMasOscuroParaTextosScoreIt">#990000</color>
-    <color name="BlancoConUnPocoDeTranferencia">#BFFFFFFF</color>
-
-
 
 </resources>

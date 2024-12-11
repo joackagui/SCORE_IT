@@ -6,6 +6,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.example.scoreit.ActivityMenuPrincipal.Companion.ID_USUARIO
 import com.example.scoreit.adapters.RecyclerCampeonatosCreados.RecyclerCampeonatosCreados
 import com.example.scoreit.databinding.ActivityLogInBinding
 import com.example.scoreit.databinding.ActivityMenuPrincipalBinding
@@ -21,8 +22,9 @@ class ActivityLogIn : AppCompatActivity() {
         setContentView(view)
 
         binding.botonLogin.setOnClickListener {
-            if (binding.Password.text.toString() == binding.PasswordSafety.text.toString()) {
+            if (binding.password.text.toString() == binding.passwordSafety.text.toString() && binding.password.text.toString() != "") {
                 val activityMenuPrincipal = Intent(this, ActivityMenuPrincipal::class.java)
+                activityMenuPrincipal.putExtra(ID_USUARIO, binding.usuario.text.toString())
                 startActivity(activityMenuPrincipal)
             }
         }
