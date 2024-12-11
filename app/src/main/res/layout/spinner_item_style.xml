@@ -6,5 +6,5 @@
     android:textColor="@color/TransparentWhite"
     android:padding="8dp"
     style="@style/TextoNormalScoreIt"
-    android:background="@color/Black"
+    android:background="@color/DarkGray"
     />

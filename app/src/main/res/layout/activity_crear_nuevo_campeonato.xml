@@ -16,90 +16,291 @@
         android:layout_height="60dp"
         app:layout_constraintTop_toBottomOf="@+id/encabezado_principal_rojo"
         android:background="@color/DarkRed"
+        style="@style/TextoIndicadorDePantalla"
         android:text="@string/crear_un_nuevo_campeonato"
-        android:gravity="center"
-        style="@style/TextoIndicadorDePantalla"/>
+        android:gravity="center"/>
 
-
-    <TextView
-        android:id="@+id/anadir_un_logo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/anade_un_logo"
-        style="@style/TextoNormalScoreIt"
-        app:layout_constraintTop_toBottomOf="@id/informacion_de_la_pantalla_actual"
-        app:layout_constraintStart_toEndOf="@id/guideline_mitad_vertical"
-        app:layout_constraintEnd_toStartOf="@+id/guideline_vertical2"
-        android:layout_marginTop="30dp"
-        />
-
-    <Button
-        android:id="@+id/boton_anadir_logo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/anadir_un_logo"
-        app:layout_constraintStart_toEndOf="@+id/guideline_mitad_vertical"
-        app:layout_constraintEnd_toStartOf="@id/guideline_vertical2"
-        android:layout_marginTop="30dp"
-        android:text="@string/anadir_el_logo_boton"
-        />
-
-    <EditText
-        android:id="@+id/nombre_del_campeonato"
-        android:layout_width="300dp"
-        android:layout_height="50dp"
-        app:layout_constraintTop_toBottomOf="@+id/boton_anadir_logo"
-        app:layout_constraintStart_toEndOf="@id/guideline_mitad_vertical"
-        app:layout_constraintEnd_toStartOf="@id/guideline_vertical2"
-        android:layout_marginTop="30dp"
-        android:hint="@string/nombre_campeonato"
-        style="@style/EditTextHintStyle"
-        android:backgroundTint="@color/CommonRed"
-        android:inputType="text"
-        android:autofillHints="name"
-
-        />
-
-    <EditText
-        android:id="@+id/fecha_del_campeonato"
-        android:layout_width="300dp"
-        android:layout_height="50dp"
-        app:layout_constraintTop_toBottomOf="@+id/nombre_del_campeonato"
-        app:layout_constraintStart_toEndOf="@id/guideline_mitad_vertical"
-        app:layout_constraintEnd_toStartOf="@id/guideline_vertical2"
-        android:layout_marginTop="30dp"
-        android:hint="@string/fecha_del_campeonato"
-        style="@style/EditTextHintStyle"
-        android:backgroundTint="@color/CommonRed"
-        android:inputType="date"
-        android:autofillHints="name"
-        />
-
-    <Spinner
-        android:id="@+id/spinner_modo_juego"
-        android:layout_width="250dp"
-        android:layout_height="48dp"
-        android:entries="@array/opciones_para_modo_de_juego"
-        app:layout_constraintTop_toBottomOf="@id/fecha_del_campeonato"
-        app:layout_constraintStart_toEndOf="@id/guideline_mitad_vertical"
-        app:layout_constraintEnd_toStartOf="@id/guideline_vertical2"
-        android:layout_marginTop="30dp"
-        android:backgroundTint="@color/CommonRed"
-        />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline_mitad_vertical"
+    <ScrollView
+        android:id="@+id/scrollview_informacion_score_it"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.1"
+        android:layout_height="0dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/informacion_de_la_pantalla_actual">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline_mitad_vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.1" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline_vertical2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.9" />
+
+            <TextView
+                android:id="@+id/anadir_un_logo"
+                style="@style/TextoNormalScoreIt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:text="@string/anade_un_logo"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <android.widget.Button
+                android:id="@+id/boton_anadir_logo"
+                style="@style/TextoNormalScoreIt"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="30dp"
+                android:background="@drawable/fondo_para_botones_score_it"
+                android:text="@string/anadir_el_logo_boton"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/anadir_un_logo" />
+
+            <EditText
+                android:id="@+id/nombre_del_campeonato"
+                style="@style/EditTextHintStyle"
+                android:layout_width="300dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="30dp"
+                android:autofillHints="name"
+                android:backgroundTint="@color/DarkestRed"
+                android:hint="@string/nombre_campeonato"
+                android:inputType="text"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/boton_anadir_logo"
+
         />
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline_vertical2"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.9"
-        />
+
+            <EditText
+                android:id="@+id/fecha_del_campeonato"
+                style="@style/EditTextHintStyle"
+                android:layout_width="300dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="30dp"
+                android:autofillHints="name"
+                android:backgroundTint="@color/DarkestRed"
+                android:hint="@string/fecha_del_campeonato"
+                android:inputType="date"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/nombre_del_campeonato" />
+
+            <Spinner
+                android:id="@+id/spinner_modo_juego"
+                android:layout_width="250dp"
+                android:layout_height="48dp"
+                android:layout_marginTop="30dp"
+                android:backgroundTint="@color/DarkestRed"
+                android:entries="@array/opciones_para_modo_de_juego"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/fecha_del_campeonato" />
+
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/switch_tiempo_de_juego"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:contentDescription="@string/se_quiere_tiempo"
+                app:layout_constraintStart_toEndOf="@id/guideline_mitad_vertical"
+                app:layout_constraintTop_toBottomOf="@id/spinner_modo_juego"
+                app:showText="true"
+                android:thumb="@drawable/thumb"
+                app:track="@drawable/track"/>
+
+            <EditText
+                android:id="@+id/tiempo_de_juego_edit_text"
+                android:layout_width="180dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="40dp"
+                android:hint="@string/cantidad_de_tiempo"
+                style="@style/EditTextHintStyle"
+                android:inputType="time"
+                android:autofillHints="time"
+                app:layout_constraintBottom_toBottomOf="@id/switch_tiempo_de_juego"
+                app:layout_constraintStart_toEndOf="@+id/switch_tiempo_de_juego"
+                app:layout_constraintTop_toTopOf="@id/switch_tiempo_de_juego"
+/>
+
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/switch_puntaje"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:checked="false"
+                android:contentDescription="@string/se_quiere_el_puntaje"
+                app:layout_constraintStart_toEndOf="@id/guideline_mitad_vertical"
+                app:layout_constraintTop_toBottomOf="@id/switch_tiempo_de_juego"
+                app:showText="true"
+                android:thumb="@drawable/thumb"
+                app:track="@drawable/track"/>
+
+            <EditText
+                android:id="@+id/puntaje_edit_text"
+                android:layout_width="180dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="40dp"
+                android:hint="@string/puntaje_del_campeonato_text"
+                android:inputType="number"
+                android:autofillHints="number"
+                style="@style/EditTextHintStyle"
+                app:layout_constraintBottom_toBottomOf="@id/switch_puntaje"
+                app:layout_constraintStart_toEndOf="@+id/switch_puntaje"
+                app:layout_constraintTop_toTopOf="@id/switch_puntaje" />
+
+            <CheckBox
+                android:id="@+id/checkbox_diferencia_dos_puntos"
+                style="@style/TextoNormalScoreIt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:checked="false"
+                android:text="@string/diferencia_de_dos_puntos"
+                app:layout_constraintStart_toEndOf="@id/guideline_mitad_vertical"
+                app:layout_constraintTop_toBottomOf="@id/switch_puntaje" />
+
+            <CheckBox
+                android:id="@+id/checkbox_siempre_un_ganador"
+                style="@style/TextoNormalScoreIt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:checked="false"
+                android:text="@string/siempre_un_ganador"
+                app:layout_constraintStart_toEndOf="@id/guideline_mitad_vertical"
+                app:layout_constraintTop_toBottomOf="@id/checkbox_diferencia_dos_puntos" />
+
+            <CheckBox
+                android:id="@+id/checkbox_ida_y_vuelta"
+                style="@style/TextoNormalScoreIt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:checked="false"
+                android:text="@string/ida_y_vuelta"
+                app:layout_constraintStart_toEndOf="@id/guideline_mitad_vertical"
+                app:layout_constraintTop_toBottomOf="@id/checkbox_siempre_un_ganador" />
+
+            <CheckBox
+                android:id="@+id/checkbox_tiempos_de_Descaso"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@+id/checkbox_ida_y_vuelta"
+                app:layout_constraintStart_toEndOf="@id/guideline_mitad_vertical"
+                android:checked="false"
+                android:text="@string/tiempos_de_descanso_text"
+                style="@style/TextoNormalScoreIt"
+                android:layout_marginTop="30dp"
+                />
+
+           <!-- <NumberPicker
+                android:id="@+id/number_picker_cantidad"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                app:layout_constraintTop_toBottomOf="@id/checkbox_tiempos_de_Descaso"
+                app:layout_constraintStart_toEndOf="@id/guideline_mitad_vertical"
+                app:layout_constraintEnd_toStartOf="@id/guideline_vertical2"
+                />
+
+            <NumberPicker
+                android:id="@+id/number_picker_tiempo"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                app:layout_constraintTop_toBottomOf="@id/number_picker_cantidad"
+                app:layout_constraintStart_toEndOf="@id/guideline_mitad_vertical"
+                app:layout_constraintEnd_toStartOf="@id/guideline_vertical2"
+                /> -->
+            <EditText
+                android:id="@+id/edit_text_cantidad_descanso"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/cantidad_de_descansos_edit_text"
+                style="@style/EditTextHintStyle"
+                android:inputType="number"
+                app:layout_constraintTop_toBottomOf="@id/checkbox_tiempos_de_Descaso"
+                app:layout_constraintStart_toEndOf="@id/guideline_mitad_vertical"
+                app:layout_constraintEnd_toStartOf="@id/guideline_vertical2"
+                android:autofillHints="number"
+                />
+
+            <EditText
+                android:id="@+id/edit_text_tiempo_descanso"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/tiempo_de_descansos_edit_text"
+                style="@style/EditTextHintStyle"
+                android:inputType="number"
+                app:layout_constraintTop_toBottomOf="@id/edit_text_cantidad_descanso"
+                app:layout_constraintStart_toEndOf="@id/guideline_mitad_vertical"
+                app:layout_constraintEnd_toStartOf="@id/guideline_vertical2"
+                android:autofillHints="number"
+                />
+
+            <CheckBox
+                android:id="@+id/checkbox_canchas_rondas"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@+id/edit_text_tiempo_descanso"
+                app:layout_constraintStart_toEndOf="@id/guideline_mitad_vertical"
+                android:checked="false"
+                android:text="@string/canchas_rondas_text"
+                style="@style/TextoNormalScoreIt"
+                android:layout_marginTop="30dp"
+                />
+
+           <!-- <NumberPicker
+                android:id="@+id/number_picker_canchas_para_ganar"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                app:layout_constraintTop_toBottomOf="@id/checkbox_canchas_rondas"
+                app:layout_constraintStart_toEndOf="@id/guideline_mitad_vertical"
+                app:layout_constraintEnd_toStartOf="@id/guideline_vertical2"
+                /> -->
+
+            <EditText
+                android:id="@+id/edit_text_canchas_para_ganar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/cantidad_de_canchas_edit_text"
+                style="@style/EditTextHintStyle"
+                android:inputType="number"
+                app:layout_constraintTop_toBottomOf="@id/checkbox_canchas_rondas"
+                app:layout_constraintStart_toEndOf="@id/guideline_mitad_vertical"
+                app:layout_constraintEnd_toStartOf="@id/guideline_vertical2"
+                android:autofillHints="number"
+                />
+            <CheckBox
+                android:id="@+id/checkbox_diferencia_dos_canchas"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@+id/edit_text_canchas_para_ganar"
+                app:layout_constraintStart_toEndOf="@id/guideline_mitad_vertical"
+                android:checked="false"
+                android:text="@string/diferencia_de_dos_canchas_text"
+                style="@style/TextoNormalScoreIt"
+                android:layout_marginTop="30dp"
+                />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

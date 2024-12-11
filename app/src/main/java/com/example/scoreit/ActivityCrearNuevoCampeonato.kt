@@ -14,11 +14,12 @@ class ActivityCrearNuevoCampeonato : AppCompatActivity() {
         val view = binding.root
         setContentView(view)
 
+
+
+        //Spinner con un estilo propio
         val modoDeJuego = resources.getStringArray(R.array.opciones_para_modo_de_juego)
-
         val adapter = ArrayAdapter(this, R.layout.spinner_item_style, modoDeJuego)
-
-// Configurar el Spinner con el Adapter
+        // Configurar el Spinner con el Adapter
         binding.spinnerModoJuego.adapter = adapter
 
 

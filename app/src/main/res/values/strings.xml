@@ -17,6 +17,19 @@
     <string name="repita_contraseña">Confirmar Contraseña</string>
     <string name="iniciar_sesión">Iniciar Sesión</string>
     <string name="marcador_inicial">0</string>
+    <string name="siempre_un_ganador">Siempre un ganador</string>
+    <string name="diferencia_de_dos_puntos">Diferencia de dos puntos</string>
+    <string name="ida_y_vuelta">Ida y Vuelta</string>
+    <string name="se_quiere_tiempo">Se quiere tiempo</string>
+    <string name="se_quiere_el_puntaje">Se quiere el puntaje</string>
+    <string name="cantidad_de_tiempo">Tiempo</string>
+    <string name="puntaje_del_campeonato_text">Puntaje</string>
+    <string name="tiempos_de_descanso_text">Tiempos de descanso</string>
+    <string name="canchas_rondas_text">Canchas/Rondas</string>
+    <string name="diferencia_de_dos_canchas_text">Diferencia de dos canchas</string>
+    <string name="cantidad_de_descansos_edit_text">Cantidad de descansos</string>
+    <string name="tiempo_de_descansos_edit_text">Tiempo</string>
+    <string name="cantidad_de_canchas_edit_text">Canchas para ganar</string>
 
 
     <array name="opciones_para_modo_de_juego">
