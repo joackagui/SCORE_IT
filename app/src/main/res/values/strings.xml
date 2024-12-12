@@ -30,6 +30,7 @@
     <string name="cantidad_de_descansos_edit_text">Cantidad de descansos</string>
     <string name="tiempo_de_descansos_edit_text">Tiempo</string>
     <string name="cantidad_de_canchas_edit_text">Canchas para ganar</string>
+    <string name="campeonatos_creados_por">Campeonatos creados por:</string>
 
 
     <array name="opciones_para_modo_de_juego">

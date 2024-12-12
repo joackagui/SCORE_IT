@@ -35,7 +35,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         style="@style/TextoNormalScoreIt"
-        android:text="Campeonatos creados"
+        android:text="@string/campeonatos_creados_por"
         app:layout_constraintTop_toBottomOf="@id/borde_boton"
         app:layout_constraintStart_toStartOf="@id/guideline_margen_izquierda"
         android:layout_margin="20dp"
