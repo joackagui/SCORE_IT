@@ -17,6 +17,7 @@
     <string name="repita_contraseña">Confirmar Contraseña</string>
     <string name="iniciar_sesión">Iniciar Sesión</string>
     <string name="marcador_inicial">0</string>
+    <string name="campeonatos_creados_por">Campeonatos creados por:</string>
 
 
     <array name="opciones_para_modo_de_juego">
