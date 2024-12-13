@@ -61,38 +61,35 @@
         <item name="android:textStyle">bold</item>
     </style>
 
-    <style name="botones_para_puntos">
+    <style name="botones_para_puntos_base">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">match_parent</item>
+    </style>
+
+    <style name="botones_para_puntos" parent="botones_para_puntos_base">
         <item name="android:background">@color/CommonRed</item>
     </style>
 
-    <style name="texto_para_puntos">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">match_parent</item>
-        <item name="android:padding">40dp</item>
-        <item name="android:fontFamily">@font/score_it</item>
-        <item name="android:textColor">@color/White</item>
-        <item name="android:textSize">40sp</item>
-        <item name="android:gravity">center</item>
-        <item name="android:elevation">3dp</item>
-    </style>
-
-    <style name="botones_para_puntos_invertido">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">match_parent</item>
+    <style name="botones_para_puntos_invertido" parent="botones_para_puntos_base">
         <item name="android:background">@color/White</item>
     </style>
 
-    <style name="texto_para_puntos_invertido">
+    <style name="texto_para_puntos_base">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">match_parent</item>
         <item name="android:padding">40dp</item>
         <item name="android:fontFamily">@font/score_it</item>
-        <item name="android:textColor">@color/CommonRed</item>
         <item name="android:textSize">40sp</item>
         <item name="android:gravity">center</item>
         <item name="android:elevation">3dp</item>
+    </style>
+
+    <style name="texto_para_puntos" parent="texto_para_puntos_base">
+        <item name="android:textColor">@color/White</item>
+    </style>
+
+    <style name="texto_para_puntos_invertido" parent="texto_para_puntos_base">
+        <item name="android:textColor">@color/CommonRed</item>
     </style>
 
     <style name="card_botones">

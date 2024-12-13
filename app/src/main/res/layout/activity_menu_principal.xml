@@ -37,7 +37,7 @@
         style="@style/TextoNormalScoreIt"
         android:text="@string/campeonatos_creados_por"
         app:layout_constraintTop_toBottomOf="@id/borde_boton"
-        app:layout_constraintStart_toStartOf="@id/guideline_margen_izquierda"
+        app:layout_constraintStart_toStartOf="parent"
         android:layout_margin="20dp"
         android:maxLines="2"
         />

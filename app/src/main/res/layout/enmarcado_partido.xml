@@ -7,7 +7,7 @@
 
     <View
         app:layout_constraintTop_toTopOf="parent"
-        android:id="@+id/transparente_top"
+        android:id="@+id/transparente_top_partido"
         android:layout_width="match_parent"
         android:layout_height="15dp"
         app:layout_constraintStart_toStartOf="parent"
@@ -19,16 +19,15 @@
         android:layout_width="0dp"
         android:layout_height="125dp"
         app:cardCornerRadius="25dp"
-        app:layout_constraintTop_toBottomOf="@id/transparente_top"
+        app:layout_constraintTop_toBottomOf="@id/transparente_top_partido"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-
             <android.widget.Button
-                android:id="@+id/boton_nombre_del_campeonato"
+                android:id="@+id/boton_nombre_del_partido"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@color/CommonRed"
@@ -36,33 +35,63 @@
                 />
 
             <TextView
-                android:id="@+id/nombre_del_campeonato"
+                android:id="@+id/nombre_del_primer_equipo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                android:layout_marginStart="20dp"
-                android:text=""
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="40dp"
+                android:text="Equipo 1"
                 android:maxLines="2"
                 android:elevation="2dp"
                 style="@style/TextoIndicadorDePantalla"
                 />
 
             <TextView
-                android:id="@+id/fecha_del_campeonato"
+                android:id="@+id/nombre_del_segundo_equipo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginBottom="10dp"
+                android:layout_marginStart="40dp"
+                android:text="Equipo 2"
+                android:maxLines="2"
+                android:elevation="2dp"
+                style="@style/TextoIndicadorDePantalla"
+                />
+
+            <TextView
+                android:id="@+id/puntaje_del_primer_equipo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="40dp"
+                android:text="0"
+                android:elevation="2dp"
+                style="@style/TextoIndicadorDePantalla"
+                />
+
+            <TextView
+                android:id="@+id/puntaje_del_segundo_equipo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                android:text=""
+                android:layout_marginBottom="10dp"
+                android:layout_marginEnd="40dp"
+                android:text="0"
                 android:elevation="2dp"
-                android:layout_marginEnd="15dp"
-                style="@style/TextoNormalScoreIt"
+                style="@style/TextoIndicadorDePantalla"
                 />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.cardview.widget.CardView>

@@ -31,7 +31,7 @@ class ActivityMenuPrincipal : AppCompatActivity() {
     }
 
     fun setUpRecyclerView() {
-        val listaDeCampeonatosCreados = mutableListOf(Campeonato("Camp1", "12-12-12"), Campeonato("Camp2", "12-12-12"), Campeonato("Camp3", "12-12-12"), Campeonato("Camp4", "12-12-12"), Campeonato("Camp5", "12-12-12"), Campeonato("Camp6", "12-12-12"), Campeonato("Camp7", "12-12-12"))
+        val listaDeCampeonatosCreados = mutableListOf(Campeonato("Camp1", "12-12-12", mutableListOf(), true, true, mutableListOf(), true))
         recyclerCampeonatosCreados.addDataToList(listaDeCampeonatosCreados)
 
         binding.recyclerCampeonatosCreados.apply {
