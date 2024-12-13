@@ -40,7 +40,7 @@
         app:cardCornerRadius="25dp">
 
         <android.widget.Button
-            android:id="@+id/boton_nombre_del_campeonato"
+            android:id="@+id/boton_segundo_equipo"
             style="@style/botones_para_puntos_invertido"
             />
 

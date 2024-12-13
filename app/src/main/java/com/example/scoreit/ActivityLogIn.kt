@@ -29,7 +29,7 @@ class ActivityLogIn : AppCompatActivity() {
 
         auth = Firebase.auth
 
-        binding.botonLogin.setOnClickListener {
+        /*binding.botonLogin.setOnClickListener {
             if(binding.usuario.text.toString() == "" || binding.email.text.toString() == "" || binding.password.text.toString() == "" || binding.passwordSafety.text.toString() == ""){
                 Toast.makeText(this, "Debes llenar todos los campos", Toast.LENGTH_SHORT).show()
             } else if (binding.password.text.toString() != binding.passwordSafety.text.toString()) {
@@ -42,8 +42,8 @@ class ActivityLogIn : AppCompatActivity() {
                 startActivity(activityMenuPrincipal)
             }
 
-        }
-        /*binding.botonLogin.setOnClickListener{
+        }*/
+        binding.botonLogin.setOnClickListener{
             if(binding.usuario.text.toString() == "" || binding.email.text.toString() == "" || binding.password.text.toString() == "" || binding.passwordSafety.text.toString() == ""){
                 Toast.makeText(this, "Debes llenar todos los campos", Toast.LENGTH_SHORT).show()
             } else if (binding.password.text.toString() != binding.passwordSafety.text.toString()) {
@@ -51,13 +51,13 @@ class ActivityLogIn : AppCompatActivity() {
             } else {
                 loginUsuario()
             }
-        }*/
+        }
     }
 
     fun loginUsuario(){
         val email = binding.email.text.toString()
         val password = binding.password.text.toString()
-        /*auth.signInWithEmailAndPassword(email, password).addOnCompleteListener(this){
+        auth.signInWithEmailAndPassword(email, password).addOnCompleteListener(this){
             respuesta -> if(respuesta.isSuccessful){
                 val activityMenuPrincipal = Intent(this, ActivityMenuPrincipal::class.java)
                 activityMenuPrincipal.putExtra(ID_USUARIO, binding.usuario.text.toString())
@@ -65,7 +65,7 @@ class ActivityLogIn : AppCompatActivity() {
             } else {
                 Toast.makeText(this, "Error: ${respuesta.exception?.message}", Toast.LENGTH_LONG).show()
             }
-        }*/
+        }
         /*const result = await signInWithEmailAndPassword(auth, email, password)
         const provider = new GoogleAuthProvider()
         await linkWithRedirect(result.user, provider)

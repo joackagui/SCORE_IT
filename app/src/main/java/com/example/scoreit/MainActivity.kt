@@ -31,10 +31,10 @@ class MainActivity : AppCompatActivity() {
         for (i in 0..<numeroDeEquipos) {
             matrizDePartidos[i][i] = null
             for (j in 0..<numeroDeEquipos) {
-                val nuevoPartido = Partido(listaDeEquipos[i], listaDeEquipos[j], 0, 0, 0, 0)
+                val nuevoPartido = Partido(listaDeEquipos[i], listaDeEquipos[j], 0, 0, 0, 0, null, null, null)
                 matrizDePartidos[i][j] = nuevoPartido
                 if(campeonato.dosPartidos) {
-                    val nuevoPartido2 = Partido(listaDeEquipos[j], listaDeEquipos[i], 0, 0,0,0)
+                    val nuevoPartido2 = Partido(listaDeEquipos[j], listaDeEquipos[i], 0, 0,0,0, null, null, null)
                     matrizDePartidos[j][i] = nuevoPartido2
                 }
             }
