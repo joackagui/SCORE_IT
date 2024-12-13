@@ -6,6 +6,8 @@
     </style>
 
     <style name="Theme.SCOREIT" parent="Base.Theme.SCOREIT" />
+    <!-- Configuración para track y thumb -->
+
 
     <style name="Background">
         <item name="android:background">@color/DarkestGray</item>
@@ -96,5 +98,14 @@
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">170dp</item>
     </style>
+
+    <style name="CustomDatePickerDialog" parent="ThemeOverlay.MaterialComponents.MaterialAlertDialog">
+        <item name="android:background">@color/DarkestGray</item>
+        <item name="android:textColorPrimary">@color/White</item>
+        <item name="android:textColorSecondary">@color/DarkestRed</item>
+        <item name="colorAccent">@color/DarkestRed</item>
+
+    </style>
+
 
 </resources>
