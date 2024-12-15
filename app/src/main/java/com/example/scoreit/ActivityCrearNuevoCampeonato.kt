@@ -6,12 +6,16 @@ import android.os.Bundle
 import android.view.View
 import android.widget.ArrayAdapter
 import androidx.appcompat.app.AppCompatActivity
+import com.example.scoreit.database.AppDBAccess
 import com.example.scoreit.databinding.ActivityCrearNuevoCampeonatoBinding
 import java.util.Calendar
 
 class ActivityCrearNuevoCampeonato : AppCompatActivity() {
     private lateinit var binding: ActivityCrearNuevoCampeonatoBinding
+
     private lateinit var datePickerDialog: DatePickerDialog
+
+    val dbAccess = applicationContext as AppDBAccess
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,6 +28,16 @@ class ActivityCrearNuevoCampeonato : AppCompatActivity() {
         configureCheckboxTiemposDeDescanso()
         configureCheckBoxCanchasRondas()
         configureAtrasButton()
+
+        binding.botonGuardar.setOnClickListener{
+
+        }
+
+        binding.botonAtras.setOnClickListener{
+            val intentVolverMenuPrincipal = Intent(this, ActivityMenuPrincipal::class.java)
+            startActivity(intentVolverMenuPrincipal)
+        }
+
     }
 
     //Configurar en checkbox de Tiempos de Descanso para que sus subopciones aparezcan o desaparezcan
@@ -138,6 +152,7 @@ class ActivityCrearNuevoCampeonato : AppCompatActivity() {
         val adapter = ArrayAdapter(this, R.layout.spinner_item_style, modoDeJuego)
         binding.spinnerModoJuego.adapter = adapter
     }
+
 
 
 }

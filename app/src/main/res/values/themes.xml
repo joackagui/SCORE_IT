@@ -54,6 +54,8 @@
     <style name="EditTextHintStyle">
         <item name="android:textColorHint">@color/TransparentWhite</item>
         <item name="fontFamily">@font/score_it</item>
+        <item name="android:textColor">@color/White</item>
+        <item name="android:backgroundTint">@color/DarkestRed</item>
     </style>
 
     <style name="TextoIndicadorDePantalla">
@@ -104,7 +106,6 @@
         <item name="android:textColorPrimary">@color/White</item>
         <item name="android:textColorSecondary">@color/DarkestRed</item>
         <item name="colorAccent">@color/DarkestRed</item>
-
     </style>
 
 
