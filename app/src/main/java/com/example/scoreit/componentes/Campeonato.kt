@@ -15,13 +15,17 @@ import androidx.room.ForeignKey
 data class Campeonato(
     @PrimaryKey(autoGenerate = true)
     val id: Int = 0,
-    var nombre: String,
-    val fecha: String,
-    val maxTiempo: Int,
-    val maxCanchas: Int,
-    val maxPuntos: Int,
-    val dosPartidos: Boolean,
-    val soloUnGanador: Boolean,
+    var nombreCampeonato: String,
+    val fechaDeInicio: String,
+    val puntosParaGanar: Int?,
+    val tiempoDeJuego: Int?,
+    val modoDeJuego: String,
+    val tiempoDeDescanso: Int?,
+    val cantidadDeDescansos: Int?,
+    val cantidadDeRondas: Int?,
+    val idaYVuelta: Boolean,
+    val siempreUnGanador: Boolean,
     val diferenciaDosPuntos: Boolean,
+    val difenciaDeDosRondas: Boolean,
     val idUsuario: Int
 )

@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.ArrayAdapter
 import androidx.appcompat.app.AppCompatActivity
+import com.example.scoreit.componentes.Campeonato
 import com.example.scoreit.database.AppDBAccess
 import com.example.scoreit.databinding.ActivityCrearNuevoCampeonatoBinding
 import java.util.Calendar
@@ -17,6 +18,10 @@ class ActivityCrearNuevoCampeonato : AppCompatActivity() {
 
     val dbAccess = applicationContext as AppDBAccess
 
+    companion object{
+        val ID_USER: String = "USER"
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityCrearNuevoCampeonatoBinding.inflate(layoutInflater)
@@ -27,46 +32,72 @@ class ActivityCrearNuevoCampeonato : AppCompatActivity() {
         configureSpinner()
         configureCheckboxTiemposDeDescanso()
         configureCheckBoxCanchasRondas()
-        configureAtrasButton()
+        guardarCampeonato()
+        volverMenuPrincipal()
+    }
 
+    private fun guardarCampeonato(){
         binding.botonGuardar.setOnClickListener{
+            val nombreCampeonato = binding.nombreDelCampeonato.toString()
+            val fechaDeInicio = binding.fechaDelCampeonato.toString()
+            val puntosParaGanar = binding.puntajeEditText.toString().toInt()
+            val tiempoDeJuego = binding.tiempoDeJuegoEditText.toString().toInt()
+            val modoDeJuego = binding.spinnerModoJuego.toString()
+            val tiempoDeDescanso = binding.numberPickerMinutosDeDescanso.toString().toInt()
+            val cantidadDeDescansos = binding.numberPickerCantidadDeDescansos.toString().toInt()
+            val cantidadDeRondas = binding.numberPickerCantidadDeRondasParaGanar.toString().toInt()
+            val idaYVuelta = binding.checkboxIdaYVuelta.toString().toBoolean()
+            val siempreUnGanador = binding.checkboxSiempreUnGanador.toString().toBoolean()
+            val diferenciaDosPuntos = binding.checkboxDiferenciaDosPuntos.toString().toBoolean()
+            val diferenciaDosRondas = binding.checkboxDiferenciaDosRondas.toString().toBoolean()
+            val idUsuario = intent.getStringExtra(ID_USER).toString().toInt()
 
+            val nuevoCampeonato = Campeonato(
+                nombreCampeonato = nombreCampeonato,
+                fechaDeInicio = fechaDeInicio,
+                puntosParaGanar = puntosParaGanar,
+                tiempoDeJuego = tiempoDeJuego,
+                modoDeJuego = modoDeJuego,
+                tiempoDeDescanso = tiempoDeDescanso,
+                cantidadDeDescansos = cantidadDeDescansos,
+                cantidadDeRondas = cantidadDeRondas,
+                idaYVuelta = idaYVuelta,
+                siempreUnGanador = siempreUnGanador,
+                diferenciaDosPuntos = diferenciaDosPuntos,
+                difenciaDeDosRondas = diferenciaDosRondas,
+                idUsuario = idUsuario
+                )
+            dbAccess.room.campeonatoDao().insertarCampeonato(nuevoCampeonato)
         }
+    }
 
+    private fun volverMenuPrincipal(){
         binding.botonAtras.setOnClickListener{
             val intentVolverMenuPrincipal = Intent(this, ActivityMenuPrincipal::class.java)
             startActivity(intentVolverMenuPrincipal)
         }
-
     }
 
     //Configurar en checkbox de Tiempos de Descanso para que sus subopciones aparezcan o desaparezcan
     private fun configureCheckboxTiemposDeDescanso(){
-        binding.checkboxTiemposDeDescaso.setOnCheckedChangeListener{_, isChecked ->
+        binding.checkboxTiemposDeDescanso.setOnCheckedChangeListener{_, isChecked ->
             val visibility = if(isChecked) View.VISIBLE else View.GONE
-            binding.textViewMinutos.visibility = visibility
-            binding.numberPickerMinutos.visibility = visibility
-            binding.textViewCantidad.visibility = visibility
-            binding.numberPickerCantidad.visibility = visibility
+            binding.textViewMinutosDeDescanso.visibility = visibility
+            binding.numberPickerMinutosDeDescanso.visibility = visibility
+            binding.textViewCantidadDeDescansos.visibility = visibility
+            binding.numberPickerCantidadDeDescansos.visibility = visibility
         }
     }
 
     private fun configureCheckBoxCanchasRondas(){
-        binding.checkboxCanchasRondas.setOnCheckedChangeListener { _, isChecked ->
+        binding.checkboxRondas.setOnCheckedChangeListener { _, isChecked ->
             val visibility = if(isChecked) View.VISIBLE else View.GONE
-            binding.texViewCantidadParaGanar.visibility = visibility
-            binding.numberPickerCantidadParaGanar.visibility = visibility
-            binding.checkboxDiferenciaDosCanchas.visibility = visibility
+            binding.texViewCantidadDeRondasParaGanar.visibility = visibility
+            binding.numberPickerCantidadDeRondasParaGanar.visibility = visibility
+            binding.checkboxDiferenciaDosRondas.visibility = visibility
         }
     }
 
-    //boton de atras para volver al menu principal
-    private fun configureAtrasButton(){
-        binding.botonAtras.setOnClickListener {
-            val intentVolverMenuPrincipal = Intent(this, ActivityMenuPrincipal::class.java)
-            startActivity(intentVolverMenuPrincipal)
-        }
-    }
     // Configura los switches y sus comportamientos
     private fun configureSwitches() {
         binding.switchTiempoDeJuego.isUseMaterialThemeColors = false

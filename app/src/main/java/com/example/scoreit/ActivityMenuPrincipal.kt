@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.scoreit.ActivityCrearNuevoCampeonato.Companion.ID_USER
 import com.example.scoreit.adapters.RecyclerCampeonatosCreados.RecyclerCampeonatosCreados
 import com.example.scoreit.databinding.ActivityMenuPrincipalBinding
 import com.example.scoreit.componentes.Campeonato
@@ -31,6 +32,9 @@ class ActivityMenuPrincipal : AppCompatActivity() {
 
         binding.botonCrearNuevoCampeonato.setOnClickListener {
             val activityCrearNuevoCampeonato = Intent(this, ActivityCrearNuevoCampeonato::class.java)
+            val correoUsuario = intent.getStringExtra(ID_EMAIL).toString()
+            val user: Usuario = dbAccess.room.usuarioDao().obternerPorEmail(correoUsuario)
+            activityCrearNuevoCampeonato.putExtra(ID_USER, user.id)
             startActivity(activityCrearNuevoCampeonato)
         }
     }
@@ -47,7 +51,7 @@ class ActivityMenuPrincipal : AppCompatActivity() {
         }
 
         val bienvenida: TextView = findViewById(R.id.campeonatos_creados)
-        bienvenida.text = "Campeonatos creados por ${user.nombre}:"
+        bienvenida.text = "Campeonatos creados por ${user.nombreUsuario}:"
 
     }
 }

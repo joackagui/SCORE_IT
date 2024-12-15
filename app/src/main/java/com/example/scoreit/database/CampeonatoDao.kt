@@ -24,5 +24,5 @@ interface CampeonatoDao {
     suspend fun insert(campeonato: Campeonato)
 
     @Insert
-    suspend fun insertarCampeonato(campeonato: Campeonato): Campeonato
+    fun insertarCampeonato(campeonato: Campeonato): Campeonato
 }

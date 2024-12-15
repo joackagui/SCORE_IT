@@ -55,9 +55,12 @@ class ActivitySignUp : AppCompatActivity() {
         auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener {
             val activityLogIn = Intent(this, ActivityLogIn::class.java)
             val nombreUsuario = binding.usuarioSignUp.text.toString()
-            val nuevoUsuario = Usuario(email, nombreUsuario)
+            val nuevoUsuario = Usuario(email = email, nombreUsuario = nombreUsuario)
             dbAccess.room.usuarioDao().insertarUsuario(nuevoUsuario)
+            Toast.makeText(this, "Usuario creado exitosamente", Toast.LENGTH_LONG).show()
             startActivity(activityLogIn)
+        }.addOnFailureListener {
+            Toast.makeText(this, "Error al crear el usuario", Toast.LENGTH_LONG).show()
         }
 
     }
