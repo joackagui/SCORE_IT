@@ -27,7 +27,8 @@
             app:layout_constraintStart_toStartOf="@id/guideline_margen_izquierda"
             app:layout_constraintEnd_toEndOf="@id/guideline_margen_derecha"
             android:padding="12dp"
-            style="@style/EditTextHintStyle" />
+            style="@style/EditTextHintStyle"
+            />
 
         <EditText
             android:id="@+id/password_log_in"
@@ -40,7 +41,8 @@
             app:layout_constraintStart_toStartOf="@id/guideline_margen_izquierda"
             app:layout_constraintEnd_toEndOf="@id/guideline_margen_derecha"
             android:padding="12dp"
-            style="@style/EditTextHintStyle"/>
+            style="@style/EditTextHintStyle"
+            />
 
         <Button
             android:id="@+id/boton_log_in"
@@ -53,18 +55,20 @@
             app:layout_constraintTop_toBottomOf="@id/password_log_in"
             app:layout_constraintStart_toStartOf="@id/guideline_margen_izquierda"
             app:layout_constraintEnd_toEndOf="@id/guideline_margen_derecha"
-            style="@style/BotonesScoreItStyle"/>
+            style="@style/TextoNormal"
+            />
 
         <Button
             android:id="@+id/boton_cambiar_a_sign_up"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/Red"
-            android:text="¿No tienes cuenta?"
+            android:text="@string/no_tienes_cuenta"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            style="@style/BotonesScoreItStyle"/>
+            style="@style/TextoNormal"
+            />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline_margen_izquierda"

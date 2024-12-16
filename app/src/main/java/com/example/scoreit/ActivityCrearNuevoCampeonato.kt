@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.ArrayAdapter
 import androidx.appcompat.app.AppCompatActivity
+import com.example.scoreit.ActivityDentroDelCampeonato.Companion.ID_CAMPEONATO
 import com.example.scoreit.componentes.Campeonato
 import com.example.scoreit.database.AppDBAccess
 import com.example.scoreit.databinding.ActivityCrearNuevoCampeonatoBinding
@@ -16,7 +17,7 @@ class ActivityCrearNuevoCampeonato : AppCompatActivity() {
 
     private lateinit var datePickerDialog: DatePickerDialog
 
-    val dbAccess = applicationContext as AppDBAccess
+    private val dbAccess = applicationContext as AppDBAccess
 
     companion object{
         val ID_USER: String = "USER"
@@ -67,7 +68,10 @@ class ActivityCrearNuevoCampeonato : AppCompatActivity() {
                 difenciaDeDosRondas = diferenciaDosRondas,
                 idUsuario = idUsuario
                 )
-            dbAccess.room.campeonatoDao().insertarCampeonato(nuevoCampeonato)
+            dbAccess.room.campeonatoDao().insert(nuevoCampeonato)
+            val activityDentroDelCampeonato = Intent(this, ActivityDentroDelCampeonato::class.java)
+            activityDentroDelCampeonato.putExtra(ID_CAMPEONATO, nuevoCampeonato.id.toString())
+            startActivity(activityDentroDelCampeonato)
         }
     }
 
@@ -183,7 +187,5 @@ class ActivityCrearNuevoCampeonato : AppCompatActivity() {
         val adapter = ArrayAdapter(this, R.layout.spinner_item_style, modoDeJuego)
         binding.spinnerModoJuego.adapter = adapter
     }
-
-
 
 }

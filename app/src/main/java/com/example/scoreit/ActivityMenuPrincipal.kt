@@ -17,7 +17,7 @@ class ActivityMenuPrincipal : AppCompatActivity() {
 
     private val recyclerCampeonatosCreados: RecyclerCampeonatosCreados by lazy {RecyclerCampeonatosCreados()}
 
-    val dbAccess = applicationContext as AppDBAccess
+    private val dbAccess = applicationContext as AppDBAccess
 
     companion object{
         val ID_EMAIL = "EMAIL"
@@ -30,11 +30,18 @@ class ActivityMenuPrincipal : AppCompatActivity() {
         setContentView(view)
         setUpRecyclerView()
 
+        nuevoCampeonato()
+
+        recyclerCampeonatosCreados.CampeonatoViewHolder().binding.botonEntrarAlCampeonato
+    }
+
+    private fun nuevoCampeonato() {
         binding.botonCrearNuevoCampeonato.setOnClickListener {
             val activityCrearNuevoCampeonato = Intent(this, ActivityCrearNuevoCampeonato::class.java)
             val correoUsuario = intent.getStringExtra(ID_EMAIL).toString()
             val user: Usuario = dbAccess.room.usuarioDao().obternerPorEmail(correoUsuario)
             activityCrearNuevoCampeonato.putExtra(ID_USER, user.id)
+
             startActivity(activityCrearNuevoCampeonato)
         }
     }
@@ -42,7 +49,7 @@ class ActivityMenuPrincipal : AppCompatActivity() {
     fun setUpRecyclerView() {
         val correoUsuario = intent.getStringExtra(ID_EMAIL).toString()
         val user: Usuario = dbAccess.room.usuarioDao().obternerPorEmail(correoUsuario)
-        val listaDeCampeonatosCreados = dbAccess.room.campeonatoDao().obtenerCampeonatosPorIdUsuario(correoUsuario)
+        val listaDeCampeonatosCreados = dbAccess.room.campeonatoDao().obtenerCampeonatosPorIdUsuario(user.id.toString())
         recyclerCampeonatosCreados.addDataToList(listaDeCampeonatosCreados)
 
         binding.recyclerCampeonatosCreados.apply {
@@ -50,8 +57,8 @@ class ActivityMenuPrincipal : AppCompatActivity() {
             adapter = recyclerCampeonatosCreados
         }
 
-        val bienvenida: TextView = findViewById(R.id.campeonatos_creados)
-        bienvenida.text = "Campeonatos creados por ${user.nombreUsuario}:"
+        val bienvenida: TextView = binding.campeonatosCreados
+        bienvenida.text = "@string/campeonatos_creados_por_text"
 
     }
 }

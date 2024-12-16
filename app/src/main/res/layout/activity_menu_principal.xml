@@ -24,8 +24,8 @@
                 android:layout_height="match_parent"
                 android:padding="20dp"
                 android:text="@string/crear_un_nuevo_campeonato"
-                style="@style/BotonesScoreItStyle"
                 android:background="@drawable/fondo_para_botones_score_it"
+                style="@style/TextoNormal"
                 />
 
     </androidx.cardview.widget.CardView>
@@ -34,12 +34,12 @@
         android:id="@+id/campeonatos_creados"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        style="@style/TextoNormalScoreIt"
         android:text="@string/campeonatos_creados_por"
         app:layout_constraintTop_toBottomOf="@id/borde_boton"
         app:layout_constraintStart_toStartOf="parent"
         android:layout_margin="20dp"
         android:maxLines="2"
+        style="@style/TextoNormal"
         />
 
     <androidx.recyclerview.widget.RecyclerView

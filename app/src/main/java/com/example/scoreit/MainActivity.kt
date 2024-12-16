@@ -22,7 +22,7 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    fun emparejamientoPartidos(campeonato: Campeonato){
+    /*fun emparejamientoPartidos(campeonato: Campeonato){
         val listaDeEquipos = campeonato.listaDeEquipos
         val listaDePartidos = mutableListOf<Partido>()
         val numeroDeEquipos = listaDeEquipos.size
@@ -38,9 +38,6 @@ class MainActivity : AppCompatActivity() {
                     matrizDePartidos[j][i] = nuevoPartido2
                 }
             }
-        }
+        }*/
 
-
-
-    }
 }

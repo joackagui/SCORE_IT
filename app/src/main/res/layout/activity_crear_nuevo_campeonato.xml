@@ -36,22 +36,6 @@
             android:gravity="center"
             android:orientation="vertical">
 
-            <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/guideline_mitad_vertical"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
-                app:layout_constraintGuide_percent="0.1"
-                />
-
-            <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/guideline_vertical2"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
-                app:layout_constraintGuide_percent="0.9"
-                />
-
             <TextView
                 android:id="@+id/anadir_un_logo"
                 android:layout_width="wrap_content"
@@ -61,7 +45,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                style="@style/TextoNormalScoreIt"
+                style="@style/TextoNormal"
                 />
 
             <android.widget.Button
@@ -74,7 +58,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/anadir_un_logo"
-                style="@style/TextoNormalScoreIt"
+                style="@style/TextoNormal"
                 />
 
             <EditText
@@ -186,7 +170,7 @@
                 android:text="@string/diferencia_de_dos_puntos"
                 app:layout_constraintStart_toEndOf="@id/guideline_mitad_vertical"
                 app:layout_constraintTop_toBottomOf="@id/switch_puntaje"
-                style="@style/TextoNormalScoreIt"
+                style="@style/TextoNormal"
                 />
 
             <CheckBox
@@ -198,7 +182,7 @@
                 android:text="@string/siempre_un_ganador"
                 app:layout_constraintStart_toEndOf="@id/guideline_mitad_vertical"
                 app:layout_constraintTop_toBottomOf="@id/checkbox_diferencia_dos_puntos"
-                style="@style/TextoNormalScoreIt"
+                style="@style/TextoNormal"
                 />
 
             <CheckBox
@@ -210,7 +194,7 @@
                 android:text="@string/ida_y_vuelta"
                 app:layout_constraintStart_toEndOf="@id/guideline_mitad_vertical"
                 app:layout_constraintTop_toBottomOf="@id/checkbox_siempre_un_ganador"
-                style="@style/TextoNormalScoreIt"
+                style="@style/TextoNormal"
                 />
 
             <CheckBox
@@ -222,7 +206,7 @@
                 android:checked="false"
                 android:text="@string/tiempos_de_descanso_text"
                 android:layout_marginTop="30dp"
-                style="@style/TextoNormalScoreIt"
+                style="@style/TextoNormal"
                 />
 
             <TextView
@@ -235,7 +219,7 @@
                 app:layout_constraintEnd_toStartOf="@id/guideline_vertical2"
                 android:text="@string/cantidad_de_rondas_edit_text"
                 android:visibility="gone"
-                style="@style/TextoNormalScoreIt"
+                style="@style/TextoNormal"
                 />
 
             <com.shawnlin.numberpicker.NumberPicker
@@ -266,7 +250,7 @@
                 app:layout_constraintEnd_toStartOf="@id/guideline_vertical2"
                 android:text="@string/minutos_text"
                 android:visibility="gone"
-                style="@style/TextoNormalScoreIt"
+                style="@style/TextoNormal"
                 />
 
             <com.shawnlin.numberpicker.NumberPicker
@@ -295,7 +279,7 @@
                 android:checked="false"
                 android:text="@string/rondas_text"
                 android:layout_marginTop="30dp"
-                style="@style/TextoNormalScoreIt"
+                style="@style/TextoNormal"
                 />
 
             <TextView
@@ -308,7 +292,7 @@
                 app:layout_constraintEnd_toStartOf="@id/guideline_vertical2"
                 android:text="@string/cantidad_para_ganar_text"
                 android:visibility="gone"
-                style="@style/TextoNormalScoreIt"
+                style="@style/TextoNormal"
                 />
 
             <com.shawnlin.numberpicker.NumberPicker
@@ -337,15 +321,14 @@
                 android:layout_marginStart="35dp"
                 android:checked="false"
                 android:text="@string/diferencia_de_dos_rondas_text"
-                style="@style/TextoNormalScoreIt"
                 android:layout_marginTop="30dp"
                 android:textColorHint="@color/DarkestRed"
                 android:visibility="gone"
+                style="@style/TextoNormal"
                 />
 
             <android.widget.Button
                 android:id="@+id/boton_guardar"
-                style="@style/TextoNormalScoreIt"
                 android:layout_width="150dp"
                 android:layout_height="50dp"
                 android:layout_marginTop="50dp"
@@ -354,11 +337,12 @@
                 android:text="@string/guardar"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/checkbox_diferencia_dos_rondas"
-                app:layout_constraintBottom_toBottomOf="parent"/>
+                app:layout_constraintBottom_toBottomOf="parent"
+                style="@style/TextoNormal"
+                />
 
             <android.widget.Button
                 android:id="@+id/boton_atras"
-                style="@style/TextoNormalScoreIt"
                 android:layout_width="100dp"
                 android:layout_height="45dp"
                 android:layout_marginTop="50dp"
@@ -367,8 +351,23 @@
                 android:text="@string/atras_boton"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/checkbox_diferencia_dos_rondas"
-                app:layout_constraintBottom_toBottomOf="parent"/>
+                app:layout_constraintBottom_toBottomOf="parent"
+                style="@style/TextoNormal"
+                />
 
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline_mitad_vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.1" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline_vertical2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.9" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

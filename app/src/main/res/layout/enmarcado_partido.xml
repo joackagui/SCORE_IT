@@ -26,8 +26,9 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
+
             <android.widget.Button
-                android:id="@+id/boton_nombre_del_partido"
+                android:id="@+id/boton_del_partido"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@color/CommonRed"
@@ -35,15 +36,28 @@
                 />
 
             <TextView
+                android:id="@+id/equipos_del_partido"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                app:layout_constraintBottom_toTopOf="@id/nombre_del_primer_equipo"
+                app:layout_constraintStart_toStartOf="parent"
+                android:maxLines="1"
+                android:layout_marginStart="20dp"
+                android:text="Equipos:"
+                android:elevation="2dp"
+                style="@style/TextoNormal"
+                />
+
+            <TextView
                 android:id="@+id/nombre_del_primer_equipo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toTopOf="@id/nombre_del_segundo_equipo"
                 app:layout_constraintStart_toStartOf="parent"
-                android:layout_marginTop="10dp"
                 android:layout_marginStart="40dp"
-                android:text="Equipo 1"
+                android:text="a"
                 android:maxLines="2"
                 android:elevation="2dp"
                 style="@style/TextoIndicadorDePantalla"
@@ -56,12 +70,26 @@
                 android:gravity="center"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                android:layout_marginBottom="10dp"
                 android:layout_marginStart="40dp"
-                android:text="Equipo 2"
+                android:layout_marginBottom="3dp"
+                android:text="a"
                 android:maxLines="2"
                 android:elevation="2dp"
                 style="@style/TextoIndicadorDePantalla"
+                />
+
+            <TextView
+                android:id="@+id/puntaje_del_partido"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                app:layout_constraintBottom_toTopOf="@id/puntaje_del_primer_equipo"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:maxLines="1"
+                android:layout_marginEnd="12dp"
+                android:text="Puntos:"
+                android:elevation="2dp"
+                style="@style/TextoNormal"
                 />
 
             <TextView
@@ -69,11 +97,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toTopOf="@id/puntaje_del_segundo_equipo"
                 app:layout_constraintEnd_toEndOf="parent"
-                android:layout_marginTop="10dp"
+                android:maxLines="1"
                 android:layout_marginEnd="40dp"
-                android:text="0"
+                android:text="13"
                 android:elevation="2dp"
                 style="@style/TextoIndicadorDePantalla"
                 />
@@ -85,14 +113,67 @@
                 android:gravity="center"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                android:layout_marginBottom="10dp"
+                android:maxLines="1"
                 android:layout_marginEnd="40dp"
-                android:text="0"
+                android:layout_marginBottom="3dp"
+                android:text="13"
                 android:elevation="2dp"
                 style="@style/TextoIndicadorDePantalla"
                 />
 
+
+            <TextView
+                android:id="@+id/rondas_del_partido"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                app:layout_constraintBottom_toTopOf="@id/puntaje_del_primer_equipo"
+                app:layout_constraintEnd_toStartOf="@id/puntaje_del_partido"
+                android:maxLines="1"
+                android:layout_marginEnd="30dp"
+                android:text="Rondas:"
+                android:elevation="2dp"
+                style="@style/TextoNormal"
+                />
+
+            <TextView
+                android:id="@+id/rondas_del_primer_equipo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                app:layout_constraintBottom_toTopOf="@id/puntaje_del_segundo_equipo"
+                app:layout_constraintEnd_toStartOf="@id/puntaje_del_primer_equipo"
+                android:maxLines="1"
+                android:layout_marginEnd="75dp"
+                android:text="(0)"
+                android:elevation="2dp"
+                style="@style/TextoIndicadorDePantalla"
+                />
+
+            <TextView
+                android:id="@+id/rondas_del_segundo_equipo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                app:layout_constraintTop_toBottomOf="@id/puntaje_del_primer_equipo"
+                app:layout_constraintEnd_toStartOf="@id/puntaje_del_primer_equipo"
+                android:maxLines="1"
+                android:layout_marginEnd="75dp"
+                android:text="(0)"
+                android:elevation="2dp"
+                style="@style/TextoIndicadorDePantalla"
+                />
+
+            <androidx.constraintlayout.widget.Group
+                android:id="@+id/group"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="visible"
+                app:constraint_referenced_ids="rondas_del_partido,rondas_del_primer_equipo, rondas_del_segundo_equipo"
+                />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
+
 
     </androidx.cardview.widget.CardView>
 

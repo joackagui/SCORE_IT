@@ -28,7 +28,7 @@
             android:layout_height="match_parent">
 
             <android.widget.Button
-                android:id="@+id/boton_nombre_del_campeonato"
+                android:id="@+id/boton_entrar_al_campeonato"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@color/CommonRed"
@@ -61,7 +61,7 @@
                 android:text=""
                 android:elevation="2dp"
                 android:layout_marginEnd="15dp"
-                style="@style/TextoNormalScoreIt"
+                style="@style/TextoNormal"
                 />
         </androidx.constraintlayout.widget.ConstraintLayout>
 

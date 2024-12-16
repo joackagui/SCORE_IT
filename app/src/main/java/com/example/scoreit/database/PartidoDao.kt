@@ -14,11 +14,14 @@ interface PartidoDao {
     @Query("SELECT * FROM Partido WHERE id =:id")
     suspend fun obtenerPorId(id: String): Partido
 
+    @Query("SELECT * FROM Partido WHERE id =:id")
+    fun obtenerPartidosPorId(id: String): MutableList<Partido>
+
     @Update
     suspend fun update(partido: Partido)
 
     @Insert
-    suspend fun insert(partido: Partido)
+    fun insert(partido: Partido)
 
     @Insert
     suspend fun insertarPartidos(partido: List<Partido>)

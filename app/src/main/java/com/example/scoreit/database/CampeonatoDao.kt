@@ -9,20 +9,18 @@ import com.example.scoreit.componentes.Campeonato
 @Dao
 interface CampeonatoDao {
     @Query("SELECT * FROM Campeonato")
-    suspend fun obtenerTodosLosCampeonatos(): List<Campeonato>
+    fun obtenerTodosLosCampeonatos(): List<Campeonato>
 
     @Query("SELECT * FROM Campeonato WHERE id =:id")
-    suspend fun obtenerPorId(id: String): Campeonato
+    fun obtenerPorId(id: String): Campeonato
 
     @Query("SELECT * FROM Campeonato WHERE idUsuario =:idUsuario")
     fun obtenerCampeonatosPorIdUsuario(idUsuario: String): MutableList<Campeonato>
 
     @Update
-    suspend fun update(campeonato: Campeonato)
+    fun update(campeonato: Campeonato)
 
     @Insert
-    suspend fun insert(campeonato: Campeonato)
+    fun insert(campeonato: Campeonato)
 
-    @Insert
-    fun insertarCampeonato(campeonato: Campeonato): Campeonato
 }

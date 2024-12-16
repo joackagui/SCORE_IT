@@ -12,7 +12,7 @@ import com.example.scoreit.componentes.Equipo
     entities = [Usuario::class, Campeonato::class, Partido::class, Equipo::class],
     version = 1
 )
-@TypeConverters(Converters::class)
+//@TypeConverters(Converters::class)
 
 abstract class AppDataBase: RoomDatabase() {
     abstract fun usuarioDao(): UsuarioDao

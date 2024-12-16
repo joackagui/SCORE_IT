@@ -15,26 +15,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SCOREIT"
         tools:targetApi="31">
+
         <activity
-            android:name=".ActivitySignUp"
+            android:name=".ActivitySigningUp"
             android:exported="false" />
+
         <activity
             android:name=".ActivityDentroDelCampeonato"
             android:exported="false" />
 
-        <!-- <activity
-            android:name=".ActivityPanelArbitraje"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        <activity
-            android:name=".ActivityLogIn"
-            android:exported="false" /> -->
-
         <activity
             android:name=".ActivityLogIn"
             android:exported="true">
@@ -44,18 +33,23 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity
             android:name=".ActivityPanelArbitraje"
             android:exported="false" />
+
         <activity
             android:name=".ActivityCrearNuevoCampeonato"
             android:exported="false" />
+
         <activity
             android:name=".ActivityMenuPrincipal"
             android:exported="false" />
+
         <activity
             android:name=".MainActivity"
             android:exported="false" />
+
     </application>
 
 </manifest>
