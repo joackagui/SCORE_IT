@@ -6,21 +6,28 @@ import android.os.Bundle
 import android.view.View
 import android.widget.ArrayAdapter
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.lifecycleScope
 import com.example.scoreit.ActivityDentroDelCampeonato.Companion.ID_CAMPEONATO
+import com.example.scoreit.ActivityMenuPrincipal.Companion.USER_EMAIL
 import com.example.scoreit.componentes.Campeonato
-import com.example.scoreit.database.AppDBAccess
+import com.example.scoreit.database.AppDataBase
+import com.example.scoreit.database.AppDataBase.Companion.getDatabase
+import com.example.scoreit.database.Converters
 import com.example.scoreit.databinding.ActivityCrearNuevoCampeonatoBinding
+import kotlinx.coroutines.launch
 import java.util.Calendar
+import com.google.gson.Gson
 
 class ActivityCrearNuevoCampeonato : AppCompatActivity() {
     private lateinit var binding: ActivityCrearNuevoCampeonatoBinding
 
     private lateinit var datePickerDialog: DatePickerDialog
 
-    private val dbAccess = applicationContext as AppDBAccess
+    private lateinit var dbAccess: AppDataBase
 
     companion object{
         val ID_USER: String = "USER"
+        val USER_EMAIL: String = "USER"
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -28,24 +35,33 @@ class ActivityCrearNuevoCampeonato : AppCompatActivity() {
         binding = ActivityCrearNuevoCampeonatoBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        dbAccess = getDatabase(this)
+        lifecycleScope.launch {
+            guardarYContinuar()
+        }
+
         configureSwitches()
         configureDatePicker()
         configureSpinner()
         configureCheckboxTiemposDeDescanso()
         configureCheckBoxCanchasRondas()
-        guardarCampeonato()
+
         volverMenuPrincipal()
     }
 
-    private fun guardarCampeonato(){
+    private fun guardarYContinuar(){
         binding.botonGuardar.setOnClickListener{
             val nombreCampeonato = binding.nombreDelCampeonato.toString()
             val fechaDeInicio = binding.fechaDelCampeonato.toString()
+            val seJuegaPorPuntosMaximos = binding.switchPuntaje.toString().toBoolean()
             val puntosParaGanar = binding.puntajeEditText.toString().toInt()
+            val seJuegaPorTiempoMaximo = binding.switchTiempoDeJuego.toString().toBoolean()
             val tiempoDeJuego = binding.tiempoDeJuegoEditText.toString().toInt()
             val modoDeJuego = binding.spinnerModoJuego.toString()
+            val permisoDeDescanso = binding.checkboxTiemposDeDescanso.toString().toBoolean()
             val tiempoDeDescanso = binding.numberPickerMinutosDeDescanso.toString().toInt()
             val cantidadDeDescansos = binding.numberPickerCantidadDeDescansos.toString().toInt()
+            val permisoDeRonda = binding.checkboxRondas.toString().toBoolean()
             val cantidadDeRondas = binding.numberPickerCantidadDeRondasParaGanar.toString().toInt()
             val idaYVuelta = binding.checkboxIdaYVuelta.toString().toBoolean()
             val siempreUnGanador = binding.checkboxSiempreUnGanador.toString().toBoolean()
@@ -56,11 +72,15 @@ class ActivityCrearNuevoCampeonato : AppCompatActivity() {
             val nuevoCampeonato = Campeonato(
                 nombreCampeonato = nombreCampeonato,
                 fechaDeInicio = fechaDeInicio,
+                seJuegaPorPuntosMaximos = seJuegaPorPuntosMaximos,
                 puntosParaGanar = puntosParaGanar,
+                seJuegaPorTiempoMaximo = seJuegaPorTiempoMaximo,
                 tiempoDeJuego = tiempoDeJuego,
                 modoDeJuego = modoDeJuego,
+                permisoDeDescanso = permisoDeDescanso,
                 tiempoDeDescanso = tiempoDeDescanso,
                 cantidadDeDescansos = cantidadDeDescansos,
+                permisoDeRonda = permisoDeRonda,
                 cantidadDeRondas = cantidadDeRondas,
                 idaYVuelta = idaYVuelta,
                 siempreUnGanador = siempreUnGanador,
@@ -68,16 +88,31 @@ class ActivityCrearNuevoCampeonato : AppCompatActivity() {
                 difenciaDeDosRondas = diferenciaDosRondas,
                 idUsuario = idUsuario
                 )
-            dbAccess.room.campeonatoDao().insert(nuevoCampeonato)
-            val activityDentroDelCampeonato = Intent(this, ActivityDentroDelCampeonato::class.java)
-            activityDentroDelCampeonato.putExtra(ID_CAMPEONATO, nuevoCampeonato.id.toString())
-            startActivity(activityDentroDelCampeonato)
+
+            val campeonatoComprimido = Converters().fromCampeonato(nuevoCampeonato)
+
+            //insertarCampeonato(nuevoCampeonato)
+            cambiarADefinirEquipos(nuevoCampeonato)
+
+        }
+    }
+
+    private fun cambiarADefinirEquipos(campeonato: Campeonato) {
+        val activityDefinirEquipos = Intent(this, ActivityDefinirEquipos::class.java)
+        activityDefinirEquipos.putExtra(ID_CAMPEONATO, campeonato.id.toString())
+        startActivity(activityDefinirEquipos)
+    }
+
+    private fun insertarCampeonato(campeonato: Campeonato){
+        lifecycleScope.launch {
+            dbAccess.campeonatoDao().insert(campeonato)
         }
     }
 
     private fun volverMenuPrincipal(){
         binding.botonAtras.setOnClickListener{
             val intentVolverMenuPrincipal = Intent(this, ActivityMenuPrincipal::class.java)
+            intentVolverMenuPrincipal.putExtra(USER_EMAIL, intent.getStringExtra(USER_EMAIL))
             startActivity(intentVolverMenuPrincipal)
         }
     }

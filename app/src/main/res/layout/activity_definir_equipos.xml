@@ -3,10 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
-    tools:context=".ActivityDentroDelCampeonato"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ActivityDefinirEquipos"
     style="@style/Background">
 
-    <include layout="@layout/encabezado"/>
+    <include layout="@layout/encabezado" />
 
     <TextView
         android:id="@+id/nombre_dentro_del_campeonato"
@@ -14,16 +16,16 @@
         android:layout_height="60dp"
         app:layout_constraintTop_toBottomOf="@+id/encabezado_principal_rojo"
         android:background="@color/DarkRed"
-        android:text=""
+        android:text="@string/configura_tus_equipos"
         android:gravity="center"
         style="@style/TextoIndicadorDePantalla"
         />
 
     <TextView
-        android:id="@+id/tabla_text"
+        android:id="@+id/cantidad_de_equipos_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Tabla de Posiciones"
+        android:text="@string/numero_de_equipos"
         app:layout_constraintTop_toBottomOf="@id/nombre_dentro_del_campeonato"
         app:layout_constraintStart_toStartOf="parent"
         android:layout_margin="20dp"
@@ -31,37 +33,40 @@
         style="@style/TextoNormal"
         />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerTablaDePosiciones"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="@id/guideline_margen_izquierda"
-        app:layout_constraintEnd_toEndOf="@id/guideline_margen_derecha"
-        app:layout_constraintTop_toBottomOf="@id/tabla_text"
-        android:layout_marginTop="20dp"
-        />
-
-    <TextView
-        android:id="@+id/partidos_text"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/partidos"
-        app:layout_constraintTop_toBottomOf="@id/recyclerTablaDePosiciones"
+    <android.widget.Button
+        android:id="@+id/boton_anadir_equipo"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/fondo_para_botones_mas_redondos_score_it"
+        android:text="@string/anadir_el_logo_boton"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:layout_margin="20dp"
-        android:maxLines="2"
+        app:layout_constraintTop_toBottomOf="@+id/cantidad_de_equipos_text"
         style="@style/TextoNormal"
         />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerPartidosCreados"
+        android:id="@+id/recyclerCantidadDeEquipos"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintStart_toStartOf="@id/guideline_margen_izquierda"
         app:layout_constraintEnd_toEndOf="@id/guideline_margen_derecha"
-        app:layout_constraintTop_toBottomOf="@id/partidos_text"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/boton_anadir_equipo"
+        app:layout_constraintBottom_toTopOf="@id/boton_guardar_cambios"
         android:layout_marginTop="20dp"
+        />
+
+    <Button
+        android:id="@+id/boton_guardar_cambios"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/CommonRed"
+        android:text="@string/guardar_cambios"
+        android:layout_margin="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/guideline_margen_derecha"
+        style="@style/TextoNormal"
         />
 
     <androidx.constraintlayout.widget.Guideline
@@ -77,5 +82,6 @@
         android:layout_height="0dp"
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.95" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

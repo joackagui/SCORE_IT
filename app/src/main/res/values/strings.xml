@@ -40,16 +40,13 @@
     <string name="cantidad_de_rondas_para_ganar">Cantidad de rondas para ganar</string>
     <string name="campeonatos_creados_por">Campeonatos creados por:</string>
 
-    <string name="contraseña_corta">Contraseña muy corta</string>
     <string name="no_tienes_cuenta">¿No tienes cuenta?</string>
-    <string name="lleanr_datos">Debes llenar todos los campos</string>
-    <string name="contraseñas_no_coinciden">Las contraseñas no coinciden</string>
-    <string name="usuario_creado">Usuario creado exitosamente</string>
-    <string name="error_al_crear_usuario">Error al crear el usuario</string>
     <string name="crear_cuenta">Crear Cuenta</string>
 
-    <string name="campeonatos_creados_por_text">Campeonatos creados por ${user.nombreUsuario}:</string>
     <string name="partidos">Partidos:</string>
+    <string name="numero_de_equipos">Número de equipos</string>
+    <string name="configura_tus_equipos">Configura tus equipos</string>
+    <string name="guardar_cambios">Guardar cambios</string>
 
     <array name="opciones_para_modo_de_juego">
         <item>Round Robin</item>

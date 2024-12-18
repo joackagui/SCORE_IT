@@ -4,17 +4,21 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.example.scoreit.ActivityMenuPrincipal.Companion.ID_EMAIL
+import androidx.lifecycle.lifecycleScope
+import com.example.scoreit.ActivityMenuPrincipal.Companion.USER_NAME
+import com.example.scoreit.ActivityMenuPrincipal.Companion.USER_EMAIL
+import com.example.scoreit.database.AppDataBase
+import com.example.scoreit.database.AppDataBase.Companion.getDatabase
 import com.example.scoreit.databinding.ActivityLogInBinding
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.ktx.auth
-import com.google.firebase.ktx.Firebase
+import kotlinx.coroutines.launch
 
 class ActivityLogIn : AppCompatActivity() {
 
     private lateinit var binding: ActivityLogInBinding
 
-    private lateinit var auth: FirebaseAuth
+    private lateinit var dbAccess: AppDataBase
+
+    //private lateinit var auth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,11 +26,11 @@ class ActivityLogIn : AppCompatActivity() {
         val view = binding.root
         setContentView(view)
 
-        auth = Firebase.auth
-
-        login()
-        cambiarASignUp()
-
+        dbAccess = getDatabase(this)
+        lifecycleScope.launch {
+            login()
+            cambiarASignUp()
+        }
     }
 
     private fun cambiarASignUp() {
@@ -37,31 +41,53 @@ class ActivityLogIn : AppCompatActivity() {
     }
 
     private fun login() {
-        binding.botonLogIn.setOnClickListener {
-            if (binding.emailLogIn.text.toString() == "" || binding.passwordLogIn.text.toString() == "") {
-                Toast.makeText(this, "@string/llenar_datos", Toast.LENGTH_LONG).show()
-            } else if(binding.passwordLogIn.text.toString().length < 8){
-                Toast.makeText(this, "@string/contraseña_corta", Toast.LENGTH_LONG).show()
-            } else {
-                logInUsuario()
+        lifecycleScope.launch {
+            binding.botonLogIn.setOnClickListener {
+                if (binding.emailLogIn.text.toString() == "" || binding.passwordLogIn.text.toString() == "") {
+                    mensaje(1)
+                } else if (binding.passwordLogIn.text.toString().length < 8) {
+                    mensaje(2)
+                } else {
+                    logInUsuario()
+                }
             }
         }
     }
 
     private fun logInUsuario() {
-        val email = binding.emailLogIn.text.toString()
-        val password = binding.passwordLogIn.text.toString()
-        auth.signInWithEmailAndPassword(email, password).addOnCompleteListener(this) { respuesta ->
-            if (respuesta.isSuccessful) {
-                val activityMenuPrincipal = Intent(this, ActivityMenuPrincipal::class.java)
-                activityMenuPrincipal.putExtra(ID_EMAIL, binding.emailLogIn.text.toString())
-                startActivity(activityMenuPrincipal)
+        lifecycleScope.launch {
+            val usuario = dbAccess.usuarioDao().obternerPorEmail(binding.emailLogIn.text.toString())
+            val email = binding.emailLogIn.text.toString()
+            val password = binding.passwordLogIn.text.toString()
+            if (usuario == null) {
+                mensaje(3)
+            } else if (usuario.email != email || usuario.password != password) {
+                mensaje(4)
             } else {
-                Toast.makeText(this, "Email o Contraseña incorrectos", Toast.LENGTH_LONG).show()
-                Toast.makeText(this, "Error: ${respuesta.exception?.message}", Toast.LENGTH_LONG).show()
+                mensaje(5)
+                cambioAMenuPrincipal(usuario.nombreUsuario)
             }
-        }.addOnFailureListener(this){
-            Toast.makeText(this, "Error: ${it.message}", Toast.LENGTH_LONG).show()
+        }
+    }
+
+    private fun cambioAMenuPrincipal(userName: String) {
+        val intentMenuPrincipal = Intent(this, ActivityMenuPrincipal::class.java)
+        intentMenuPrincipal.putExtra(USER_EMAIL, binding.emailLogIn.text.toString())
+        intentMenuPrincipal.putExtra(USER_NAME, userName)
+        startActivity(intentMenuPrincipal)
+    }
+
+    private fun mensaje(numero: Int){
+        if(numero == 1){
+            Toast.makeText(this, "Debes llenar todos los campos", Toast.LENGTH_LONG).show()
+        } else if(numero == 2){
+            Toast.makeText(this, "Contraseña muy corta", Toast.LENGTH_LONG).show()
+        } else if(numero == 3){
+            Toast.makeText(this, "Usuario no existente", Toast.LENGTH_LONG).show()
+        } else if(numero == 4){
+            Toast.makeText(this, "Email o Contraseña incorrectos", Toast.LENGTH_LONG).show()
+        } else if(numero == 5){
+            Toast.makeText(this, "Ingreso exitoso", Toast.LENGTH_LONG).show()
         }
     }
 }

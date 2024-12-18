@@ -5,7 +5,7 @@
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
     </style>
 
-    <style name="Theme.SCOREIT" parent="Base.Theme.SCOREIT" />
+    <style name="Theme.SCOREIT" parent="Base.Theme.SCOREIT"/>
     <!-- Configuración para track y thumb -->
 
     <style name="TextoGenerico">
@@ -41,15 +41,25 @@
         <item name="android:textSize">20sp</item>
     </style>
 
+    <style name="TextoSpinner" parent="TextoGenerico">
+        <item name="android:textSize">20sp</item>
+        <item name="android:background">@color/DarkestGray</item>
+    </style>
+
     <style name="EditTextHintStyle">
         <item name="android:textColorHint">@color/TransparentWhite</item>
         <item name="fontFamily">@font/score_it</item>
         <item name="android:textColor">@color/White</item>
         <item name="android:backgroundTint">@color/DarkestRed</item>
+        <item name="android:textSize">20sp</item>
     </style>
 
     <style name="TextoIndicadorDePantalla" parent="TextoGenerico">
         <item name="android:textSize">25sp</item>
+    </style>
+
+    <style name="TextoIndicadorDeTiempo" parent="TextoGenerico">
+        <item name="android:textSize">35sp</item>
     </style>
 
     <style name="botones_para_puntos_base">
@@ -85,7 +95,7 @@
 
     <style name="card_botones">
         <item name="android:layout_width">0dp</item>
-        <item name="android:layout_height">170dp</item>
+        <item name="android:layout_height">150dp</item>
     </style>
 
     <style name="CustomDatePickerDialog" parent="ThemeOverlay.MaterialComponents.MaterialAlertDialog">
@@ -94,6 +104,5 @@
         <item name="android:textColorSecondary">@color/DarkestRed</item>
         <item name="colorAccent">@color/DarkestRed</item>
     </style>
-
 
 </resources>

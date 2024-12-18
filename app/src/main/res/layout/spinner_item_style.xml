@@ -3,8 +3,8 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:gravity="start"
-    android:textColor="@color/TransparentWhite"
     android:padding="8dp"
-    style="@style/TextoNormalScoreIt"
-    android:background="@color/DarkGray"
+    android:textColor="@color/TransparentWhite"
+    android:background="@color/DarkestGray"
+    style="@style/TextoSpinner"
     />

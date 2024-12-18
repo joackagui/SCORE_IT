@@ -1,9 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
-    id ("com.google.gms.google-services")
-    id("com.google.devtools.ksp")
-    //id("com.google.devtools.ksp") version "1.9.21-1.0.13"
+    kotlin("kapt")
 }
 
 android {
@@ -47,17 +45,20 @@ dependencies {
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
     implementation(libs.androidx.activity)
+
     implementation(libs.androidx.constraintlayout)
 
     implementation("com.google.code.gson:gson:2.11.0")
-    implementation("com.github.bumptech.glide:glide:4.16.0")
+    /*implementation("com.github.bumptech.glide:glide:4.16.0")
     implementation(platform("com.google.firebase:firebase-bom:33.7.0"))
     implementation("com.google.firebase:firebase-auth")
+    }*/
     implementation("io.github.ShawnLin013:number-picker:2.4.13")
 
-    val room_version = "2.6.1"
-    implementation("androidx.room:room-runtime:$room_version")
-    ksp("androidx.room:room-compiler:$room_version")
+    val roomVersion = "2.6.1"
+    implementation("androidx.room:room-runtime:$roomVersion")
+    kapt("androidx.room:room-compiler:$roomVersion")
+    implementation("androidx.room:room-ktx:$roomVersion")
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

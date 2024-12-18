@@ -2,17 +2,17 @@ package com.example.scoreit.adapters.RecyclerPartidosCreados
 
 import android.content.Context
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.scoreit.componentes.Equipo
 import com.example.scoreit.componentes.Partido
-import com.example.scoreit.database.AppDBAccess
+import com.example.scoreit.database.AppDataBase
 import com.example.scoreit.databinding.EnmarcadoPartidoBinding
 
 class RecyclerPartidosCreados:
     RecyclerView.Adapter<RecyclerPartidosCreados.PartidoViewHolder>() {
 
-    private lateinit var dbAccess: AppDBAccess
+    private lateinit var dbAccess: AppDataBase
 
     private val listaDatos = mutableListOf<Partido>()
 
@@ -32,18 +32,29 @@ class RecyclerPartidosCreados:
 
     inner class PartidoViewHolder(private val binding: EnmarcadoPartidoBinding): RecyclerView.ViewHolder(binding.root) {
         fun binding(partido: Partido) {
-            binding.nombreDelPrimerEquipo.text = partido.equipoLocal.nombre
-            binding.nombreDelSegundoEquipo.text = partido.equipoVisitante.nombre
-            binding.puntajeDelPrimerEquipo.text = partido.puntosLocal.toString()
-            binding.puntajeDelSegundoEquipo.text = partido.puntosVisitante.toString()
-            binding.rondasDelPrimerEquipo.text = partido.rondasLocal.toString()
-            binding.rondasDelSegundoEquipo.text = partido.rondasVisitante.toString()
+
+            val primerEquipo = dbAccess.equipoDao().obtenerPorId(partido.primerEquipoId.toString())
+            val segundoEquipo = dbAccess.equipoDao().obtenerPorId(partido.segundoEquipoId.toString())
+
+            binding.nombreDelPrimerEquipo.text = primerEquipo.nombre
+            binding.nombreDelSegundoEquipo.text = segundoEquipo.nombre
+            binding.puntajeDelPrimerEquipo.text = partido.puntosPrimerEquipo.toString()
+            binding.puntajeDelSegundoEquipo.text = partido.puntosSegundoEquipo.toString()
+            binding.rondasDelPrimerEquipo.text = partido.rondasPrimerEquipo.toString()
+            binding.rondasDelSegundoEquipo.text = partido.rondasSegundoEquipo.toString()
+
+            if(dbAccess.partidoDao().obtenerSiHayRondas(partido.id.toString())){
+                binding.group.visibility = View.INVISIBLE
+            } else {
+                binding.group.visibility = View.VISIBLE
+            }
         }
     }
 
     fun addDataToList(list: MutableList<Partido>) {
         listaDatos.clear()
         listaDatos.addAll(list)
+        notifyDataSetChanged()
     }
 
 }

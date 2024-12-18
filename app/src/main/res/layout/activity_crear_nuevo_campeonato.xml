@@ -3,10 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/DarkGray"
-    tools:context=".ActivityCrearNuevoCampeonato">
+    tools:context=".ActivityCrearNuevoCampeonato"
+    style="@style/Background">
 
     <include layout="@layout/encabezado"/>
 
@@ -81,7 +79,7 @@
                 android:layout_width="250dp"
                 android:layout_height="wrap_content"
                 android:text="@string/jan_01_2020"
-                android:textSize="25sp"
+                android:textSize="20sp"
                 android:fontFamily="@font/score_it"
                 android:textColor="@color/TransparentWhite"
                 app:layout_constraintStart_toEndOf="@id/guideline_mitad_vertical"
@@ -89,8 +87,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/nombre_del_campeonato"
                 android:layout_marginTop="30dp"
                 android:backgroundTint="@color/DarkestRed"
-                style="?android:spinnerStyle"
-                />
+                style="?android:spinnerStyle" />
 
             <Spinner
                 android:id="@+id/spinner_modo_juego"

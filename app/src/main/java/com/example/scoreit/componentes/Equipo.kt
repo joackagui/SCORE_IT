@@ -5,9 +5,9 @@ import androidx.room.PrimaryKey
 import androidx.room.ForeignKey
 
 @Entity(
-    foreignKeys = [ForeignKey(entity = Partido::class,
+    foreignKeys = [ForeignKey(entity = Campeonato::class,
         parentColumns = ["id"],
-        childColumns = ["idPartido"],
+        childColumns = ["idCampeonato"],
         onDelete = ForeignKey.CASCADE)
     ]
 )
@@ -16,8 +16,9 @@ data class Equipo(
     @PrimaryKey(autoGenerate = true)
     val id: Int = 0,
     val nombre: String,
-    val listaDeJugadores: MutableList<String> = mutableListOf(),
     var puntos: Int = 0,
-    var canchas: Int = 0,
-    val idPartido: Int
+    var rondasAFavor: Int = 0,
+    var rondasEnContra: Int = 0,
+    val partidosJugados: Int = 0,
+    val idCampeonato: Int
     )

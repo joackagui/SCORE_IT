@@ -1,188 +1,188 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:orientation="vertical"
+xmlns:app="http://schemas.android.com/apk/res-auto">
+
+<View
+    app:layout_constraintTop_toTopOf="parent"
+    android:id="@+id/transparente_top_partido"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:layout_height="15dp"
+    app:layout_constraintStart_toStartOf="parent"
+    android:background="@color/Transparent"
+    />
 
-    <View
-        app:layout_constraintTop_toTopOf="parent"
-        android:id="@+id/transparente_top_partido"
+<androidx.cardview.widget.CardView
+    android:id="@+id/partido_en_curso"
+    android:layout_width="0dp"
+    android:layout_height="125dp"
+    app:cardCornerRadius="25dp"
+    app:layout_constraintTop_toBottomOf="@id/transparente_top_partido"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="15dp"
-        app:layout_constraintStart_toStartOf="parent"
-        android:background="@color/Transparent"
-        />
+        android:layout_height="match_parent">
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/campeonato_en_curso"
-        android:layout_width="0dp"
-        android:layout_height="125dp"
-        app:cardCornerRadius="25dp"
-        app:layout_constraintTop_toBottomOf="@id/transparente_top_partido"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
-
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <android.widget.Button
+            android:id="@+id/boton_del_partido"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:background="@color/CommonRed"
+            style="@style/botones_para_puntos"
+            />
 
-            <android.widget.Button
-                android:id="@+id/boton_del_partido"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@color/CommonRed"
-                style="@style/botones_para_puntos"
-                />
+        <TextView
+            android:id="@+id/equipos_del_partido"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            app:layout_constraintBottom_toTopOf="@id/nombre_del_primer_equipo"
+            app:layout_constraintStart_toStartOf="parent"
+            android:maxLines="1"
+            android:layout_marginStart="20dp"
+            android:text="Equipos:"
+            android:elevation="2dp"
+            style="@style/TextoNormal"
+            />
 
-            <TextView
-                android:id="@+id/equipos_del_partido"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                app:layout_constraintBottom_toTopOf="@id/nombre_del_primer_equipo"
-                app:layout_constraintStart_toStartOf="parent"
-                android:maxLines="1"
-                android:layout_marginStart="20dp"
-                android:text="Equipos:"
-                android:elevation="2dp"
-                style="@style/TextoNormal"
-                />
+        <TextView
+            android:id="@+id/nombre_del_primer_equipo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            app:layout_constraintBottom_toTopOf="@id/nombre_del_segundo_equipo"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="40dp"
+            android:text="a"
+            android:maxLines="2"
+            android:elevation="2dp"
+            style="@style/TextoIndicadorDePantalla"
+            />
 
-            <TextView
-                android:id="@+id/nombre_del_primer_equipo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                app:layout_constraintBottom_toTopOf="@id/nombre_del_segundo_equipo"
-                app:layout_constraintStart_toStartOf="parent"
-                android:layout_marginStart="40dp"
-                android:text="a"
-                android:maxLines="2"
-                android:elevation="2dp"
-                style="@style/TextoIndicadorDePantalla"
-                />
+        <TextView
+            android:id="@+id/nombre_del_segundo_equipo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="40dp"
+            android:layout_marginBottom="3dp"
+            android:text="a"
+            android:maxLines="2"
+            android:elevation="2dp"
+            style="@style/TextoIndicadorDePantalla"
+            />
 
-            <TextView
-                android:id="@+id/nombre_del_segundo_equipo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                android:layout_marginStart="40dp"
-                android:layout_marginBottom="3dp"
-                android:text="a"
-                android:maxLines="2"
-                android:elevation="2dp"
-                style="@style/TextoIndicadorDePantalla"
-                />
+        <TextView
+            android:id="@+id/puntaje_del_partido"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            app:layout_constraintBottom_toTopOf="@id/puntaje_del_primer_equipo"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:maxLines="1"
+            android:layout_marginEnd="12dp"
+            android:text="Puntos:"
+            android:elevation="2dp"
+            style="@style/TextoNormal"
+            />
 
-            <TextView
-                android:id="@+id/puntaje_del_partido"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                app:layout_constraintBottom_toTopOf="@id/puntaje_del_primer_equipo"
-                app:layout_constraintEnd_toEndOf="parent"
-                android:maxLines="1"
-                android:layout_marginEnd="12dp"
-                android:text="Puntos:"
-                android:elevation="2dp"
-                style="@style/TextoNormal"
-                />
+        <TextView
+            android:id="@+id/puntaje_del_primer_equipo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            app:layout_constraintBottom_toTopOf="@id/puntaje_del_segundo_equipo"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:maxLines="1"
+            android:layout_marginEnd="40dp"
+            android:text="13"
+            android:elevation="2dp"
+            style="@style/TextoIndicadorDePantalla"
+            />
 
-            <TextView
-                android:id="@+id/puntaje_del_primer_equipo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                app:layout_constraintBottom_toTopOf="@id/puntaje_del_segundo_equipo"
-                app:layout_constraintEnd_toEndOf="parent"
-                android:maxLines="1"
-                android:layout_marginEnd="40dp"
-                android:text="13"
-                android:elevation="2dp"
-                style="@style/TextoIndicadorDePantalla"
-                />
-
-            <TextView
-                android:id="@+id/puntaje_del_segundo_equipo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                android:maxLines="1"
-                android:layout_marginEnd="40dp"
-                android:layout_marginBottom="3dp"
-                android:text="13"
-                android:elevation="2dp"
-                style="@style/TextoIndicadorDePantalla"
-                />
+        <TextView
+            android:id="@+id/puntaje_del_segundo_equipo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:maxLines="1"
+            android:layout_marginEnd="40dp"
+            android:layout_marginBottom="3dp"
+            android:text="13"
+            android:elevation="2dp"
+            style="@style/TextoIndicadorDePantalla"
+            />
 
 
-            <TextView
-                android:id="@+id/rondas_del_partido"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                app:layout_constraintBottom_toTopOf="@id/puntaje_del_primer_equipo"
-                app:layout_constraintEnd_toStartOf="@id/puntaje_del_partido"
-                android:maxLines="1"
-                android:layout_marginEnd="30dp"
-                android:text="Rondas:"
-                android:elevation="2dp"
-                style="@style/TextoNormal"
-                />
+        <TextView
+            android:id="@+id/rondas_del_partido"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            app:layout_constraintBottom_toTopOf="@id/puntaje_del_primer_equipo"
+            app:layout_constraintEnd_toStartOf="@id/puntaje_del_partido"
+            android:maxLines="1"
+            android:layout_marginEnd="30dp"
+            android:text="Rondas:"
+            android:elevation="2dp"
+            style="@style/TextoNormal"
+            />
 
-            <TextView
-                android:id="@+id/rondas_del_primer_equipo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                app:layout_constraintBottom_toTopOf="@id/puntaje_del_segundo_equipo"
-                app:layout_constraintEnd_toStartOf="@id/puntaje_del_primer_equipo"
-                android:maxLines="1"
-                android:layout_marginEnd="75dp"
-                android:text="(0)"
-                android:elevation="2dp"
-                style="@style/TextoIndicadorDePantalla"
-                />
+        <TextView
+            android:id="@+id/rondas_del_primer_equipo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            app:layout_constraintBottom_toTopOf="@id/puntaje_del_segundo_equipo"
+            app:layout_constraintEnd_toStartOf="@id/puntaje_del_primer_equipo"
+            android:maxLines="1"
+            android:layout_marginEnd="75dp"
+            android:text="(0)"
+            android:elevation="2dp"
+            style="@style/TextoIndicadorDePantalla"
+            />
 
-            <TextView
-                android:id="@+id/rondas_del_segundo_equipo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                app:layout_constraintTop_toBottomOf="@id/puntaje_del_primer_equipo"
-                app:layout_constraintEnd_toStartOf="@id/puntaje_del_primer_equipo"
-                android:maxLines="1"
-                android:layout_marginEnd="75dp"
-                android:text="(0)"
-                android:elevation="2dp"
-                style="@style/TextoIndicadorDePantalla"
-                />
+        <TextView
+            android:id="@+id/rondas_del_segundo_equipo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            app:layout_constraintTop_toBottomOf="@id/puntaje_del_primer_equipo"
+            app:layout_constraintEnd_toStartOf="@id/puntaje_del_primer_equipo"
+            android:maxLines="1"
+            android:layout_marginEnd="75dp"
+            android:text="(0)"
+            android:elevation="2dp"
+            style="@style/TextoIndicadorDePantalla"
+            />
 
-            <androidx.constraintlayout.widget.Group
-                android:id="@+id/group"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:visibility="visible"
-                app:constraint_referenced_ids="rondas_del_partido,rondas_del_primer_equipo, rondas_del_segundo_equipo"
-                />
+        <androidx.constraintlayout.widget.Group
+            android:id="@+id/group"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="visible"
+            app:constraint_referenced_ids="rondas_del_partido,rondas_del_primer_equipo, rondas_del_segundo_equipo"
+            />
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-    </androidx.cardview.widget.CardView>
+</androidx.cardview.widget.CardView>
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="15dp"
-        app:layout_constraintTop_toBottomOf="@id/campeonato_en_curso"
-        app:layout_constraintStart_toStartOf="parent"
-        android:background="@color/Transparent"
-        />
+<View
+    android:layout_width="match_parent"
+    android:layout_height="15dp"
+    app:layout_constraintTop_toBottomOf="@id/partido_en_curso"
+    app:layout_constraintStart_toStartOf="parent"
+    android:background="@color/Transparent"
+    />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

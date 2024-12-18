@@ -12,7 +12,10 @@ interface EquipoDao {
     suspend fun obtenerTodosLosEquipos(): List<Equipo>
 
     @Query("SELECT * FROM Equipo WHERE id =:id")
-    suspend fun obtenerPorId(id: String): Equipo
+    fun obtenerPorId(id: String): Equipo
+
+    @Query("SELECT * FROM Equipo WHERE id =:id")
+    fun obtenerEquiposPorId(id: String): MutableList<Equipo>
 
     @Update
     suspend fun update(equipo: Equipo)
