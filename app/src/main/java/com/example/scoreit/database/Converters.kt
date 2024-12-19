@@ -46,7 +46,7 @@ class Converters {
     fun fromList(value: List<String>?): String? = value?.joinToString(",")
 
     @TypeConverter
-    fun toList(value: String?): List<String>? = value?.split(",") ?: emptyList()
+    fun toList(value: String?): List<String> = value?.split(",") ?: emptyList()
 
     @TypeConverter
     fun fromIntList(value: List<Int>?): String? = value?.joinToString(",")

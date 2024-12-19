@@ -11,15 +11,9 @@ import com.example.scoreit.database.AppDataBase.Companion.getDatabase
 import com.example.scoreit.databinding.ActivitySigningUpBinding
 import kotlinx.coroutines.launch
 
-//import com.google.firebase.auth.FirebaseAuth
-//import com.google.firebase.auth.ktx.auth
-//import com.google.firebase.ktx.Firebase
-
 class ActivitySigningUp : AppCompatActivity() {
+
     private lateinit var binding: ActivitySigningUpBinding
-
-//    private lateinit var auth: FirebaseAuth
-
     private lateinit var dbAccess: AppDataBase
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -71,14 +65,19 @@ class ActivitySigningUp : AppCompatActivity() {
     }
 
     private fun mensaje(numero: Int){
-        if(numero == 1){
-            Toast.makeText(this, "Debes llenar todos los campos", Toast.LENGTH_LONG).show()
-        } else if(numero == 2){
-            Toast.makeText(this, "Contraseña muy corta", Toast.LENGTH_LONG).show()
-        } else if(numero == 3){
-            Toast.makeText(this, "Las contraseñas no coinciden", Toast.LENGTH_LONG).show()
-        } else if(numero == 4){
-            Toast.makeText(this, "Usuario creado exitosamente", Toast.LENGTH_LONG).show()
+        when (numero) {
+            1 -> {
+                Toast.makeText(this, "Debes llenar todos los campos", Toast.LENGTH_LONG).show()
+            }
+            2 -> {
+                Toast.makeText(this, "Contraseña muy corta", Toast.LENGTH_LONG).show()
+            }
+            3 -> {
+                Toast.makeText(this, "Las contraseñas no coinciden", Toast.LENGTH_LONG).show()
+            }
+            4 -> {
+                Toast.makeText(this, "Usuario creado exitosamente", Toast.LENGTH_LONG).show()
+            }
         }
     }
 }

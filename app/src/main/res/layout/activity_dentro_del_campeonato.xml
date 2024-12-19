@@ -23,7 +23,7 @@
         android:id="@+id/tabla_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Tabla de Posiciones"
+        android:text="@string/tabla_de_posiciones"
         app:layout_constraintTop_toBottomOf="@id/nombre_dentro_del_campeonato"
         app:layout_constraintStart_toStartOf="parent"
         android:layout_margin="20dp"
@@ -62,8 +62,21 @@
         app:layout_constraintStart_toStartOf="@id/guideline_margen_izquierda"
         app:layout_constraintEnd_toEndOf="@id/guideline_margen_derecha"
         app:layout_constraintTop_toBottomOf="@id/partidos_text"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/boton_atras"
         android:layout_marginTop="20dp"
+        />
+
+    <android.widget.Button
+        android:id="@+id/boton_atras"
+        android:layout_width="100dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/fondo_para_botones_score_it"
+        android:text="@string/atras_boton"
+        app:layout_constraintStart_toStartOf="@id/guideline_margen_izquierda"
+        app:layout_constraintBottom_toBottomOf="parent"
+        style="@style/TextoNormal"
         />
 
     <androidx.constraintlayout.widget.Guideline

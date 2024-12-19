@@ -17,11 +17,12 @@ data class Partido(
     @PrimaryKey(autoGenerate = true)
     val id: Int = 0,
     val jornada: Int,
-    val primerEquipoId: Int,
-    val segundoEquipoId: Int,
-    var puntosPrimerEquipo: Int,
-    var puntosSegundoEquipo: Int,
-    var rondasPrimerEquipo: Int?,
-    var rondasSegundoEquipo: Int?,
+    val primerEquipoId: String,
+    val segundoEquipoId: String,
+    var puntosPrimerEquipo: String,
+    var puntosSegundoEquipo: String,
+    val porRondas: Boolean,
+    var rondasPrimerEquipo: String,
+    var rondasSegundoEquipo: String,
     val idCampeonato: Int
 )

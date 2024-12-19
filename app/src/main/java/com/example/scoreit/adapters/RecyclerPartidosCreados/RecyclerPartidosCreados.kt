@@ -13,14 +13,12 @@ class RecyclerPartidosCreados:
     RecyclerView.Adapter<RecyclerPartidosCreados.PartidoViewHolder>() {
 
     private lateinit var dbAccess: AppDataBase
-
     private val listaDatos = mutableListOf<Partido>()
-
     private var context: Context? = null
-
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PartidoViewHolder {
         context = parent.context
+
         return PartidoViewHolder(EnmarcadoPartidoBinding.inflate(LayoutInflater.from(context), parent, false))
     }
 
@@ -33,20 +31,20 @@ class RecyclerPartidosCreados:
     inner class PartidoViewHolder(private val binding: EnmarcadoPartidoBinding): RecyclerView.ViewHolder(binding.root) {
         fun binding(partido: Partido) {
 
-            val primerEquipo = dbAccess.equipoDao().obtenerPorId(partido.primerEquipoId.toString())
-            val segundoEquipo = dbAccess.equipoDao().obtenerPorId(partido.segundoEquipoId.toString())
+            val primerEquipoID = partido.primerEquipoId
+            val segundoEquipoID = partido.segundoEquipoId
 
-            binding.nombreDelPrimerEquipo.text = primerEquipo.nombre
-            binding.nombreDelSegundoEquipo.text = segundoEquipo.nombre
-            binding.puntajeDelPrimerEquipo.text = partido.puntosPrimerEquipo.toString()
-            binding.puntajeDelSegundoEquipo.text = partido.puntosSegundoEquipo.toString()
-            binding.rondasDelPrimerEquipo.text = partido.rondasPrimerEquipo.toString()
-            binding.rondasDelSegundoEquipo.text = partido.rondasSegundoEquipo.toString()
+            binding.nombreDelPrimerEquipo.text = primerEquipoID
+            binding.nombreDelSegundoEquipo.text = segundoEquipoID
+            binding.puntajeDelPrimerEquipo.text = partido.puntosPrimerEquipo
+            binding.puntajeDelSegundoEquipo.text = partido.puntosSegundoEquipo
 
-            if(dbAccess.partidoDao().obtenerSiHayRondas(partido.id.toString())){
-                binding.group.visibility = View.INVISIBLE
-            } else {
+            if(partido.porRondas){
+                binding.rondasDelPrimerEquipo.text = "(${partido.rondasPrimerEquipo.toString()})"
+                binding.rondasDelSegundoEquipo.text = "(${partido.rondasSegundoEquipo.toString()})"
                 binding.group.visibility = View.VISIBLE
+            } else {
+                binding.group.visibility = View.INVISIBLE
             }
         }
     }
@@ -54,7 +52,6 @@ class RecyclerPartidosCreados:
     fun addDataToList(list: MutableList<Partido>) {
         listaDatos.clear()
         listaDatos.addAll(list)
-        notifyDataSetChanged()
     }
 
 }

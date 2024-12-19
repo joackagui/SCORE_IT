@@ -2,11 +2,13 @@ package com.example.scoreit
 
 import android.content.Intent
 import android.os.Bundle
+import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.scoreit.ActivityCrearNuevoCampeonato.Companion.ID_USER
+import com.example.scoreit.ActivityCrearNuevoCampeonato.Companion.ID_USER_NC
+import com.example.scoreit.ActivityCrearNuevoCampeonato.Companion.USER_EMAIL_NC
 import com.example.scoreit.adapters.RecyclerCampeonatosCreados.RecyclerCampeonatosCreados
 import com.example.scoreit.databinding.ActivityMenuPrincipalBinding
 import com.example.scoreit.componentes.Campeonato
@@ -16,15 +18,13 @@ import com.example.scoreit.database.AppDataBase.Companion.getDatabase
 import kotlinx.coroutines.launch
 
 class ActivityMenuPrincipal : AppCompatActivity() {
+
+    private val recyclerCampeonatosCreados: RecyclerCampeonatosCreados by lazy {RecyclerCampeonatosCreados()}
     private lateinit var binding: ActivityMenuPrincipalBinding
-
-    //private val recyclerCampeonatosCreados: RecyclerCampeonatosCreados by lazy {RecyclerCampeonatosCreados()}
-
     private lateinit var dbAccess: AppDataBase
 
     companion object{
-        val USER_EMAIL: String = "EMAIL"
-        val USER_NAME: String = "USER"
+        const val USER_EMAIL: String = "EMAIL"
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -34,52 +34,61 @@ class ActivityMenuPrincipal : AppCompatActivity() {
         setContentView(view)
 
         dbAccess = getDatabase(this)
-        lifecycleScope.launch {
-            setUpRecyclerView()
-            nuevoCampeonato()
-        }
+
+        configurarEncabezado()
         desplegarTexto()
+        setUpRecyclerView()
+        botonCampeonato()
     }
 
-    private fun nuevoCampeonato() {
+    private fun AppCompatActivity.configurarEncabezado() {
+        val botonUsuario = findViewById<Button>(R.id.boton_de_usuario)
+
+        botonUsuario.setOnClickListener {
+            val intent = Intent(this, ActivityLogIn::class.java)
+            startActivity(intent)
+        }
+
+    }
+
+    private fun botonCampeonato(){
         lifecycleScope.launch {
-            val correoUsuario = intent.getStringExtra(USER_EMAIL).toString()
-            val user = dbAccess.usuarioDao().obternerPorEmail(correoUsuario)
-            cambioACrearNuevoCampeonato(user)
+            val correoUsuario = intent.getStringExtra(USER_EMAIL)
+            if(correoUsuario != null){
+                val user = dbAccess.usuarioDao().obternerPorEmail(correoUsuario)
+                if (user != null) {
+                    cambioACrearNuevoCampeonato(user)
+                }
+            }
         }
     }
 
-    private fun cambioACrearNuevoCampeonato(user: Usuario? = null) {
+    private fun cambioACrearNuevoCampeonato(user: Usuario) {
         binding.botonCrearNuevoCampeonato.setOnClickListener {
             val activityCrearNuevoCampeonato = Intent(this, ActivityCrearNuevoCampeonato::class.java)
-            if (user != null) {
-                activityCrearNuevoCampeonato.putExtra(ID_USER, user.id)
-                activityCrearNuevoCampeonato.putExtra(USER_EMAIL, user.email)
-            }
+            activityCrearNuevoCampeonato.putExtra(ID_USER_NC, user.id)
+            activityCrearNuevoCampeonato.putExtra(USER_EMAIL_NC, user.email)
             startActivity(activityCrearNuevoCampeonato)
         }
     }
 
     private fun setUpRecyclerView() {
         lifecycleScope.launch {
-            val correoUsuario = intent.getStringExtra(USER_EMAIL).toString()
-            val user = dbAccess.usuarioDao().obternerPorEmail(correoUsuario)
-
-            val listaDeCampeonatosCreados =
-                dbAccess.campeonatoDao().obtenerCampeonatosPorIdUsuario(user?.id.toString())
-            val adapter = RecyclerCampeonatosCreados()
-            adapter.addDataToList(listaDeCampeonatosCreados)
+            val listaDeCampeonatosCreados = dbAccess.campeonatoDao().obtenerTodosLosCampeonatos()
+            recyclerCampeonatosCreados.addDataToList(listaDeCampeonatosCreados)
 
             binding.recyclerCampeonatosCreados.apply {
-                layoutManager = LinearLayoutManager(this@ActivityMenuPrincipal)
-                this.adapter = adapter
-            }
+                layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+                adapter = recyclerCampeonatosCreados
 
+            }
         }
     }
 
-    fun desplegarTexto(){
-        val bienvenida: TextView = binding.campeonatosCreados
-        bienvenida.text = "Campeonatos creados por ${intent.getStringExtra(USER_NAME)}:"
+    private fun desplegarTexto(){
+        lifecycleScope.launch {
+            val bienvenida: TextView = binding.campeonatosCreados
+            bienvenida.text = "Campeonatos creados por ${dbAccess.usuarioDao().obternerPorEmail(intent.getStringExtra(USER_EMAIL).toString())?.nombreUsuario}:"
+        }
     }
 }
