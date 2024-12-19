@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/DarkGray">
+    android:background="@color/DarkestGray">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -17,7 +17,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Personaliza al Equipo"
-            android:textColor="#FFFFFF"
+            android:textColor="@color/White"
             android:textSize="18sp"
             android:textStyle="bold"
             android:gravity="center"
@@ -45,6 +45,16 @@
             android:backgroundTint="@color/White"
             android:layout_marginTop="16dp" />
 
+        <EditText
+            android:id="@+id/etPlayerName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Nombre del jugador"
+            android:textColor="@color/Gray"
+            android:textColorHint="@color/Gray"
+            android:backgroundTint="@color/White"
+            android:layout_marginTop="16dp" />
+
         <!-- Botón para añadir jugadores -->
         <Button
             android:id="@+id/btnAddPlayers"
@@ -52,7 +62,7 @@
             android:layout_height="wrap_content"
             android:text="Añadir jugadores"
             android:textColor="#FFFFFF"
-            android:backgroundTint="#D32F2F"
+            android:backgroundTint="@color/Red"
             android:layout_marginTop="12dp" />
 
         <!-- Lista de jugadores -->
@@ -83,8 +93,8 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="Atrás"
-                android:textColor="#FFFFFF"
-                android:backgroundTint="#D32F2F" />
+                android:textColor="@color/White"
+                android:backgroundTint="@color/Red" />
 
             <Space
                 android:layout_width="16dp"
@@ -96,8 +106,8 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="Guardar"
-                android:textColor="#FFFFFF"
-                android:backgroundTint="#D32F2F" />
+                android:textColor="@color/White"
+                android:backgroundTint="@color/Red" />
         </LinearLayout>
     </LinearLayout>
 </ScrollView>

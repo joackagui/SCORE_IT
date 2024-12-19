@@ -276,4 +276,6 @@ class ActivityCrearNuevoCampeonato : AppCompatActivity() {
         binding.spinnerModoJuego.adapter = adapter
     }
 
+
+
 }

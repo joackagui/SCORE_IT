@@ -17,6 +17,7 @@ class AddTeamActivity : AppCompatActivity() {
     private var playerCount = 0
     private var logoUri: Uri? = null
 
+
     // Launcher para abrir la galería
     private val pickImageLauncher =
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
@@ -97,5 +98,6 @@ class AddTeamActivity : AppCompatActivity() {
         Toast.makeText(this, "Equipo '$teamName' guardado", Toast.LENGTH_SHORT).show()
         finish()
     }
+
 }
 

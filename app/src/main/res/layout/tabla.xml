@@ -1,109 +1,88 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="horizontal"
-    android:padding="8dp"
-    android:weightSum="6"
-    android:background="@color/Red"
-    android:layout_weight="6">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/DarkGray"
+    >
 
-    <TextView
-        android:id="@+id/teamName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_weight="2"
-        android:text="Equipo"
-        android:textSize="24sp"
-        android:padding="4dp"
-        android:textColor="@color/White"
-        android:background="@color/Red"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginHorizontal="15dp"/>
+        <!-- Primer TextView -->
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="172dp"
+            android:layout_height="35dp"
+            android:text="Equipo"
+            android:textColor="@color/White"
+            android:background="@color/DarkRed"
+            android:textSize="18sp"
+            android:gravity="center"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="20dp"/>
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="60dp"
+            android:layout_height="35dp"
+            android:text="Pts"
+            android:textColor="@color/White"
+            android:background="@color/DarkRed"
+            android:textSize="18sp"
+            android:gravity="center"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/textView1"
+            android:layout_marginTop="20dp"
+            />
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="60dp"
+            android:layout_height="35dp"
+            android:text="PtsIG"
+            android:textColor="@color/White"
+            android:background="@color/DarkRed"
+            android:textSize="18sp"
+            android:gravity="center"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/textView2"
+            android:layout_marginTop="20dp"/>
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="60dp"
+            android:layout_height="35dp"
+            android:text="PtJ"
+            android:textColor="@color/White"
+            android:background="@color/DarkRed"
+            android:textSize="18sp"
+            android:gravity="center"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/textView3"
+            android:layout_marginTop="20dp"
+            />
+        <TextView
+            android:id="@+id/textView5"
+            android:layout_width="60dp"
+            android:layout_height="35dp"
+            android:text="PtG"
+            android:textColor="@color/White"
+            android:background="@color/DarkRed"
+            android:textSize="18sp"
+            android:gravity="center"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/textView4"
+            android:layout_marginTop="20dp"
+            />
 
-    <TextView
-        android:id="@+id/matchesPlayed"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:gravity="center"
-        android:text="PJ"
-        android:textSize="24sp"
-        android:padding="4dp"
-        android:textColor="@color/White"
-        android:background="@color/Red"
-        app:layout_constraintStart_toEndOf="@+id/teamName"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginHorizontal="15dp"/>
-
-
-    <TextView
-        android:id="@+id/points"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:gravity="center"
-        android:text="PTS"
-        android:textSize="24sp"
-        android:padding="4dp"
-        android:textColor="@color/White"
-        android:background="@color/Red"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/matchesPlayed"
-        android:layout_marginHorizontal="15dp"/>
-
-
-
-    <TextView
-        android:id="@+id/wins"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:gravity="center"
-        android:text="PG"
-        android:textSize="24sp"
-        android:padding="4dp"
-        android:textColor="@color/White"
-        android:background="@color/Red"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/points"
-        android:layout_marginHorizontal="15dp"/>
-
-
-    <TextView
-        android:id="@+id/draws"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:gravity="center"
-        android:text="PE"
-        android:textSize="24sp"
-        android:padding="4dp"
-        android:textColor="@color/White"
-        android:background="@color/Red"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/wins"
-        android:layout_marginHorizontal="15dp"/>
+</androidx.constraintlayout.widget.ConstraintLayout>
 
 
-    <TextView
-        android:id="@+id/losses"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:gravity="center"
-        android:text="PP"
-        android:textSize="24sp"
-        android:padding="4dp"
-        android:textColor="@color/White"
-        android:background="@color/Red"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/draws"
-        android:layout_marginHorizontal="15dp"/>
 
 
-</androidx.constraintlayout.widget.ConstraintLayout >
+
+
+
+
+
+
+
+
+
 
