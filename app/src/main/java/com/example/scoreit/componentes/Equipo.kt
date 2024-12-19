@@ -19,10 +19,10 @@ data class Equipo(
     val id: Int = 0,
     val logo: String? = null,
     val nombre: String,
-    var puntosFinales: Int = 0,
-    var puntosInGame: Int = 0,
-    var rondasAFavor: Int = 0,
-    var partidosJugados: Int = 0,
-    var partidosGanados: Int = 0,
+    var puntosFinales: String = "0",
+    var puntosInGame: String = "0",
+    var rondasAFavor: String = "0",
+    var partidosJugados: String = "0",
+    var partidosGanados: String = "0",
     val idCampeonato: Int
 ): Serializable

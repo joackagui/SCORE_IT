@@ -26,10 +26,10 @@ class RecyclerTabla: RecyclerView.Adapter<RecyclerTabla.TablaViewHolder>(){
     inner class TablaViewHolder(private val binding: TablaFilaBinding): RecyclerView.ViewHolder(binding.root) {
         fun binding(equipo: Equipo) {
             binding.nombreEquipoTabla.text = equipo.nombre
-            binding.puntosInGameTabla.text = equipo.puntosInGame.toString()
-            binding.puntosFinalesTabla.text = equipo.puntosFinales.toString()
-            binding.partidosJugadosTabla.text = equipo.partidosJugados.toString()
-            binding.partidosGanadosTabla.text = equipo.partidosGanados.toString()
+            binding.puntosInGameTabla.text = equipo.puntosInGame
+            binding.puntosFinalesTabla.text = equipo.puntosFinales
+            binding.partidosJugadosTabla.text = equipo.partidosJugados
+            binding.partidosGanadosTabla.text = equipo.partidosGanados
 
         }
     }
