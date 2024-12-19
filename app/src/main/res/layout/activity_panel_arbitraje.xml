@@ -160,6 +160,19 @@
         style="@style/TextoNormal"
         />
 
+    <TextView
+        android:id="@+id/timerDescanso"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:text="00:00"
+        android:textSize="70sp"
+        android:visibility="gone"
+        style="@style/TextoIndicadorDeTiempo"/>
+
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline_margen_izquierda"
         android:layout_width="wrap_content"

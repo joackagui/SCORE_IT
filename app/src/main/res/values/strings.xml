@@ -48,11 +48,11 @@
     <string name="configura_tus_equipos">Configura tus equipos</string>
     <string name="guardar_cambios">Guardar cambios</string>
     <string name="tabla_de_posiciones">Tabla de Posiciones</string>
+    <string name="cantidadDeDescanso">Cantidad de Descansos:</string>
 
     <array name="opciones_para_modo_de_juego">
         <item>Round Robin</item>
         <item>Llaves</item>
-        <item>Ambos</item>
         <item>Ninguno</item>
     </array>
 </resources>

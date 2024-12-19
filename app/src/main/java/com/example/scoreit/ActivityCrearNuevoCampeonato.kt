@@ -83,7 +83,6 @@ class ActivityCrearNuevoCampeonato : AppCompatActivity() {
                 val idaYVuelta = binding.checkboxIdaYVuelta.text.toString().toBoolean()
                 val siempreUnGanador = binding.checkboxSiempreUnGanador.text.toString().toBoolean()
                 val diferenciaDosPuntos = binding.checkboxDiferenciaDosPuntos.text.toString().toBoolean()
-                val diferenciaDosRondas = binding.checkboxDiferenciaDosRondas.text.toString().toBoolean()
 
                 if (binding.puntajeEditText.isEnabled) {
                     puntosParaGanar = binding.puntajeEditText.text.toString().toInt()
@@ -121,8 +120,7 @@ class ActivityCrearNuevoCampeonato : AppCompatActivity() {
                         cantidadDeRondas = cantidadDeRondas,
                         idaYVuelta = idaYVuelta,
                         siempreUnGanador = siempreUnGanador,
-                        diferenciaDosPuntos = diferenciaDosPuntos,
-                        difenciaDeDosRondas = diferenciaDosRondas
+                        diferenciaDosPuntos = diferenciaDosPuntos
                     )
 
                 val idCampeonato = buscarCampeonatoLibre(nuevoCampeonato)
@@ -186,7 +184,6 @@ class ActivityCrearNuevoCampeonato : AppCompatActivity() {
             val visibility = if(isChecked) View.VISIBLE else View.GONE
             binding.texViewCantidadDeRondasParaGanar.visibility = visibility
             binding.numberPickerCantidadDeRondasParaGanar.visibility = visibility
-            binding.checkboxDiferenciaDosRondas.visibility = visibility
         }
     }
 
@@ -197,12 +194,24 @@ class ActivityCrearNuevoCampeonato : AppCompatActivity() {
 
         binding.switchPuntaje.setOnCheckedChangeListener { _, isChecked ->
             binding.puntajeEditText.isEnabled = isChecked
+            if (isChecked) {
+                binding.switchTiempoDeJuego.isEnabled = false
+                binding.tiempoDeJuegoEditText.isEnabled = false
+            } else {
+                binding.switchTiempoDeJuego.isEnabled = true
+            }
         }
-
         binding.switchTiempoDeJuego.setOnCheckedChangeListener { _, isChecked ->
             binding.tiempoDeJuegoEditText.isEnabled = isChecked
+            if (isChecked) {
+                binding.switchPuntaje.isEnabled = false
+                binding.puntajeEditText.isEnabled = false
+            } else {
+                binding.switchPuntaje.isEnabled = true
+            }
         }
     }
+
 
     // Configura el DatePicker y el comportamiento del botón de fecha
     private fun configureDatePicker() {

@@ -214,7 +214,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/checkbox_tiempos_de_descanso"
                 app:layout_constraintStart_toEndOf="@id/guideline_mitad_vertical"
                 app:layout_constraintEnd_toStartOf="@id/guideline_vertical2"
-                android:text="@string/cantidad_de_rondas_edit_text"
+                android:text="@string/cantidadDeDescanso"
                 android:visibility="gone"
                 style="@style/TextoNormal"
                 />
@@ -309,21 +309,6 @@
                 android:visibility="gone"
                 />
 
-            <CheckBox
-                android:id="@+id/checkbox_diferencia_dos_rondas"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@+id/number_picker_cantidad_de_rondas_para_ganar"
-                app:layout_constraintStart_toEndOf="@id/guideline_mitad_vertical"
-                android:layout_marginStart="35dp"
-                android:checked="false"
-                android:text="@string/diferencia_de_dos_rondas_text"
-                android:layout_marginTop="30dp"
-                android:textColorHint="@color/DarkestRed"
-                android:visibility="gone"
-                style="@style/TextoNormal"
-                />
-
             <android.widget.Button
                 android:id="@+id/boton_guardar"
                 android:layout_width="150dp"
@@ -333,7 +318,7 @@
                 android:background="@drawable/fondo_para_botones_score_it"
                 android:text="@string/guardar"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/checkbox_diferencia_dos_rondas"
+                app:layout_constraintTop_toBottomOf="@+id/number_picker_cantidad_de_rondas_para_ganar"
                 app:layout_constraintBottom_toBottomOf="parent"
                 style="@style/TextoNormal"
                 />
@@ -347,7 +332,7 @@
                 android:background="@drawable/fondo_para_botones_score_it"
                 android:text="@string/atras_boton"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/checkbox_diferencia_dos_rondas"
+                app:layout_constraintTop_toBottomOf="@+id/number_picker_cantidad_de_rondas_para_ganar"
                 app:layout_constraintBottom_toBottomOf="parent"
                 style="@style/TextoNormal"
                 />

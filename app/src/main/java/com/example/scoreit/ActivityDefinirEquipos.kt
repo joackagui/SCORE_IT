@@ -84,7 +84,6 @@ class ActivityDefinirEquipos : AppCompatActivity() {
                 campeonatoPorResetear.idaYVuelta = false
                 campeonatoPorResetear.siempreUnGanador = true
                 campeonatoPorResetear.diferenciaDosPuntos = false
-                campeonatoPorResetear.difenciaDeDosRondas = false
 
                 dbAccess.campeonatoDao().update(campeonatoPorResetear)
             }
