@@ -36,7 +36,7 @@ xmlns:app="http://schemas.android.com/apk/res-auto">
             />
 
         <TextView
-            android:id="@+id/equipos_del_partido"
+            android:id="@+id/jornada_del_partido"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
@@ -44,7 +44,7 @@ xmlns:app="http://schemas.android.com/apk/res-auto">
             app:layout_constraintStart_toStartOf="parent"
             android:maxLines="1"
             android:layout_marginStart="20dp"
-            android:text="Equipos:"
+            android:text="@string/jornada"
             android:elevation="2dp"
             style="@style/TextoNormal"
             />
@@ -57,7 +57,7 @@ xmlns:app="http://schemas.android.com/apk/res-auto">
             app:layout_constraintBottom_toTopOf="@id/nombre_del_segundo_equipo"
             app:layout_constraintStart_toStartOf="parent"
             android:layout_marginStart="40dp"
-            android:text="a"
+            android:text=""
             android:maxLines="2"
             android:elevation="2dp"
             style="@style/TextoIndicadorDePantalla"
@@ -72,7 +72,7 @@ xmlns:app="http://schemas.android.com/apk/res-auto">
             app:layout_constraintStart_toStartOf="parent"
             android:layout_marginStart="40dp"
             android:layout_marginBottom="3dp"
-            android:text="a"
+            android:text=""
             android:maxLines="2"
             android:elevation="2dp"
             style="@style/TextoIndicadorDePantalla"
@@ -87,7 +87,7 @@ xmlns:app="http://schemas.android.com/apk/res-auto">
             app:layout_constraintEnd_toEndOf="parent"
             android:maxLines="1"
             android:layout_marginEnd="12dp"
-            android:text="Puntos:"
+            android:text="@string/puntos"
             android:elevation="2dp"
             style="@style/TextoNormal"
             />
@@ -101,7 +101,7 @@ xmlns:app="http://schemas.android.com/apk/res-auto">
             app:layout_constraintEnd_toEndOf="parent"
             android:maxLines="1"
             android:layout_marginEnd="40dp"
-            android:text="13"
+            android:text=""
             android:elevation="2dp"
             style="@style/TextoIndicadorDePantalla"
             />
@@ -116,7 +116,7 @@ xmlns:app="http://schemas.android.com/apk/res-auto">
             android:maxLines="1"
             android:layout_marginEnd="40dp"
             android:layout_marginBottom="3dp"
-            android:text="13"
+            android:text=""
             android:elevation="2dp"
             style="@style/TextoIndicadorDePantalla"
             />
@@ -131,7 +131,7 @@ xmlns:app="http://schemas.android.com/apk/res-auto">
             app:layout_constraintEnd_toStartOf="@id/puntaje_del_partido"
             android:maxLines="1"
             android:layout_marginEnd="30dp"
-            android:text="Rondas:"
+            android:text=""
             android:elevation="2dp"
             style="@style/TextoNormal"
             />
@@ -145,7 +145,7 @@ xmlns:app="http://schemas.android.com/apk/res-auto">
             app:layout_constraintEnd_toStartOf="@id/puntaje_del_primer_equipo"
             android:maxLines="1"
             android:layout_marginEnd="75dp"
-            android:text="(0)"
+            android:text=""
             android:elevation="2dp"
             style="@style/TextoIndicadorDePantalla"
             />
@@ -159,7 +159,7 @@ xmlns:app="http://schemas.android.com/apk/res-auto">
             app:layout_constraintEnd_toStartOf="@id/puntaje_del_primer_equipo"
             android:maxLines="1"
             android:layout_marginEnd="75dp"
-            android:text="(0)"
+            android:text=""
             android:elevation="2dp"
             style="@style/TextoIndicadorDePantalla"
             />

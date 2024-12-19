@@ -3,6 +3,7 @@ package com.example.scoreit.componentes
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import androidx.room.ForeignKey
+import java.io.Serializable
 
 @Entity(
     foreignKeys = [ForeignKey(
@@ -16,13 +17,13 @@ import androidx.room.ForeignKey
 data class Partido(
     @PrimaryKey(autoGenerate = true)
     val id: Int = 0,
-    val jornada: Int,
-    val primerEquipoId: String,
-    val segundoEquipoId: String,
-    var puntosPrimerEquipo: String,
-    var puntosSegundoEquipo: String,
-    val porRondas: Boolean,
-    var rondasPrimerEquipo: String,
-    var rondasSegundoEquipo: String,
+    val jornada: String,
+    val primerEquipoJson: String,
+    val segundoEquipoJson: String,
+    var puntosPrimerEquipo: Int = 0,
+    var puntosSegundoEquipo: Int = 0,
+    var porRondas: Boolean,
+    var rondasPrimerEquipo: String = "",
+    var rondasSegundoEquipo: String = "",
     val idCampeonato: Int
-)
+): Serializable

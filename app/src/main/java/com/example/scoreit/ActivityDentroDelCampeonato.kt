@@ -7,7 +7,6 @@ import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.scoreit.ActivityDefinirEquipos.Companion.USER_EMAIL_DE
 import com.example.scoreit.ActivityMenuPrincipal.Companion.USER_EMAIL
 import com.example.scoreit.adapters.RecyclerPartidosCreados.RecyclerPartidosCreados
 import com.example.scoreit.database.AppDataBase
@@ -72,13 +71,19 @@ class ActivityDentroDelCampeonato : AppCompatActivity() {
                 val nombreDelCampeonato = dbAccess.campeonatoDao()
                     .obtenerPorId(campeonatoId).nombreCampeonato
                 binding.nombreDentroDelCampeonato.text = nombreDelCampeonato
+                binding.partidosText.text = "${binding.partidosText.text} ${dbAccess.partidoDao().obtenerPartidosPorId(campeonatoId).size}"
+                binding.fechaText.text = "${binding.fechaText.text} ${dbAccess.campeonatoDao().obtenerPorId(campeonatoId).fechaDeInicio}"
+                binding.modoDeJuegoText.text = "${binding.modoDeJuegoText.text}${dbAccess.campeonatoDao().obtenerPorId(campeonatoId).modoDeJuego}"
+                binding.doblePartidoText.text = "${binding.doblePartidoText.text} ${dbAccess.campeonatoDao().obtenerPorId(campeonatoId).idaYVuelta}"
+                binding.porRondasText.text = "${binding.porRondasText.text} ${dbAccess.campeonatoDao().obtenerPorId(campeonatoId).permisoDeRonda}"
+                binding.siempreUnGanadorText.text = "${binding.siempreUnGanadorText.text} ${dbAccess.campeonatoDao().obtenerPorId(campeonatoId).siempreUnGanador}"
+                binding.tiempoText.text = "${binding.tiempoText.text} ${dbAccess.campeonatoDao().obtenerPorId(campeonatoId).seJuegaPorTiempoMaximo}"
+                binding.puntosText.text = "${binding.puntosText.text} ${dbAccess.campeonatoDao().obtenerPorId(campeonatoId).seJuegaPorPuntosMaximos}"
             }
         }
     }
 
-    private fun setUpRecyclerViewTabla(){
 
-    }
 
     private fun setUpRecyclerViewPartidos() {
         lifecycleScope.launch {

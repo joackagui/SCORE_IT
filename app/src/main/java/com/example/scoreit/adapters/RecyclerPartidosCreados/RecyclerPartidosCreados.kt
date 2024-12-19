@@ -7,7 +7,10 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.scoreit.componentes.Partido
 import com.example.scoreit.database.AppDataBase
+import com.example.scoreit.database.AppDataBase.Companion.getDatabase
 import com.example.scoreit.databinding.EnmarcadoPartidoBinding
+import androidx.lifecycle.lifecycleScope
+import com.example.scoreit.database.Converters
 
 class RecyclerPartidosCreados:
     RecyclerView.Adapter<RecyclerPartidosCreados.PartidoViewHolder>() {
@@ -31,17 +34,20 @@ class RecyclerPartidosCreados:
     inner class PartidoViewHolder(private val binding: EnmarcadoPartidoBinding): RecyclerView.ViewHolder(binding.root) {
         fun binding(partido: Partido) {
 
-            val primerEquipoID = partido.primerEquipoId
-            val segundoEquipoID = partido.segundoEquipoId
+            val primerEquipo = Converters().toEquipo(partido.primerEquipoJson)
+            val segundoEquipo = Converters().toEquipo(partido.segundoEquipoJson)
+            val primerEquipoNombre = primerEquipo.nombre
+            val segundoEquipoNombre = segundoEquipo.nombre
 
-            binding.nombreDelPrimerEquipo.text = primerEquipoID
-            binding.nombreDelSegundoEquipo.text = segundoEquipoID
-            binding.puntajeDelPrimerEquipo.text = partido.puntosPrimerEquipo
-            binding.puntajeDelSegundoEquipo.text = partido.puntosSegundoEquipo
+            binding.jornadaDelPartido.text = "${binding.jornadaDelPartido.text} ${partido.jornada}"
+            binding.nombreDelPrimerEquipo.text = primerEquipoNombre
+            binding.nombreDelSegundoEquipo.text = segundoEquipoNombre
+            binding.puntajeDelPrimerEquipo.text = partido.puntosPrimerEquipo.toString()
+            binding.puntajeDelSegundoEquipo.text = partido.puntosSegundoEquipo.toString()
 
             if(partido.porRondas){
-                binding.rondasDelPrimerEquipo.text = "(${partido.rondasPrimerEquipo.toString()})"
-                binding.rondasDelSegundoEquipo.text = "(${partido.rondasSegundoEquipo.toString()})"
+                binding.rondasDelPrimerEquipo.text = "(${partido.rondasPrimerEquipo})"
+                binding.rondasDelSegundoEquipo.text = "(${partido.rondasSegundoEquipo})"
                 binding.group.visibility = View.VISIBLE
             } else {
                 binding.group.visibility = View.INVISIBLE
