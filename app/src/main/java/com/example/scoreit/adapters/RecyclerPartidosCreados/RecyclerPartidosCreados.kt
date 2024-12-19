@@ -15,7 +15,6 @@ import com.example.scoreit.database.Converters
 class RecyclerPartidosCreados:
     RecyclerView.Adapter<RecyclerPartidosCreados.PartidoViewHolder>() {
 
-    private lateinit var dbAccess: AppDataBase
     private val listaDatos = mutableListOf<Partido>()
     private var context: Context? = null
 

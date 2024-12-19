@@ -60,6 +60,11 @@
     <string name="siempre_ganador">Siempre ganador:</string>
     <string name="fecha">Fecha:</string>
     <string name="modo_de_juego">Modo:</string>
+    <string name="equipo">Equipo</string>
+    <string name="pts">Pts</string>
+    <string name="pts_int">Pts Int</string>
+    <string name="pj">PJ</string>
+    <string name="pg">PG</string>
 
     <string-array name="opciones_para_modo_de_juego">
         <item>Round Robin</item>

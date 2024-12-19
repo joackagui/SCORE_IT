@@ -111,8 +111,7 @@
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="@id/guideline_margen_izquierda"
         app:layout_constraintEnd_toEndOf="@id/guideline_margen_derecha"
-        app:layout_constraintTop_toBottomOf="@id/siempre_un_ganador_text"
-        android:layout_marginTop="20dp"
+        app:layout_constraintTop_toBottomOf="@id/nombre_equipo_tabla"
         />
 
     <TextView
@@ -151,19 +150,113 @@
         style="@style/TextoNormal"
         />
 
+    <TextView
+        android:id="@+id/nombre_equipo_tabla"
+        android:layout_width="0dp"
+        android:layout_height="35dp"
+        android:text="@string/equipo"
+        android:background="@color/CommonRed"
+        app:layout_constraintStart_toStartOf="@id/guideline_margen_izquierda"
+        app:layout_constraintEnd_toEndOf="@id/guideline_margen_derecha_4"
+        app:layout_constraintTop_toBottomOf="@id/siempre_un_ganador_text"
+        android:layout_marginTop="20dp"
+        style="@style/TextoTabla"
+        />
+
+    <TextView
+        android:id="@+id/puntos_finales_tabla"
+        android:layout_width="0dp"
+        android:layout_height="35dp"
+        android:text="@string/pts"
+        android:background="@color/CommonRed"
+        app:layout_constraintTop_toBottomOf="@id/siempre_un_ganador_text"
+        app:layout_constraintStart_toEndOf="@+id/nombre_equipo_tabla"
+        app:layout_constraintEnd_toStartOf="@id/guideline_margen_derecha_3"
+        android:layout_marginTop="20dp"
+        style="@style/TextoTabla"
+        />
+
+    <TextView
+        android:id="@+id/puntos_in_game_tabla"
+        android:layout_width="0dp"
+        android:layout_height="35dp"
+        android:text="@string/pts_int"
+        android:background="@color/CommonRed"
+        app:layout_constraintTop_toBottomOf="@id/siempre_un_ganador_text"
+        app:layout_constraintStart_toEndOf="@+id/puntos_finales_tabla"
+        app:layout_constraintEnd_toStartOf="@id/guideline_margen_derecha_2"
+        android:layout_marginTop="20dp"
+        style="@style/TextoTabla"
+        />
+
+    <TextView
+        android:id="@+id/partidos_jugados_tabla"
+        android:layout_width="0dp"
+        android:layout_height="35dp"
+        android:text="@string/pj"
+        android:background="@color/CommonRed"
+        app:layout_constraintTop_toBottomOf="@id/siempre_un_ganador_text"
+        app:layout_constraintStart_toEndOf="@+id/puntos_in_game_tabla"
+        app:layout_constraintEnd_toStartOf="@id/guideline_margen_derecha_1"
+        android:layout_marginTop="20dp"
+        style="@style/TextoTabla"
+        />
+
+    <TextView
+        android:id="@+id/partidos_ganados_tabla"
+        android:layout_width="0dp"
+        android:layout_height="35dp"
+        android:text="@string/pg"
+        android:background="@color/CommonRed"
+        app:layout_constraintTop_toBottomOf="@id/siempre_un_ganador_text"
+        app:layout_constraintStart_toEndOf="@+id/partidos_jugados_tabla"
+        app:layout_constraintEnd_toStartOf="@id/guideline_margen_derecha"
+        android:layout_marginTop="20dp"
+        style="@style/TextoTabla"
+        />
+
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline_margen_izquierda"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.05" />
+        app:layout_constraintGuide_percent="0.03"/>
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline_margen_derecha"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.95" />
+        app:layout_constraintGuide_percent="0.97"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_margen_derecha_1"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.83"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_margen_derecha_2"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.69"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_margen_derecha_3"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.55"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_margen_derecha_4"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.41"/>
+
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline_mitad_horizontal"

@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.scoreit.ActivityDentroDelCampeonato
 import com.example.scoreit.ActivityDentroDelCampeonato.Companion.ID_CAMPEONATO_DC
-import com.example.scoreit.ActivityMenuPrincipal.Companion.USER_EMAIL
 import com.example.scoreit.componentes.Campeonato
 import com.example.scoreit.databinding.EnmarcadoCampeonatoBinding
 
