@@ -5,8 +5,8 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
-import com.example.scoreit.ActivityMenuPrincipal.Companion.USER_NAME
 import com.example.scoreit.ActivityMenuPrincipal.Companion.USER_EMAIL
+import com.example.scoreit.componentes.Campeonato
 import com.example.scoreit.database.AppDataBase
 import com.example.scoreit.database.AppDataBase.Companion.getDatabase
 import com.example.scoreit.databinding.ActivityLogInBinding
@@ -15,10 +15,7 @@ import kotlinx.coroutines.launch
 class ActivityLogIn : AppCompatActivity() {
 
     private lateinit var binding: ActivityLogInBinding
-
     private lateinit var dbAccess: AppDataBase
-
-    //private lateinit var auth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -65,29 +62,66 @@ class ActivityLogIn : AppCompatActivity() {
                 mensaje(4)
             } else {
                 mensaje(5)
-                cambioAMenuPrincipal(usuario.nombreUsuario)
+                cambioAMenuPrincipal()
             }
         }
     }
 
-    private fun cambioAMenuPrincipal(userName: String) {
+    private fun cambioAMenuPrincipal() {
         val intentMenuPrincipal = Intent(this, ActivityMenuPrincipal::class.java)
         intentMenuPrincipal.putExtra(USER_EMAIL, binding.emailLogIn.text.toString())
-        intentMenuPrincipal.putExtra(USER_NAME, userName)
+        insertarCampeonatos()
         startActivity(intentMenuPrincipal)
     }
 
+    private fun insertarCampeonatos(){
+        val listaCampeonatos: MutableList <Campeonato> = mutableListOf()
+        lifecycleScope.launch {
+            val cantidadDeCampeonatos = dbAccess.campeonatoDao().obtenerTodosLosCampeonatos().size
+            if(cantidadDeCampeonatos == 0){
+                for (i in 1..10){
+                    val nuevoCampeonato = Campeonato(
+                        nombreCampeonato = "Campeonato $i",
+                        fechaDeInicio = "--:--:--",
+                        seJuegaPorPuntosMaximos = false,
+                        puntosParaGanar = 100,
+                        seJuegaPorTiempoMaximo = false,
+                        tiempoDeJuego = 45,
+                        modoDeJuego = "Round Robin",
+                        permisoDeDescanso = false,
+                        tiempoDeDescanso = 1,
+                        cantidadDeDescansos = 2,
+                        permisoDeRonda = false,
+                        cantidadDeRondas = 2,
+                        idaYVuelta = false,
+                        siempreUnGanador = true,
+                        diferenciaDosPuntos = false,
+                        difenciaDeDosRondas = false
+                    )
+                    listaCampeonatos.add(nuevoCampeonato)
+                }
+                dbAccess.campeonatoDao().insertarVariosCampeonatos(listaCampeonatos)
+            }
+        }
+    }
+
     private fun mensaje(numero: Int){
-        if(numero == 1){
-            Toast.makeText(this, "Debes llenar todos los campos", Toast.LENGTH_LONG).show()
-        } else if(numero == 2){
-            Toast.makeText(this, "Contraseña muy corta", Toast.LENGTH_LONG).show()
-        } else if(numero == 3){
-            Toast.makeText(this, "Usuario no existente", Toast.LENGTH_LONG).show()
-        } else if(numero == 4){
-            Toast.makeText(this, "Email o Contraseña incorrectos", Toast.LENGTH_LONG).show()
-        } else if(numero == 5){
-            Toast.makeText(this, "Ingreso exitoso", Toast.LENGTH_LONG).show()
+        when (numero) {
+            1 -> {
+                Toast.makeText(this, "Debes llenar todos los campos", Toast.LENGTH_LONG).show()
+            }
+            2 -> {
+                Toast.makeText(this, "Contraseña muy corta", Toast.LENGTH_LONG).show()
+            }
+            3 -> {
+                Toast.makeText(this, "Usuario no existente", Toast.LENGTH_LONG).show()
+            }
+            4 -> {
+                Toast.makeText(this, "Email o Contraseña incorrectos", Toast.LENGTH_LONG).show()
+            }
+            5 -> {
+                Toast.makeText(this, "Ingreso exitoso", Toast.LENGTH_LONG).show()
+            }
         }
     }
 }

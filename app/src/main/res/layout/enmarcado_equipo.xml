@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:orientation="vertical"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
@@ -24,12 +24,14 @@
         app:layout_constraintStart_toStartOf="parent">
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/boton_entrar_al_equipo"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/CommonRed">
 
+
         <TextView
-            android:id="@+id/un_equipo_del_campeonato"
+            android:id="@+id/nombre_equipo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
@@ -45,7 +47,6 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-
     </androidx.cardview.widget.CardView>
 
     <View
@@ -57,3 +58,4 @@
         />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+
