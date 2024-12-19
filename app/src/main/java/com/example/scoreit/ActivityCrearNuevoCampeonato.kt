@@ -66,64 +66,64 @@ class ActivityCrearNuevoCampeonato : AppCompatActivity() {
     }
 
     private fun guardarYContinuar() {
-            binding.botonGuardar.setOnClickListener {
-                lifecycleScope.launch {
-                val nombreCampeonato = binding.nombreDelCampeonato.text.toString()
-                val fechaDeInicio = binding.fechaDelCampeonato.text.toString()
-                val seJuegaPorPuntosMaximos = binding.switchPuntaje.text.toString().toBoolean()
-                var puntosParaGanar = 0
-                val seJuegaPorTiempoMaximo = binding.switchTiempoDeJuego.text.toString().toBoolean()
-                var tiempoDeJuego = 0
-                val modoDeJuego = binding.spinnerModoJuego.toString()
-                val permisoDeDescanso = binding.checkboxTiemposDeDescanso.text.toString().toBoolean()
-                var tiempoDeDescanso = 0
-                var cantidadDeDescansos = 0
-                val permisoDeRonda = binding.checkboxRondas.text.toString().toBoolean()
-                var cantidadDeRondas = 0
-                val idaYVuelta = binding.checkboxIdaYVuelta.text.toString().toBoolean()
-                val siempreUnGanador = binding.checkboxSiempreUnGanador.text.toString().toBoolean()
-                val diferenciaDosPuntos = binding.checkboxDiferenciaDosPuntos.text.toString().toBoolean()
-                val diferenciaDosRondas = binding.checkboxDiferenciaDosRondas.text.toString().toBoolean()
+        binding.botonGuardar.setOnClickListener {
+            lifecycleScope.launch {
+            val nombreCampeonato = binding.nombreDelCampeonato.text.toString()
+            val fechaDeInicio = binding.fechaDelCampeonato.text.toString()
+            val seJuegaPorPuntosMaximos = binding.switchPuntaje.text.toString().toBoolean()
+            var puntosParaGanar = 0
+            val seJuegaPorTiempoMaximo = binding.switchTiempoDeJuego.text.toString().toBoolean()
+            var tiempoDeJuego = 0
+            val modoDeJuego = binding.spinnerModoJuego.selectedItem.toString()
+            val permisoDeDescanso = binding.checkboxTiemposDeDescanso.text.toString().toBoolean()
+            var tiempoDeDescanso = 0
+            var cantidadDeDescansos = 0
+            val permisoDeRonda = binding.checkboxRondas.text.toString().toBoolean()
+            var cantidadDeRondas = 0
+            val idaYVuelta = binding.checkboxIdaYVuelta.text.toString().toBoolean()
+            val siempreUnGanador = binding.checkboxSiempreUnGanador.text.toString().toBoolean()
+            val diferenciaDosPuntos = binding.checkboxDiferenciaDosPuntos.text.toString().toBoolean()
+            val diferenciaDosRondas = binding.checkboxDiferenciaDosRondas.text.toString().toBoolean()
 
-                if (binding.puntajeEditText.isEnabled) {
-                    puntosParaGanar = binding.puntajeEditText.text.toString().toInt()
-                }
+            if (binding.puntajeEditText.isEnabled) {
+                puntosParaGanar = binding.puntajeEditText.text.toString().toInt()
+            }
 
-                if (binding.tiempoDeJuegoEditText.isEnabled) {
-                    tiempoDeJuego = binding.tiempoDeJuegoEditText.text.toString().toInt()
-                }
+            if (binding.tiempoDeJuegoEditText.isEnabled) {
+                tiempoDeJuego = binding.tiempoDeJuegoEditText.text.toString().toInt()
+            }
 
-                if (binding.numberPickerMinutosDeDescanso.isEnabled) {
-                    tiempoDeDescanso = binding.numberPickerMinutosDeDescanso.value
-                }
+            if (binding.numberPickerMinutosDeDescanso.isEnabled) {
+                tiempoDeDescanso = binding.numberPickerMinutosDeDescanso.value
+            }
 
-                if (binding.numberPickerCantidadDeDescansos.isEnabled) {
-                    cantidadDeDescansos = binding.numberPickerCantidadDeDescansos.value
-                }
+            if (binding.numberPickerCantidadDeDescansos.isEnabled) {
+                cantidadDeDescansos = binding.numberPickerCantidadDeDescansos.value
+            }
 
-                if (binding.numberPickerCantidadDeRondasParaGanar.isEnabled) {
-                    cantidadDeRondas = binding.numberPickerCantidadDeRondasParaGanar.value
-                }
+            if (binding.numberPickerCantidadDeRondasParaGanar.isEnabled) {
+                cantidadDeRondas = binding.numberPickerCantidadDeRondasParaGanar.value
+            }
 
-                val nuevoCampeonato = Campeonato(
-                        seleccionado = true,
-                        nombreCampeonato = nombreCampeonato,
-                        fechaDeInicio = fechaDeInicio,
-                        seJuegaPorPuntosMaximos = seJuegaPorPuntosMaximos,
-                        puntosParaGanar = puntosParaGanar,
-                        seJuegaPorTiempoMaximo = seJuegaPorTiempoMaximo,
-                        tiempoDeJuego = tiempoDeJuego,
-                        modoDeJuego = modoDeJuego,
-                        permisoDeDescanso = permisoDeDescanso,
-                        tiempoDeDescanso = tiempoDeDescanso,
-                        cantidadDeDescansos = cantidadDeDescansos,
-                        permisoDeRonda = permisoDeRonda,
-                        cantidadDeRondas = cantidadDeRondas,
-                        idaYVuelta = idaYVuelta,
-                        siempreUnGanador = siempreUnGanador,
-                        diferenciaDosPuntos = diferenciaDosPuntos,
-                        difenciaDeDosRondas = diferenciaDosRondas
-                    )
+            val nuevoCampeonato = Campeonato(
+                seleccionado = true,
+                nombreCampeonato = nombreCampeonato,
+                fechaDeInicio = fechaDeInicio,
+                seJuegaPorPuntosMaximos = seJuegaPorPuntosMaximos,
+                puntosParaGanar = puntosParaGanar,
+                seJuegaPorTiempoMaximo = seJuegaPorTiempoMaximo,
+                tiempoDeJuego = tiempoDeJuego,
+                modoDeJuego = modoDeJuego,
+                permisoDeDescanso = permisoDeDescanso,
+                tiempoDeDescanso = tiempoDeDescanso,
+                cantidadDeDescansos = cantidadDeDescansos,
+                permisoDeRonda = permisoDeRonda,
+                cantidadDeRondas = cantidadDeRondas,
+                idaYVuelta = idaYVuelta,
+                siempreUnGanador = siempreUnGanador,
+                diferenciaDosPuntos = diferenciaDosPuntos,
+                difenciaDeDosRondas = diferenciaDosRondas
+                )
 
                 val idCampeonato = buscarCampeonatoLibre(nuevoCampeonato)
                 if(idCampeonato != -1){

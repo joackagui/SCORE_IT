@@ -59,7 +59,7 @@
         app:layout_constraintStart_toStartOf="@id/primer_equipo"
         android:layout_marginTop="10dp"
         android:layout_marginStart="10dp"
-        android:text="Equipo 1"
+        android:text=""
         style="@style/TextoIndicadorDePantalla"
         />
 
@@ -71,7 +71,7 @@
         app:layout_constraintEnd_toEndOf="@id/segundo_equipo"
         android:layout_marginTop="10dp"
         android:layout_marginStart="10dp"
-        android:text="Equipo 2"
+        android:text=""
         style="@style/TextoIndicadorDePantalla"
         />
 
@@ -83,7 +83,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:text="00:00"
+        android:text="@string/timer"
         style="@style/TextoIndicadorDeTiempo"/>
 
     <com.google.android.material.button.MaterialButton
@@ -114,7 +114,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/CommonRed"
-        android:text="Descanso"
+        android:text="@string/descanso"
         android:layout_margin="10dp"
         app:layout_constraintTop_toBottomOf="@id/segundo_equipo"
         app:layout_constraintStart_toStartOf="@id/guideline_margen_izquierda"
@@ -127,7 +127,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/White"
-        android:text="Descanso"
+        android:text="@string/descanso"
         android:layout_margin="10dp"
         app:layout_constraintBottom_toTopOf="@id/primer_equipo"
         app:layout_constraintStart_toStartOf="@id/guideline_mitad_horizontal"
@@ -141,7 +141,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/CommonRed"
-        android:text="Finalizar"
+        android:text="@string/finalizar"
         android:layout_margin="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@id/guideline_margen_derecha"
@@ -153,7 +153,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/CommonRed"
-        android:text="Suspender"
+        android:text="@string/suspender"
         android:layout_margin="10dp"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="@id/guideline_margen_izquierda"

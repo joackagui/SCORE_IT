@@ -15,8 +15,8 @@ interface PartidoDao {
     @Query("SELECT * FROM Partido WHERE id =:id")
     suspend fun obtenerPorId(id: String): Partido
 
-    @Query("SELECT * FROM Partido WHERE id =:id")
-    suspend fun obtenerPartidosPorId(id: String): MutableList<Partido>
+    @Query("SELECT * FROM Partido WHERE idCampeonato =:idCampeonato")
+    suspend fun obtenerPartidosPorId(idCampeonato: String): MutableList<Partido>
 
     @Query("""
         SELECT c.cantidadDeDescansos
@@ -25,6 +25,14 @@ interface PartidoDao {
         WHERE p.id = :idPartido
     """)
     suspend fun obtenerCantidadDescansos(idPartido: String): Int
+
+    @Query("""
+        SELECT c.idaYVuelta
+        FROM Partido p
+        INNER JOIN Campeonato c ON p.idCampeonato = c.id
+        WHERE p.id = :idPartido
+    """)
+    suspend fun obtenerSiIdeaYVuelta(idPartido: String): Boolean
 
     @Query("""
         SELECT c.permisoDeRonda

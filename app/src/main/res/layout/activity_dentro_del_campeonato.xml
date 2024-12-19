@@ -20,15 +20,87 @@
         />
 
     <TextView
-        android:id="@+id/tabla_text"
-        android:layout_width="match_parent"
+        android:id="@+id/modo_de_juego_text"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/tabla_de_posiciones"
+        android:text="@string/modo_de_juego"
         app:layout_constraintTop_toBottomOf="@id/nombre_dentro_del_campeonato"
         app:layout_constraintStart_toStartOf="parent"
-        android:layout_margin="20dp"
+        android:layout_margin="10dp"
         android:maxLines="2"
-        style="@style/TextoNormal"
+        style="@style/TextoPequeno"
+        />
+
+    <TextView
+        android:id="@+id/doble_partido_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/doble_partido"
+        app:layout_constraintTop_toBottomOf="@id/modo_de_juego_text"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_margin="10dp"
+        android:maxLines="2"
+        style="@style/TextoPequeno"
+        />
+
+    <TextView
+        android:id="@+id/por_rondas_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/por_rondas"
+        app:layout_constraintTop_toBottomOf="@id/doble_partido_text"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_margin="10dp"
+        android:maxLines="2"
+        style="@style/TextoPequeno"
+        />
+
+    <TextView
+        android:id="@+id/siempre_un_ganador_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/siempre_ganador"
+        app:layout_constraintTop_toBottomOf="@id/por_rondas_text"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_margin="10dp"
+        android:maxLines="2"
+        style="@style/TextoPequeno"
+        />
+
+    <TextView
+        android:id="@+id/tiempo_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/tiempo"
+        app:layout_constraintTop_toBottomOf="@id/nombre_dentro_del_campeonato"
+        app:layout_constraintStart_toStartOf="@id/guideline_mitad_horizontal"
+        android:layout_margin="10dp"
+        android:maxLines="2"
+        style="@style/TextoPequeno"
+        />
+
+    <TextView
+        android:id="@+id/puntos_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/puntos"
+        app:layout_constraintTop_toBottomOf="@id/tiempo_text"
+        app:layout_constraintStart_toStartOf="@id/guideline_mitad_horizontal"
+        android:layout_margin="10dp"
+        android:maxLines="2"
+        style="@style/TextoPequeno"
+        />
+
+    <TextView
+        android:id="@+id/fecha_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/fecha"
+        app:layout_constraintTop_toBottomOf="@id/puntos_text"
+        app:layout_constraintStart_toStartOf="@id/guideline_mitad_horizontal"
+        android:layout_margin="10dp"
+        android:maxLines="2"
+        style="@style/TextoPequeno"
         />
 
     <androidx.recyclerview.widget.RecyclerView
@@ -37,7 +109,7 @@
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="@id/guideline_margen_izquierda"
         app:layout_constraintEnd_toEndOf="@id/guideline_margen_derecha"
-        app:layout_constraintTop_toBottomOf="@id/tabla_text"
+        app:layout_constraintTop_toBottomOf="@id/siempre_un_ganador_text"
         android:layout_marginTop="20dp"
         />
 
@@ -90,5 +162,12 @@
         android:layout_height="0dp"
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.95" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_mitad_horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintGuide_percent="0.5"
+        android:orientation="vertical"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

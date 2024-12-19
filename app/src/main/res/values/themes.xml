@@ -41,6 +41,10 @@
         <item name="android:textSize">20sp</item>
     </style>
 
+    <style name="TextoPequeno" parent="TextoGenerico">
+        <item name="android:textSize">15sp</item>
+    </style>
+
     <style name="TextoSpinner" parent="TextoGenerico">
         <item name="android:textSize">20sp</item>
         <item name="android:background">@color/DarkestGray</item>
@@ -104,5 +108,6 @@
         <item name="android:textColorSecondary">@color/DarkestRed</item>
         <item name="colorAccent">@color/DarkestRed</item>
     </style>
+
 
 </resources>

@@ -3,9 +3,11 @@ package com.example.scoreit.componentes
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import androidx.room.ForeignKey
+import java.io.Serializable
 
 @Entity(
-    foreignKeys = [ForeignKey(entity = Campeonato::class,
+    foreignKeys = [ForeignKey(
+        entity = Campeonato::class,
         parentColumns = ["id"],
         childColumns = ["idCampeonato"],
         onDelete = ForeignKey.CASCADE)
@@ -23,4 +25,4 @@ data class Equipo(
     var rondasEnContra: Int = 0,
     val partidosJugados: Int = 0,
     val idCampeonato: Int
-    )
+): Serializable
