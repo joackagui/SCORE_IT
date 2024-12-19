@@ -13,18 +13,18 @@ interface PartidoDao {
     suspend fun obtenerTodosLosPartidos(): List<Partido>
 
     @Query("SELECT * FROM Partido WHERE id =:id")
-    fun obtenerPorId(id: String): Partido
+    suspend fun obtenerPorId(id: String): Partido
 
     @Query("SELECT * FROM Partido WHERE id =:id")
-    fun obtenerPartidosPorId(id: String): MutableList<Partido>
+    suspend fun obtenerPartidosPorId(id: String): MutableList<Partido>
 
     @Query("""
-        SELECT c.diferenciaDosPuntos
+        SELECT c.cantidadDeDescansos
         FROM Partido p
         INNER JOIN Campeonato c ON p.idCampeonato = c.id
         WHERE p.id = :idPartido
     """)
-    fun obtenerCantidadDescansos(idPartido: String): Boolean
+    suspend fun obtenerCantidadDescansos(idPartido: String): Int
 
     @Query("""
         SELECT c.permisoDeRonda
@@ -32,7 +32,7 @@ interface PartidoDao {
         INNER JOIN Campeonato c ON p.idCampeonato = c.id
         WHERE p.id = :idPartido
     """)
-    fun obtenerSiHayRondas(idPartido: String): Boolean
+    suspend fun obtenerSiHayRondas(idPartido: String): Boolean
 
     @Query("""
         SELECT c.diferenciaDosPuntos
@@ -40,7 +40,7 @@ interface PartidoDao {
         INNER JOIN Campeonato c ON p.idCampeonato = c.id
         WHERE p.id = :idPartido
     """)
-    fun obtenerSiHayDiferenciaDeDosPuntos(idPartido: String): Boolean
+    suspend fun obtenerSiHayDiferenciaDeDosPuntos(idPartido: String): Boolean
 
     @Query("""
         SELECT c.seJuegaPorPuntosMaximos
@@ -48,7 +48,7 @@ interface PartidoDao {
         INNER JOIN Campeonato c ON p.idCampeonato = c.id
         WHERE p.id = :idPartido
     """)
-    fun obtenerSiPartidoPorPuntos(idPartido: String): Boolean
+    suspend fun obtenerSiPartidoPorPuntos(idPartido: String): Boolean
 
     @Query("""
         SELECT c.seJuegaPorTiempoMaximo
@@ -56,7 +56,15 @@ interface PartidoDao {
         INNER JOIN Campeonato c ON p.idCampeonato = c.id
         WHERE p.id = :idPartido
     """)
-    fun obtenerSiPartidoPorTiempo(idPartido: String): Boolean
+    suspend fun obtenerSiPartidoPorTiempo(idPartido: String): Boolean
+
+    @Query("""
+        SELECT c.tiempoDeJuego
+        FROM Partido p
+        INNER JOIN Campeonato c ON p.idCampeonato = c.id
+        WHERE p.id = :idPartido
+    """)
+    suspend fun obtenerTiempoDelPartido(idPartido: String): Int
 
     @Query("""
         SELECT c.puntosParaGanar
@@ -64,7 +72,7 @@ interface PartidoDao {
         INNER JOIN Campeonato c ON p.idCampeonato = c.id
         WHERE p.id = :idPartido
     """)
-    fun obtenerPuntosParaGanar(idPartido: String): Int
+    suspend fun obtenerPuntosParaGanar(idPartido: String): Int
 
     @Query("""
         SELECT c.siempreUnGanador
@@ -72,14 +80,14 @@ interface PartidoDao {
         INNER JOIN Campeonato c ON p.idCampeonato = c.id
         WHERE p.id = :idPartido
     """)
-    fun obtenerSiempreUnGanador(idPartido: String): Boolean
+    suspend fun obtenerSiempreUnGanador(idPartido: String): Boolean
 
     @Update
-    fun update(partido: Partido)
+    suspend fun update(partido: Partido)
 
     @Insert
-    fun insert(partido: Partido)
+    suspend fun insert(partido: Partido)
 
     @Insert
-    fun insertarPartidos(partido: MutableList<Partido>)
+    suspend fun insertarPartidos(partido: MutableList<Partido>)
 }

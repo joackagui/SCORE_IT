@@ -1,36 +1,29 @@
 package com.example.scoreit
 
+import android.content.Intent
 import android.os.Bundle
-import android.widget.TextView
-import androidx.activity.enableEdgeToEdge
+import android.widget.Button
+import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.scoreit.ActivityDefinirEquipos.Companion.USER_EMAIL_DE
 import com.example.scoreit.ActivityMenuPrincipal.Companion.USER_EMAIL
-import com.example.scoreit.adapters.RecyclerCampeonatosCreados.RecyclerCampeonatosCreados
 import com.example.scoreit.adapters.RecyclerPartidosCreados.RecyclerPartidosCreados
-import com.example.scoreit.componentes.Usuario
 import com.example.scoreit.database.AppDataBase
 import com.example.scoreit.database.AppDataBase.Companion.getDatabase
 import com.example.scoreit.databinding.ActivityDentroDelCampeonatoBinding
-import com.example.scoreit.databinding.ActivityLogInBinding
 import kotlinx.coroutines.launch
 
-//import com.google.firebase.auth.FirebaseAuth
-//import com.google.firebase.auth.ktx.auth
-//import com.google.firebase.ktx.Firebase
-
 class ActivityDentroDelCampeonato : AppCompatActivity() {
-    private lateinit var binding: ActivityDentroDelCampeonatoBinding
 
     private val recyclerPartidosCreados: RecyclerPartidosCreados by lazy { RecyclerPartidosCreados() }
-
+    private lateinit var binding: ActivityDentroDelCampeonatoBinding
     private lateinit var dbAccess: AppDataBase
 
     companion object{
-        val ID_CAMPEONATO = "CAMPEONATO"
+        const val ID_CAMPEONATO_DC = "CAMPEONATO"
+        const val USER_EMAIL_DC = "USER_EMAIL"
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -40,28 +33,56 @@ class ActivityDentroDelCampeonato : AppCompatActivity() {
         setContentView(view)
 
         dbAccess = getDatabase(this)
-        lifecycleScope.launch {
-            setUpNombreDelCampeonato()
-            setUpRecyclerView()
+
+        configurarEncabezado()
+        setUpNombreDelCampeonato()
+        setUpRecyclerViewPartidos()
+        volverMenuPrincipal()
+
+    }
+
+    private fun AppCompatActivity.configurarEncabezado() {
+        val botonUsuario = findViewById<Button>(R.id.boton_de_usuario)
+        val copaScoreIt = findViewById<ImageView>(R.id.copa_score_it)
+
+        botonUsuario.setOnClickListener {
+            val intent = Intent(this, ActivityLogIn::class.java)
+            startActivity(intent)
         }
 
+        copaScoreIt.setOnClickListener {
+            val activityVolverMenuPrincipal = Intent(this, ActivityMenuPrincipal::class.java)
+            activityVolverMenuPrincipal.putExtra(USER_EMAIL, intent.getStringExtra(USER_EMAIL_DC))
+            startActivity(activityVolverMenuPrincipal)
+        }
+    }
 
-
-
+    private fun volverMenuPrincipal(){
+        binding.botonAtras.setOnClickListener{
+            val activityVolverMenuPrincipal = Intent(this, ActivityMenuPrincipal::class.java)
+            activityVolverMenuPrincipal.putExtra(USER_EMAIL, intent.getStringExtra(USER_EMAIL_DC))
+            startActivity(activityVolverMenuPrincipal)
+        }
     }
 
     private fun setUpNombreDelCampeonato() {
         lifecycleScope.launch {
-            val idDelCampeonato = intent.getStringExtra(ID_CAMPEONATO)
-            val nombreDelCampeonato = dbAccess.campeonatoDao()
-                .obtenerPorId(idDelCampeonato.toString()).nombreCampeonato
-            binding.nombreDentroDelCampeonato.text = nombreDelCampeonato
+            val campeonatoId = intent.getStringExtra(ID_CAMPEONATO_DC)
+            if(campeonatoId != null){
+                val nombreDelCampeonato = dbAccess.campeonatoDao()
+                    .obtenerPorId(campeonatoId).nombreCampeonato
+                binding.nombreDentroDelCampeonato.text = nombreDelCampeonato
+            }
         }
     }
 
-    fun setUpRecyclerView() {
+    private fun setUpRecyclerViewTabla(){
+
+    }
+
+    private fun setUpRecyclerViewPartidos() {
         lifecycleScope.launch {
-            val campeonatoId = intent.getStringExtra(ID_CAMPEONATO).toString()
+            val campeonatoId = intent.getStringExtra(ID_CAMPEONATO_DC).toString()
             val listaDePartidosCreados = dbAccess.partidoDao().obtenerPartidosPorId(campeonatoId)
             recyclerPartidosCreados.addDataToList(listaDePartidosCreados)
 
@@ -70,9 +91,5 @@ class ActivityDentroDelCampeonato : AppCompatActivity() {
                 adapter = recyclerPartidosCreados
             }
         }
-
-
-
     }
-
 }

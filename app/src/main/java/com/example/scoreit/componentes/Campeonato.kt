@@ -2,37 +2,27 @@ package com.example.scoreit.componentes
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import androidx.room.ForeignKey
-import java.io.Serializable
 
-@Entity(
-    foreignKeys = [ForeignKey(
-        entity = Usuario::class,
-        parentColumns = ["id"],
-        childColumns = ["idUsuario"],
-        onDelete = ForeignKey.CASCADE)
-    ]
-)
-
+@Entity
 data class Campeonato(
     @PrimaryKey(autoGenerate = true)
-    val id: Int = 0,
-    val logo: String? = null,
-    val nombreCampeonato: String,
-    val fechaDeInicio: String,
-    val seJuegaPorPuntosMaximos: Boolean,
-    val puntosParaGanar: Int?,
-    val seJuegaPorTiempoMaximo: Boolean,
-    val tiempoDeJuego: Int?,
-    val modoDeJuego: String,
-    val permisoDeDescanso: Boolean,
-    val tiempoDeDescanso: Int?,
-    val cantidadDeDescansos: Int?,
-    val permisoDeRonda: Boolean,
-    val cantidadDeRondas: Int?,
-    val idaYVuelta: Boolean,
-    val siempreUnGanador: Boolean,
-    val diferenciaDosPuntos: Boolean,
-    val difenciaDeDosRondas: Boolean,
-    val idUsuario: Int
-): Serializable
+    var id: Int = 0,
+    var logo: String? = null,
+    var seleccionado: Boolean = false,
+    var nombreCampeonato: String,
+    var fechaDeInicio: String,
+    var seJuegaPorPuntosMaximos: Boolean,
+    var puntosParaGanar: Int?,
+    var seJuegaPorTiempoMaximo: Boolean,
+    var tiempoDeJuego: Int?,
+    var modoDeJuego: String,
+    var permisoDeDescanso: Boolean,
+    var tiempoDeDescanso: Int?,
+    var cantidadDeDescansos: Int?,
+    var permisoDeRonda: Boolean,
+    var cantidadDeRondas: Int?,
+    var idaYVuelta: Boolean,
+    var siempreUnGanador: Boolean,
+    var diferenciaDosPuntos: Boolean,
+    var difenciaDeDosRondas: Boolean
+)

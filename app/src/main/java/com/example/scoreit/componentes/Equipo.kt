@@ -15,7 +15,9 @@ import androidx.room.ForeignKey
 data class Equipo(
     @PrimaryKey(autoGenerate = true)
     val id: Int = 0,
+    val logo: String? = null,
     val nombre: String,
+    val puntosFinales: Int = 0,
     var puntos: Int = 0,
     var rondasAFavor: Int = 0,
     var rondasEnContra: Int = 0,
