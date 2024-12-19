@@ -12,7 +12,7 @@ import com.example.scoreit.componentes.Equipo
 
 @Database(
     entities = [Usuario::class, Campeonato::class, Partido::class, Equipo::class],
-    version = 2,
+    version = 3,
     exportSchema = false
 )
 

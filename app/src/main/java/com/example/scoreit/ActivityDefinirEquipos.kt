@@ -207,10 +207,6 @@ class ActivityDefinirEquipos : AppCompatActivity() {
     private fun roundRobin(idCampeonato: Int) {
         lifecycleScope.launch {
             val equipos = dbAccess.equipoDao().obtenerEquiposPorIdCampeonato(idCampeonato.toString())
-            if (equipos.size < 2) {
-                throw IllegalArgumentException("Se necesitan al menos 2 equipos para generar un fixture.")
-            }
-
             val partidos = mutableListOf<Partido>()
             val listaDeEquipos = equipos.toMutableList()
 
@@ -234,11 +230,9 @@ class ActivityDefinirEquipos : AppCompatActivity() {
                         val localGson = Converters().fromEquipo(local)
                         val visitanteGson = Converters().fromEquipo(visitante)
 
-                        val jornadaIda = totalFechas + 1 - jornada
-
                         partidos.add(
                             Partido(
-                                jornada = jornadaIda.toString(),
+                                jornada = jornada.toString(),
                                 primerEquipoJson = localGson,
                                 segundoEquipoJson = visitanteGson,
                                 porRondas = porRondas,

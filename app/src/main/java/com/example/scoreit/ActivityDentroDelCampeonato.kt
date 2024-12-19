@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.scoreit.ActivityMenuPrincipal.Companion.USER_EMAIL
 import com.example.scoreit.adapters.RecyclerPartidosCreados.RecyclerPartidosCreados
 import com.example.scoreit.adapters.RecyclerTabla.RecyclerTabla
+import com.example.scoreit.componentes.Equipo
 import com.example.scoreit.database.AppDataBase
 import com.example.scoreit.database.AppDataBase.Companion.getDatabase
 import com.example.scoreit.databinding.ActivityDentroDelCampeonatoBinding
@@ -104,7 +105,9 @@ class ActivityDentroDelCampeonato : AppCompatActivity() {
         lifecycleScope.launch {
             val campeonatoId = intent.getStringExtra(ID_CAMPEONATO_DC).toString()
             val listaDeEquipos = dbAccess.equipoDao().obtenerEquiposPorIdCampeonato(campeonatoId)
-            recyclerTabla.addDataToList(listaDeEquipos)
+
+            val listaOrdenada = ordenarEquipos(listaDeEquipos)
+            recyclerTabla.addDataToList(listaOrdenada.toMutableList())
 
             binding.recyclerTablaDePosiciones.apply {
                 layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
@@ -112,4 +115,13 @@ class ActivityDentroDelCampeonato : AppCompatActivity() {
             }
         }
     }
+
+    private fun ordenarEquipos(equipos: List<Equipo>): List<Equipo> {
+        return equipos.sortedWith(
+            compareByDescending<Equipo> { it.puntosFinales }
+                .thenByDescending { it.puntosInGame }
+                .thenByDescending { it.partidosGanados }
+        )
+    }
+
 }

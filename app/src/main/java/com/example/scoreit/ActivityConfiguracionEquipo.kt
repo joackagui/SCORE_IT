@@ -41,22 +41,18 @@ class AddTeamActivity : AppCompatActivity() {
         etTeamName = findViewById(R.id.etTeamName)
         btnAddLogo = findViewById(R.id.btnAddLogo)
 
-        // Botón para añadir jugadores
         btnAddPlayers.setOnClickListener {
             addPlayerToList()
         }
 
-        // Botón para seleccionar el logo del equipo
         btnAddLogo.setOnClickListener {
             openGallery()
         }
 
-        // Botón para volver atrás
         findViewById<Button>(R.id.btnBack).setOnClickListener {
             finish()
         }
 
-        // Botón para guardar equipo
         findViewById<Button>(R.id.btnSave).setOnClickListener {
             saveTeam()
         }
@@ -67,14 +63,12 @@ class AddTeamActivity : AppCompatActivity() {
 
         val playerName = "Jugador $playerCount"
 
-        // Crear un TextView para mostrar el jugador
         val playerTextView = TextView(this)
         playerTextView.text = playerName
         playerTextView.textSize = 16f
         playerTextView.setTextColor(resources.getColor(android.R.color.white, null))
         playerTextView.setPadding(8, 8, 8, 8)
 
-        // Añadir borde inferior
         playerTextView.setBackgroundResource(R.drawable.player_list_item_border)
 
         playerListContainer.addView(playerTextView)

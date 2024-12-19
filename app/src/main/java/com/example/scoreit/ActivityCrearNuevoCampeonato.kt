@@ -122,7 +122,6 @@ class ActivityCrearNuevoCampeonato : AppCompatActivity() {
                 idaYVuelta = idaYVuelta,
                 siempreUnGanador = siempreUnGanador,
                 diferenciaDosPuntos = diferenciaDosPuntos,
-                difenciaDeDosRondas = diferenciaDosRondas
                 )
 
                 val idCampeonato = buscarCampeonatoLibre(nuevoCampeonato)
