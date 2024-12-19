@@ -5,71 +5,112 @@
     android:layout_height="match_parent"
     android:background="@color/DarkGray"
     >
-
-        <!-- Primer TextView -->
         <TextView
-            android:id="@+id/textView1"
-            android:layout_width="172dp"
+            android:id="@+id/nombre_equipo_tabla"
+            android:layout_width="0dp"
             android:layout_height="35dp"
             android:text="Equipo"
-            android:textColor="@color/White"
-            android:background="@color/DarkRed"
-            android:textSize="18sp"
-            android:gravity="center"
-            app:layout_constraintStart_toStartOf="parent"
+            android:background="@color/CommonRed"
+            app:layout_constraintStart_toStartOf="@id/guideline_margen_izquierda"
+            app:layout_constraintEnd_toEndOf="@id/guideline_margen_derecha_4"
             app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginTop="20dp"/>
+            android:layout_marginTop="20dp"
+            style="@style/TextoTabla"
+            />
+
         <TextView
-            android:id="@+id/textView2"
-            android:layout_width="60dp"
+            android:id="@+id/puntos_finales_tabla"
+            android:layout_width="0dp"
             android:layout_height="35dp"
             android:text="Pts"
-            android:textColor="@color/White"
-            android:background="@color/DarkRed"
-            android:textSize="18sp"
-            android:gravity="center"
+            android:background="@color/CommonRed"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/textView1"
+            app:layout_constraintStart_toEndOf="@+id/nombre_equipo_tabla"
+            app:layout_constraintEnd_toStartOf="@id/guideline_margen_derecha_3"
             android:layout_marginTop="20dp"
+            style="@style/TextoTabla"
             />
+
         <TextView
-            android:id="@+id/textView3"
-            android:layout_width="60dp"
+            android:id="@+id/puntos_in_game_tabla"
+            android:layout_width="0dp"
             android:layout_height="35dp"
             android:text="PtsIG"
-            android:textColor="@color/White"
-            android:background="@color/DarkRed"
-            android:textSize="18sp"
-            android:gravity="center"
+            android:background="@color/CommonRed"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/textView2"
-            android:layout_marginTop="20dp"/>
+            app:layout_constraintStart_toEndOf="@+id/puntos_finales_tabla"
+            app:layout_constraintEnd_toStartOf="@id/guideline_margen_derecha_2"
+            android:layout_marginTop="20dp"
+            style="@style/TextoTabla"
+            />
+
         <TextView
-            android:id="@+id/textView4"
-            android:layout_width="60dp"
+            android:id="@+id/partidos_jugados_tabla"
+            android:layout_width="0dp"
             android:layout_height="35dp"
             android:text="PtJ"
-            android:textColor="@color/White"
-            android:background="@color/DarkRed"
-            android:textSize="18sp"
-            android:gravity="center"
+            android:background="@color/CommonRed"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/textView3"
+            app:layout_constraintStart_toEndOf="@+id/puntos_in_game_tabla"
+            app:layout_constraintEnd_toStartOf="@id/guideline_margen_derecha_1"
             android:layout_marginTop="20dp"
+            style="@style/TextoTabla"
             />
+
         <TextView
-            android:id="@+id/textView5"
-            android:layout_width="60dp"
+            android:id="@+id/partidos_ganados_tabla"
+            android:layout_width="0dp"
             android:layout_height="35dp"
             android:text="PtG"
-            android:textColor="@color/White"
-            android:background="@color/DarkRed"
-            android:textSize="18sp"
-            android:gravity="center"
+            android:background="@color/CommonRed"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/textView4"
+            app:layout_constraintStart_toEndOf="@+id/partidos_jugados_tabla"
+            app:layout_constraintEnd_toStartOf="@id/guideline_margen_derecha"
             android:layout_marginTop="20dp"
+            style="@style/TextoTabla"
             />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_margen_izquierda"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.03"/>
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_margen_derecha"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.97"/>
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_margen_derecha_1"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.83"/>
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_margen_derecha_2"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.69"/>
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_margen_derecha_3"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.55"/>
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_margen_derecha_4"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.41"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 

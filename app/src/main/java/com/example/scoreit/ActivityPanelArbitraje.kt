@@ -18,7 +18,7 @@ class ActivityPanelArbitraje : AppCompatActivity() {
     private lateinit var binding: ActivityPanelArbitrajeBinding
     private lateinit var dbAccess: AppDataBase
     companion object {
-        const val ID_PARTIDO: String = "PARTIDO"
+        const val ID_PARTIDO_PA: String = "PARTIDO"
     }
     private var countDownTimer: CountDownTimer? = null
     private var timeInMillis: Long = 0L
@@ -178,28 +178,29 @@ class ActivityPanelArbitraje : AppCompatActivity() {
     private fun obtenerTiempoDeJuego() {
         lifecycleScope.launch {
             dbAccess.partidoDao()
-                .obtenerTiempoDelPartido(intent.getStringExtra(ID_PARTIDO).toString())
+                .obtenerTiempoDelPartido(intent.getStringExtra(ID_PARTIDO_PA).toString())
         }
     }
 
     private fun evaluacionDelPartido() {
         lifecycleScope.launch {
+            val idpartido: String = intent.getStringExtra(ID_PARTIDO_PA).toString()
             val partidoActual =
-                dbAccess.partidoDao().obtenerPorId(intent.getStringExtra(ID_PARTIDO).toString())
-            val tieneMaximoDePuntos = dbAccess.partidoDao().obtenerSiPartidoPorPuntos(intent.getStringExtra(ID_PARTIDO).toString())
+                dbAccess.partidoDao().obtenerPorId(idpartido)
+            val tieneMaximoDePuntos = dbAccess.partidoDao().obtenerSiPartidoPorPuntos(idpartido)
             val maximoDePuntos = dbAccess.partidoDao()
-                .obtenerPuntosParaGanar(intent.getStringExtra(ID_PARTIDO).toString())
+                .obtenerPuntosParaGanar(idpartido)
             val tieneTiempoDeJuego = dbAccess.partidoDao()
-                .obtenerSiPartidoPorTiempo(intent.getStringExtra(ID_PARTIDO).toString())
+                .obtenerSiPartidoPorTiempo(idpartido)
             val siempreGanador = dbAccess.partidoDao()
-                .obtenerSiempreUnGanador(intent.getStringExtra(ID_PARTIDO).toString())
+                .obtenerSiempreUnGanador(idpartido)
             var cantidadDescansosPrimerEquipo = dbAccess.partidoDao()
-                .obtenerCantidadDescansos(intent.getStringExtra(ID_PARTIDO).toString())
+                .obtenerCantidadDescansos(idpartido)
             var cantidadDescansosSegundoEquipo = cantidadDescansosPrimerEquipo
             var diferenciaDeDosPuntos = dbAccess.partidoDao()
-                .obtenerSiHayDiferenciaDeDosPuntos(intent.getStringExtra(ID_PARTIDO).toString())
+                .obtenerSiHayDiferenciaDeDosPuntos(idpartido)
             var tiempoDelPartido = dbAccess.partidoDao()
-                .obtenerTiempoDelPartido(intent.getStringExtra(ID_PARTIDO).toString())
+                .obtenerTiempoDelPartido(idpartido)
 
             arbitrar(
                 partidoActual,

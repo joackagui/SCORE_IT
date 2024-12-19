@@ -1,21 +1,19 @@
 package com.example.scoreit.adapters.RecyclerPartidosCreados
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.scoreit.ActivityPanelArbitraje
 import com.example.scoreit.componentes.Partido
-import com.example.scoreit.database.AppDataBase
-import com.example.scoreit.database.AppDataBase.Companion.getDatabase
 import com.example.scoreit.databinding.EnmarcadoPartidoBinding
-import androidx.lifecycle.lifecycleScope
 import com.example.scoreit.database.Converters
 
 class RecyclerPartidosCreados:
     RecyclerView.Adapter<RecyclerPartidosCreados.PartidoViewHolder>() {
 
-    private lateinit var dbAccess: AppDataBase
     private val listaDatos = mutableListOf<Partido>()
     private var context: Context? = null
 
@@ -51,6 +49,11 @@ class RecyclerPartidosCreados:
                 binding.group.visibility = View.VISIBLE
             } else {
                 binding.group.visibility = View.INVISIBLE
+            }
+            binding.botonDelPartido.setOnClickListener{
+                val activityPanelArbitraje = Intent(context, ActivityPanelArbitraje::class.java)
+                activityPanelArbitraje.putExtra(ActivityPanelArbitraje.ID_PARTIDO_PA, partido.id.toString())
+                context?.startActivity(activityPanelArbitraje)
             }
         }
     }

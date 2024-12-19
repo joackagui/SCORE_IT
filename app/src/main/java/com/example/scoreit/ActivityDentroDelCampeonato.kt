@@ -9,6 +9,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.scoreit.ActivityMenuPrincipal.Companion.USER_EMAIL
 import com.example.scoreit.adapters.RecyclerPartidosCreados.RecyclerPartidosCreados
+import com.example.scoreit.adapters.RecyclerTabla.RecyclerTabla
 import com.example.scoreit.database.AppDataBase
 import com.example.scoreit.database.AppDataBase.Companion.getDatabase
 import com.example.scoreit.databinding.ActivityDentroDelCampeonatoBinding
@@ -17,6 +18,7 @@ import kotlinx.coroutines.launch
 class ActivityDentroDelCampeonato : AppCompatActivity() {
 
     private val recyclerPartidosCreados: RecyclerPartidosCreados by lazy { RecyclerPartidosCreados() }
+    private val recyclerTabla: RecyclerTabla by lazy { RecyclerTabla() }
     private lateinit var binding: ActivityDentroDelCampeonatoBinding
     private lateinit var dbAccess: AppDataBase
 
@@ -35,6 +37,7 @@ class ActivityDentroDelCampeonato : AppCompatActivity() {
 
         configurarEncabezado()
         setUpNombreDelCampeonato()
+        setUpRecyclerTabla()
         setUpRecyclerViewPartidos()
         volverMenuPrincipal()
 
@@ -94,6 +97,18 @@ class ActivityDentroDelCampeonato : AppCompatActivity() {
             binding.recyclerPartidosCreados.apply {
                 layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
                 adapter = recyclerPartidosCreados
+            }
+        }
+    }
+    private fun setUpRecyclerTabla(){
+        lifecycleScope.launch {
+            val campeonatoId = intent.getStringExtra(ID_CAMPEONATO_DC).toString()
+            val listaDeEquipos = dbAccess.equipoDao().obtenerEquiposPorIdCampeonato(campeonatoId)
+            recyclerTabla.addDataToList(listaDeEquipos)
+
+            binding.recyclerTablaDePosiciones.apply {
+                layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+                adapter = recyclerTabla
             }
         }
     }
