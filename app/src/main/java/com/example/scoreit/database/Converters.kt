@@ -6,17 +6,44 @@ import com.example.scoreit.componentes.Equipo
 import com.example.scoreit.componentes.Partido
 import com.example.scoreit.componentes.Usuario
 import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
 
 class Converters {
 
     private val gson = Gson()
 
     @TypeConverter
-    fun fromEquipo(equipo: Equipo?): String? = gson.toJson(equipo)
+    fun fromEquipo(equipo: Equipo): String {
+        return gson.toJson(equipo)
+    }
 
     @TypeConverter
-    fun toEquipo(equipoString: String?): Equipo? =
-        equipoString?.let { gson.fromJson(it, Equipo::class.java) }
+    fun toEquipo(json: String): Equipo {
+        return try {
+            gson.fromJson(json, Equipo::class.java)
+        } catch (e: Exception) {
+            Equipo(
+                id = -1,
+                nombre = "Equipo Default",
+                idCampeonato = -1
+            )
+        }
+    }
+
+    @TypeConverter
+    fun fromEquipoList(equipos: List<Equipo>): String {
+        return gson.toJson(equipos)
+    }
+
+    @TypeConverter
+    fun toEquipoList(json: String): List<Equipo> {
+        return try {
+            val listType = object : TypeToken<List<Equipo>>() {}.type
+            gson.fromJson(json, listType)
+        } catch (e: Exception) {
+            emptyList()
+        }
+    }
 
     // Partido
     @TypeConverter

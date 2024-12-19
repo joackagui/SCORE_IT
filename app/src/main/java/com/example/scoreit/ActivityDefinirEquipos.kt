@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.ImageView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -13,6 +14,7 @@ import com.example.scoreit.componentes.Equipo
 import com.example.scoreit.componentes.Partido
 import com.example.scoreit.database.AppDataBase
 import com.example.scoreit.database.AppDataBase.Companion.getDatabase
+import com.example.scoreit.database.Converters
 import com.example.scoreit.databinding.ActivityDefinirEquiposBinding
 import kotlinx.coroutines.launch
 
@@ -115,9 +117,154 @@ class ActivityDefinirEquipos : AppCompatActivity() {
     }
 
     private fun guardarCambios(){
+        val campeonatoid = intent.getStringExtra(ID_CAMPEONATO_DE).toString().toInt()
         binding.botonGuardarCambios.setOnClickListener{
-            crearFixture()
+            crearFixture(campeonatoid)
             cambiarAMenuPrincipal()
+        }
+    }
+
+    private fun crearFixture(campeonatoid: Int) {
+        lifecycleScope.launch {
+            val campeonato = dbAccess.campeonatoDao().obtenerPorId(campeonatoid.toString())
+            if(campeonato.modoDeJuego == "Round Robin"){
+                roundRobin(campeonatoid)
+            } else {
+                llaves(campeonatoid)
+            }
+        }
+    }
+
+    private fun llaves(campeonatoid: Int) {
+        lifecycleScope.launch {
+            val equipos = dbAccess.equipoDao().obtenerEquiposPorIdCampeonato(campeonatoid.toString()).toMutableList()
+
+            val numeroEquipos = equipos.size
+            val siguientePotenciaDeDos =
+                Integer.highestOneBit(numeroEquipos).takeIf { it == numeroEquipos }
+                    ?: (Integer.highestOneBit(numeroEquipos) * 2)
+
+            while (equipos.size < siguientePotenciaDeDos) {
+                equipos.add(
+                    Equipo(
+                        id = -1,
+                        nombre = "Equipo Default",
+                        idCampeonato = campeonatoid
+                    )
+                )
+            }
+
+            val fases = mapOf(
+                2 to "Final",
+                4 to "Semifinal",
+                8 to "Cuartos de Final",
+                16 to "Octavos de Final",
+                32 to "Dieciseisavos de Final"
+            )
+
+            var rondaEquipos = equipos
+            var rondaActual = siguientePotenciaDeDos
+            var jornada = 1
+
+            val partidos = mutableListOf<Partido>()
+
+            while (rondaActual > 1) {
+                val nombreFase = fases[rondaActual] ?: "Fase $jornada"
+                val nuevaRonda = mutableListOf<Equipo>()
+
+                for (i in 0 until rondaEquipos.size / 2) {
+                    val local = rondaEquipos[i]
+                    val visitante = rondaEquipos[rondaEquipos.size - 1 - i]
+
+                    val localGson = Converters().fromEquipo(local)
+                    val visitanteGson = Converters().fromEquipo(visitante)
+
+                    partidos.add(
+                        Partido(
+                            jornada = nombreFase,
+                            primerEquipoJson = localGson,
+                            segundoEquipoJson = visitanteGson,
+                            puntosPrimerEquipo = 0,
+                            puntosSegundoEquipo = 0,
+                            rondasPrimerEquipo = "",
+                            rondasSegundoEquipo = "",
+                            porRondas = false,
+                            idCampeonato = campeonatoid
+                        )
+                    )
+
+                    nuevaRonda.add(if (local.id != -1) local else visitante)
+                }
+
+                rondaEquipos = nuevaRonda
+                rondaActual /= 2
+                jornada++
+            }
+
+            dbAccess.partidoDao().insertarPartidos(partidos)
+        }
+    }
+
+    private fun roundRobin(idCampeonato: Int) {
+        lifecycleScope.launch {
+            val equipos = dbAccess.equipoDao().obtenerEquiposPorIdCampeonato(idCampeonato.toString())
+            if (equipos.size < 2) {
+                throw IllegalArgumentException("Se necesitan al menos 2 equipos para generar un fixture.")
+            }
+
+            val partidos = mutableListOf<Partido>()
+            val listaDeEquipos = equipos.toMutableList()
+
+            val esImpar = listaDeEquipos.size % 2 != 0
+            if (esImpar) {
+                listaDeEquipos.add(Equipo(id = -1, nombre = "Descanso", idCampeonato = idCampeonato))
+            }
+
+            val totalFechas = listaDeEquipos.size - 1
+            val mitad = listaDeEquipos.size / 2
+
+            for (jornada in 1..totalFechas) {
+                for (i in 0 until mitad) {
+                    val local = listaDeEquipos[i]
+                    val visitante = listaDeEquipos[listaDeEquipos.size - 1 - i]
+
+                    if (local.id != -1 && visitante.id != -1) {
+                        val campeonato = dbAccess.campeonatoDao().obtenerPorId(idCampeonato.toString())
+                        val porRondas: Boolean = campeonato.permisoDeRonda
+
+                        val localGson = Converters().fromEquipo(local)
+                        val visitanteGson = Converters().fromEquipo(visitante)
+
+                        val jornadaIda = totalFechas + 1 - jornada
+
+                        partidos.add(
+                            Partido(
+                                jornada = jornadaIda.toString(),
+                                primerEquipoJson = localGson,
+                                segundoEquipoJson = visitanteGson,
+                                porRondas = porRondas,
+                                idCampeonato = idCampeonato
+                            )
+                        )
+                        if(campeonato.idaYVuelta){
+                            val jornadaVuelta = totalFechas + 1 - jornada
+                            partidos.add(
+                                Partido(
+                                    jornada = jornadaVuelta.toString(),
+                                    primerEquipoJson = visitanteGson,
+                                    segundoEquipoJson = localGson,
+                                    porRondas = porRondas,
+                                    idCampeonato = idCampeonato
+                                )
+                            )
+                        }
+                    }
+                }
+
+                val ultimo = listaDeEquipos.removeAt(listaDeEquipos.size - 1)
+                listaDeEquipos.add(1, ultimo)
+            }
+            dbAccess.partidoDao().insertarPartidos(partidos)
         }
     }
 
@@ -150,53 +297,4 @@ class ActivityDefinirEquipos : AppCompatActivity() {
         startActivity(activityMenuPrincipal)
     }
 
-    private fun crearFixture() {
-        val campeonatoid = intent.getStringExtra(ID_CAMPEONATO_DE)
-        if(campeonatoid != null){
-            lifecycleScope.launch {
-                val listaDeEquipos = dbAccess.equipoDao().obtenerEquiposPorIdCampeonato(campeonatoid)
-                val campeonato = dbAccess.campeonatoDao().obtenerPorId(campeonatoid)
-                val listaDeEquiposId = mutableListOf<String>()
-                val partidos = mutableListOf<Partido>()
-
-                for (i in 0..<listaDeEquipos.size) {
-                    listaDeEquiposId.add(listaDeEquipos[i].id.toString())
-                }
-
-                if (listaDeEquipos.size < 2) throw IllegalArgumentException("Se necesitan al menos 2 equipos")
-
-                val esImpar = listaDeEquipos.size % 2 != 0
-
-                if (esImpar) listaDeEquiposId.add("Descanso")
-
-                val totalFechas = listaDeEquiposId.size - 1
-
-                for (jornada in 1..totalFechas) {
-                    for (i in 0 until listaDeEquiposId.size / 2) {
-                        val local = listaDeEquiposId[i]
-                        val visitante = listaDeEquiposId[listaDeEquiposId.size - 1 - i]
-
-                        if (local != "Descanso" && visitante != "Descanso") {
-                            partidos.add(
-                                Partido(
-                                    jornada = jornada,
-                                    primerEquipoId = dbAccess.equipoDao().obtenerPorId(local).id.toString(),
-                                    segundoEquipoId = dbAccess.equipoDao().obtenerPorId(visitante).id.toString(),
-                                    puntosPrimerEquipo = "0",
-                                    puntosSegundoEquipo = "0",
-                                    rondasPrimerEquipo = "0",
-                                    rondasSegundoEquipo = "0",
-                                    porRondas = campeonato.permisoDeRonda,
-                                    idCampeonato = campeonatoid.toInt()
-                                )
-                            )
-                        }
-                    }
-                    val ultimo = listaDeEquipos.removeAt(listaDeEquipos.size - 1)
-                    listaDeEquipos.add(1, ultimo)
-                }
-                dbAccess.partidoDao().insertarPartidos(partidos)
-            }
-        }
-    }
 }

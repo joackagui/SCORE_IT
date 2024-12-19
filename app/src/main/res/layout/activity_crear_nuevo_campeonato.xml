@@ -87,14 +87,14 @@
                 app:layout_constraintTop_toBottomOf="@+id/nombre_del_campeonato"
                 android:layout_marginTop="30dp"
                 android:backgroundTint="@color/DarkestRed"
-                style="?android:spinnerStyle" />
+                style="?android:spinnerStyle"
+                />
 
             <Spinner
                 android:id="@+id/spinner_modo_juego"
                 android:layout_width="250dp"
                 android:layout_height="48dp"
                 android:layout_marginTop="30dp"
-                android:backgroundTint="@color/DarkestRed"
                 android:entries="@array/opciones_para_modo_de_juego"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -214,7 +214,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/checkbox_tiempos_de_descanso"
                 app:layout_constraintStart_toEndOf="@id/guideline_mitad_vertical"
                 app:layout_constraintEnd_toStartOf="@id/guideline_vertical2"
-                android:text="@string/cantidad_de_rondas_edit_text"
+                android:text="@string/cantidad_de_descansos_edit_text"
                 android:visibility="gone"
                 style="@style/TextoNormal"
                 />
