@@ -53,10 +53,28 @@ class ActivityCrearNuevoCampeonato : AppCompatActivity() {
         binding.botonGuardar.setOnClickListener{
             val nombreCampeonato = binding.nombreDelCampeonato.toString()
             val fechaDeInicio = binding.fechaDelCampeonato.toString()
-            val seJuegaPorPuntosMaximos = binding.switchPuntaje.toString().toBoolean()
-            val puntosParaGanar = binding.puntajeEditText.toString().toInt()
-            val seJuegaPorTiempoMaximo = binding.switchTiempoDeJuego.toString().toBoolean()
-            val tiempoDeJuego = binding.tiempoDeJuegoEditText.toString().toInt()
+            val seJuegaPorPuntosMaximos = binding.switchPuntaje.isChecked
+            val puntosParaGanar = if (seJuegaPorPuntosMaximos) {
+                val tiempoIngresado = binding.puntajeEditText.text.toString()
+                if (tiempoIngresado.isEmpty()) {
+                    45
+                } else {
+                    tiempoIngresado.toInt()
+                }
+            } else {
+                null
+            }
+            val seJuegaPorTiempoMaximo = binding.switchTiempoDeJuego.isChecked
+            val tiempoDeJuego = if (seJuegaPorTiempoMaximo) {
+                val tiempoIngresado = binding.tiempoDeJuegoEditText.text.toString()
+                if (tiempoIngresado.isEmpty()) {
+                    45
+                } else {
+                    tiempoIngresado.toInt()
+                }
+            } else {
+                null
+            }
             val modoDeJuego = binding.spinnerModoJuego.toString()
             val permisoDeDescanso = binding.checkboxTiemposDeDescanso.toString().toBoolean()
             val tiempoDeDescanso = binding.numberPickerMinutosDeDescanso.toString().toInt()
@@ -87,7 +105,7 @@ class ActivityCrearNuevoCampeonato : AppCompatActivity() {
                 diferenciaDosPuntos = diferenciaDosPuntos,
                 difenciaDeDosRondas = diferenciaDosRondas,
                 idUsuario = idUsuario
-                )
+            )
 
             val campeonatoComprimido = Converters().fromCampeonato(nuevoCampeonato)
 
@@ -141,15 +159,28 @@ class ActivityCrearNuevoCampeonato : AppCompatActivity() {
     private fun configureSwitches() {
         binding.switchTiempoDeJuego.isUseMaterialThemeColors = false
         binding.switchPuntaje.isUseMaterialThemeColors = false
-
         binding.switchPuntaje.setOnCheckedChangeListener { _, isChecked ->
             binding.puntajeEditText.isEnabled = isChecked
-        }
 
+            if (isChecked) {
+                binding.switchTiempoDeJuego.isEnabled = false
+                binding.tiempoDeJuegoEditText.isEnabled = false
+            } else {
+                binding.switchTiempoDeJuego.isEnabled = true
+            }
+        }
         binding.switchTiempoDeJuego.setOnCheckedChangeListener { _, isChecked ->
             binding.tiempoDeJuegoEditText.isEnabled = isChecked
+
+            if (isChecked) {
+                binding.switchPuntaje.isEnabled = false
+                binding.puntajeEditText.isEnabled = false
+            } else {
+                binding.switchPuntaje.isEnabled = true
+            }
         }
     }
+
 
     // Configura el DatePicker y el comportamiento del botón de fecha
     private fun configureDatePicker() {

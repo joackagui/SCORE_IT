@@ -86,6 +86,29 @@
         android:text="00:00"
         style="@style/TextoIndicadorDeTiempo"/>
 
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/startPauseButton"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        app:layout_constraintEnd_toStartOf="@id/timer"
+        app:layout_constraintStart_toEndOf="@id/guideline_margen_izquierda"
+        app:layout_constraintTop_toBottomOf="@id/nombre_primer_equipo"
+        app:background="@drawable/fondo_para_botones_mas_redondos_score_it"
+        app:icon="@drawable/playbutton"
+        />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/resetButton"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        app:layout_constraintStart_toEndOf="@id/timer"
+        app:layout_constraintEnd_toStartOf="@id/guideline_margen_derecha"
+        app:layout_constraintBottom_toTopOf="@id/nombre_segundo_equipo"
+        android:background="@drawable/fondo_para_botones_mas_redondos_score_it"
+        app:icon="@drawable/resetbutton"
+        android:gravity="center"
+        />
+
     <Button
         android:id="@+id/boton_descanso_segundo_equipo"
         android:layout_width="0dp"
@@ -132,7 +155,7 @@
         android:backgroundTint="@color/CommonRed"
         android:text="Suspender"
         android:layout_margin="10dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="@id/guideline_margen_izquierda"
         style="@style/TextoNormal"
         />

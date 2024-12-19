@@ -1,6 +1,8 @@
 package com.example.scoreit
 
 import android.os.Bundle
+import android.os.CountDownTimer
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import com.example.scoreit.database.AppDataBase
@@ -35,8 +37,65 @@ class ActivityPanelArbitraje : AppCompatActivity() {
 
             }
         }
+        //val input = dbAccess.campeonatoDao()
 
     }
+    // funciones
+//    private fun startTimer() {
+//        // Verificar que haya un valor válido en el EditText
+//        // val input = binding.input.text.toString()
+////        if (input.isEmpty()) {
+////            Toast.makeText(this, "Por favor ingresa un tiempo en minutos", Toast.LENGTH_SHORT).show()
+////            return
+//        }
+//
+//        // Convertir el valor ingresado en minutos a milisegundos
+//        val minutes = input.toLong()
+//        timeInMillis = minutes * 60 * 1000 // Convertir minutos a milisegundos
+//
+//        // Iniciar el temporizador
+//        countDownTimer = object : CountDownTimer(timeInMillis, 1000) {
+//            override fun onTick(millisUntilFinished: Long) {
+//                timeRemaining = millisUntilFinished
+//                binding.timerTextView.text = formatTime(millisUntilFinished)
+//            }
+//
+//            override fun onFinish() {
+//                isRunning = false
+//                binding.timerTextView.text = "00:00:00"
+//                binding.buttonStart.text = "Start"
+//                Toast.makeText(this@ActivityCountDownTimer, "¡Tiempo terminado!", Toast.LENGTH_SHORT).show()
+//            }
+//        }.start()
+//
+//        isRunning = true
+//        binding.buttonStart.text = "Pause"
+//    }
+//
+//    private fun pauseTimer() {
+//        countDownTimer?.cancel()
+//        isRunning = false
+//        binding.buttonStart.text = "Resume"
+//    }
+//
+//    private fun resetTimer() {
+//        countDownTimer?.cancel()
+//        isRunning = false
+//        timeInMillis = 0L
+//        timeRemaining = 0L
+//        binding.timerTextView.text = "00:00:00"
+//        binding.buttonStart.text = "Start"
+//        binding.input.text.clear()
+//    }
+//
+//    private fun formatTime(millis: Long): String {
+//        val hours = millis / (1000 * 60 * 60)
+//        val minutes = (millis / (1000 * 60)) % 60
+//        val seconds = (millis / 1000) % 60
+//        return String.format("%02d:%02d:%02d", hours, minutes, seconds)
+//    }
+
+
 
     private fun evaluacionDelPartido() {
         val partidoActual = dbAccess.partidoDao().obtenerPorId(intent.getStringExtra(ID_PARTIDO).toString())
