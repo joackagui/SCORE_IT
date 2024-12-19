@@ -25,6 +25,7 @@ class ActivityCrearNuevoCampeonato : AppCompatActivity() {
     private lateinit var datePickerDialog: DatePickerDialog
     private lateinit var dbAccess: AppDataBase
 
+
     companion object{
         const val ID_USER_NC: String = "USER_ID"
         const val USER_EMAIL_NC: String = "USER_EMAIL"
@@ -192,22 +193,35 @@ class ActivityCrearNuevoCampeonato : AppCompatActivity() {
         binding.switchTiempoDeJuego.isUseMaterialThemeColors = false
         binding.switchPuntaje.isUseMaterialThemeColors = false
 
-        binding.switchPuntaje.setOnCheckedChangeListener { _, isChecked ->
-            binding.puntajeEditText.isEnabled = isChecked
-            if (isChecked) {
-                binding.switchTiempoDeJuego.isEnabled = false
-                binding.tiempoDeJuegoEditText.isEnabled = false
-            } else {
-                binding.switchTiempoDeJuego.isEnabled = true
-            }
-        }
+        binding.switchTiempoDeJuego.isChecked = true
+        binding.tiempoDeJuegoEditText.isEnabled = true
+        binding.switchPuntaje.isChecked = false
+        binding.puntajeEditText.isEnabled = false
+
+        // Configurar listeners para mantener la restricción
         binding.switchTiempoDeJuego.setOnCheckedChangeListener { _, isChecked ->
-            binding.tiempoDeJuegoEditText.isEnabled = isChecked
             if (isChecked) {
-                binding.switchPuntaje.isEnabled = false
+                binding.switchPuntaje.isChecked = false
+                binding.tiempoDeJuegoEditText.isEnabled = true
                 binding.puntajeEditText.isEnabled = false
             } else {
-                binding.switchPuntaje.isEnabled = true
+                // Impedir que ambos queden desactivados
+                if (!binding.switchPuntaje.isChecked) {
+                    binding.switchTiempoDeJuego.isChecked = true
+                }
+            }
+        }
+
+        binding.switchPuntaje.setOnCheckedChangeListener { _, isChecked ->
+            if (isChecked) {
+                binding.switchTiempoDeJuego.isChecked = false
+                binding.puntajeEditText.isEnabled = true
+                binding.tiempoDeJuegoEditText.isEnabled = false
+            } else {
+                // Impedir que ambos queden desactivados
+                if (!binding.switchTiempoDeJuego.isChecked) {
+                    binding.switchPuntaje.isChecked = true
+                }
             }
         }
     }
