@@ -25,6 +25,7 @@ class ActivityCrearNuevoCampeonato : AppCompatActivity() {
     private lateinit var datePickerDialog: DatePickerDialog
     private lateinit var dbAccess: AppDataBase
 
+
     companion object{
         const val ID_USER_NC: String = "USER_ID"
         const val USER_EMAIL_NC: String = "USER_EMAIL"
@@ -66,64 +67,62 @@ class ActivityCrearNuevoCampeonato : AppCompatActivity() {
     }
 
     private fun guardarYContinuar() {
-        binding.botonGuardar.setOnClickListener {
-            lifecycleScope.launch {
-            val nombreCampeonato = binding.nombreDelCampeonato.text.toString()
-            val fechaDeInicio = binding.fechaDelCampeonato.text.toString()
-            val seJuegaPorPuntosMaximos = binding.switchPuntaje.text.toString().toBoolean()
-            var puntosParaGanar = 0
-            val seJuegaPorTiempoMaximo = binding.switchTiempoDeJuego.text.toString().toBoolean()
-            var tiempoDeJuego = 0
-            val modoDeJuego = binding.spinnerModoJuego.selectedItem.toString()
-            val permisoDeDescanso = binding.checkboxTiemposDeDescanso.text.toString().toBoolean()
-            var tiempoDeDescanso = 0
-            var cantidadDeDescansos = 0
-            val permisoDeRonda = binding.checkboxRondas.text.toString().toBoolean()
-            var cantidadDeRondas = 0
-            val idaYVuelta = binding.checkboxIdaYVuelta.text.toString().toBoolean()
-            val siempreUnGanador = binding.checkboxSiempreUnGanador.text.toString().toBoolean()
-            val diferenciaDosPuntos = binding.checkboxDiferenciaDosPuntos.text.toString().toBoolean()
-            val diferenciaDosRondas = binding.checkboxDiferenciaDosRondas.text.toString().toBoolean()
+            binding.botonGuardar.setOnClickListener {
+                lifecycleScope.launch {
+                val nombreCampeonato = binding.nombreDelCampeonato.text.toString()
+                val fechaDeInicio = binding.fechaDelCampeonato.text.toString()
+                val seJuegaPorPuntosMaximos = binding.switchPuntaje.text.toString().toBoolean()
+                var puntosParaGanar = 0
+                val seJuegaPorTiempoMaximo = binding.switchTiempoDeJuego.text.toString().toBoolean()
+                var tiempoDeJuego = 0
+                val modoDeJuego = binding.spinnerModoJuego.toString()
+                val permisoDeDescanso = binding.checkboxTiemposDeDescanso.text.toString().toBoolean()
+                var tiempoDeDescanso = 0
+                var cantidadDeDescansos = 0
+                val permisoDeRonda = binding.checkboxRondas.text.toString().toBoolean()
+                var cantidadDeRondas = 0
+                val idaYVuelta = binding.checkboxIdaYVuelta.text.toString().toBoolean()
+                val siempreUnGanador = binding.checkboxSiempreUnGanador.text.toString().toBoolean()
+                val diferenciaDosPuntos = binding.checkboxDiferenciaDosPuntos.text.toString().toBoolean()
 
-            if (binding.puntajeEditText.isEnabled) {
-                puntosParaGanar = binding.puntajeEditText.text.toString().toInt()
-            }
+                if (binding.puntajeEditText.isEnabled) {
+                    puntosParaGanar = binding.puntajeEditText.text.toString().toInt()
+                }
 
-            if (binding.tiempoDeJuegoEditText.isEnabled) {
-                tiempoDeJuego = binding.tiempoDeJuegoEditText.text.toString().toInt()
-            }
+                if (binding.tiempoDeJuegoEditText.isEnabled) {
+                    tiempoDeJuego = binding.tiempoDeJuegoEditText.text.toString().toInt()
+                }
 
-            if (binding.numberPickerMinutosDeDescanso.isEnabled) {
-                tiempoDeDescanso = binding.numberPickerMinutosDeDescanso.value
-            }
+                if (binding.numberPickerMinutosDeDescanso.isEnabled) {
+                    tiempoDeDescanso = binding.numberPickerMinutosDeDescanso.value
+                }
 
-            if (binding.numberPickerCantidadDeDescansos.isEnabled) {
-                cantidadDeDescansos = binding.numberPickerCantidadDeDescansos.value
-            }
+                if (binding.numberPickerCantidadDeDescansos.isEnabled) {
+                    cantidadDeDescansos = binding.numberPickerCantidadDeDescansos.value
+                }
 
-            if (binding.numberPickerCantidadDeRondasParaGanar.isEnabled) {
-                cantidadDeRondas = binding.numberPickerCantidadDeRondasParaGanar.value
-            }
+                if (binding.numberPickerCantidadDeRondasParaGanar.isEnabled) {
+                    cantidadDeRondas = binding.numberPickerCantidadDeRondasParaGanar.value
+                }
 
-            val nuevoCampeonato = Campeonato(
-                seleccionado = true,
-                nombreCampeonato = nombreCampeonato,
-                fechaDeInicio = fechaDeInicio,
-                seJuegaPorPuntosMaximos = seJuegaPorPuntosMaximos,
-                puntosParaGanar = puntosParaGanar,
-                seJuegaPorTiempoMaximo = seJuegaPorTiempoMaximo,
-                tiempoDeJuego = tiempoDeJuego,
-                modoDeJuego = modoDeJuego,
-                permisoDeDescanso = permisoDeDescanso,
-                tiempoDeDescanso = tiempoDeDescanso,
-                cantidadDeDescansos = cantidadDeDescansos,
-                permisoDeRonda = permisoDeRonda,
-                cantidadDeRondas = cantidadDeRondas,
-                idaYVuelta = idaYVuelta,
-                siempreUnGanador = siempreUnGanador,
-                diferenciaDosPuntos = diferenciaDosPuntos,
-                difenciaDeDosRondas = diferenciaDosRondas
-                )
+                val nuevoCampeonato = Campeonato(
+                        seleccionado = true,
+                        nombreCampeonato = nombreCampeonato,
+                        fechaDeInicio = fechaDeInicio,
+                        seJuegaPorPuntosMaximos = seJuegaPorPuntosMaximos,
+                        puntosParaGanar = puntosParaGanar,
+                        seJuegaPorTiempoMaximo = seJuegaPorTiempoMaximo,
+                        tiempoDeJuego = tiempoDeJuego,
+                        modoDeJuego = modoDeJuego,
+                        permisoDeDescanso = permisoDeDescanso,
+                        tiempoDeDescanso = tiempoDeDescanso,
+                        cantidadDeDescansos = cantidadDeDescansos,
+                        permisoDeRonda = permisoDeRonda,
+                        cantidadDeRondas = cantidadDeRondas,
+                        idaYVuelta = idaYVuelta,
+                        siempreUnGanador = siempreUnGanador,
+                        diferenciaDosPuntos = diferenciaDosPuntos
+                    )
 
                 val idCampeonato = buscarCampeonatoLibre(nuevoCampeonato)
                 if(idCampeonato != -1){
@@ -186,7 +185,6 @@ class ActivityCrearNuevoCampeonato : AppCompatActivity() {
             val visibility = if(isChecked) View.VISIBLE else View.GONE
             binding.texViewCantidadDeRondasParaGanar.visibility = visibility
             binding.numberPickerCantidadDeRondasParaGanar.visibility = visibility
-            binding.checkboxDiferenciaDosRondas.visibility = visibility
         }
     }
 
@@ -195,14 +193,39 @@ class ActivityCrearNuevoCampeonato : AppCompatActivity() {
         binding.switchTiempoDeJuego.isUseMaterialThemeColors = false
         binding.switchPuntaje.isUseMaterialThemeColors = false
 
-        binding.switchPuntaje.setOnCheckedChangeListener { _, isChecked ->
-            binding.puntajeEditText.isEnabled = isChecked
+        binding.switchTiempoDeJuego.isChecked = true
+        binding.tiempoDeJuegoEditText.isEnabled = true
+        binding.switchPuntaje.isChecked = false
+        binding.puntajeEditText.isEnabled = false
+
+        // Configurar listeners para mantener la restricción
+        binding.switchTiempoDeJuego.setOnCheckedChangeListener { _, isChecked ->
+            if (isChecked) {
+                binding.switchPuntaje.isChecked = false
+                binding.tiempoDeJuegoEditText.isEnabled = true
+                binding.puntajeEditText.isEnabled = false
+            } else {
+                // Impedir que ambos queden desactivados
+                if (!binding.switchPuntaje.isChecked) {
+                    binding.switchTiempoDeJuego.isChecked = true
+                }
+            }
         }
 
-        binding.switchTiempoDeJuego.setOnCheckedChangeListener { _, isChecked ->
-            binding.tiempoDeJuegoEditText.isEnabled = isChecked
+        binding.switchPuntaje.setOnCheckedChangeListener { _, isChecked ->
+            if (isChecked) {
+                binding.switchTiempoDeJuego.isChecked = false
+                binding.puntajeEditText.isEnabled = true
+                binding.tiempoDeJuegoEditText.isEnabled = false
+            } else {
+                // Impedir que ambos queden desactivados
+                if (!binding.switchTiempoDeJuego.isChecked) {
+                    binding.switchPuntaje.isChecked = true
+                }
+            }
         }
     }
+
 
     // Configura el DatePicker y el comportamiento del botón de fecha
     private fun configureDatePicker() {
@@ -275,7 +298,5 @@ class ActivityCrearNuevoCampeonato : AppCompatActivity() {
         val adapter = ArrayAdapter(this, R.layout.spinner_item_style, modoDeJuego)
         binding.spinnerModoJuego.adapter = adapter
     }
-
-
 
 }

@@ -16,9 +16,6 @@
         android:theme="@style/Theme.SCOREIT"
         tools:targetApi="31">
         <activity
-            android:name=".ActivityDefinirEquipos"
-            android:exported="false" />
-        <activity
             android:name=".ActivitySigningUp"
             android:exported="false" />
         <activity
