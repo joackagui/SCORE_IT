@@ -31,6 +31,8 @@
         style="@style/TextoNormal"
         />
 
+
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerTablaDePosiciones"
         android:layout_width="0dp"
