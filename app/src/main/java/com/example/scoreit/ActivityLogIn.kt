@@ -95,8 +95,7 @@ class ActivityLogIn : AppCompatActivity() {
                         cantidadDeRondas = 2,
                         idaYVuelta = false,
                         siempreUnGanador = true,
-                        diferenciaDosPuntos = false,
-                        difenciaDeDosRondas = false
+                        diferenciaDosPuntos = false
                     )
                     listaCampeonatos.add(nuevoCampeonato)
                 }
