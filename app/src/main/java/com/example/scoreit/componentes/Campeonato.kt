@@ -23,6 +23,5 @@ data class Campeonato(
     var cantidadDeRondas: Int?,
     var idaYVuelta: Boolean,
     var siempreUnGanador: Boolean,
-    var diferenciaDosPuntos: Boolean,
-    var difenciaDeDosRondas: Boolean
+    var diferenciaDosPuntos: Boolean
 )
